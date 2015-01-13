@@ -1,6 +1,6 @@
 <uwsgi>
     <socket>:9630</socket>
-    <module>4350proj.wsgi</module>
+    <module>src.wsgi</module>
     <processes>10</processes>
     <daemonize>uwsgi.log</daemonize>
 </uwsgi>
