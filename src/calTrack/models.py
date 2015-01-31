@@ -6,7 +6,10 @@ class Foods(models.Model):
 
     fName = models.CharField(max_length = 50)
     fCalorie = models.IntegerField (default=0)
-    fType = models.CharField (max_length = 1)
+    fType = models.CharField (max_length = 1, blank = True)
+
+    def __unicode__(self):
+        return self.fName
 
 class Users(models.Model):
 
@@ -16,4 +19,7 @@ class Users(models.Model):
     weight = models.FloatField(default=0.0)
     height = models.FloatField(default=0.0)
     amtOfExc = models.FloatField(default=0.0)
-    gneder = models.CharField(max_length=1)
+    gender = models.CharField(max_length=1)
+
+    def __unicode__(self):
+        return self.firstName
