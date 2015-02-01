@@ -87,9 +87,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-TEMPLATE_LOADERS = (
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader',
+STATICFILES_DIRS = (
+    #windows dev
+    "D:\Dev\GitHub\comp4350\src\static",
+    #linux production
+    #"/home/anx/dota_only/production/static/",
 )
 
 TEMPLATE_DIRS = (
