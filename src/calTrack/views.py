@@ -8,17 +8,16 @@ from django.http import HttpResponse
 
 def getName(currReq):
     if 'name' in currReq:
-        print currReq['name']
         return currReq['name']
 
 def getCalorie(currReq):
     if 'nofc' in currReq:
-        print currReq['nofc']
         return currReq['nofc']
 
 def index(request):
     foodList = Foods.objects.all()
     error = False
+    message = None
     if request.method == 'POST':
         currReq = request.POST
         fNameNew = getName(currReq)
@@ -29,4 +28,5 @@ def index(request):
         else:
                 food = Foods(fName = fNameNew, fCalorie = fCalorieNew)
                 food.save()
-    return  render_to_response('index.html', {'foodList':foodList,'error': error}, context_instance=RequestContext(request))
+                message = 'Add was successful'
+    return  render_to_response('index.html', {'foodList':foodList,'error': error,'message':message}, context_instance=RequestContext(request))
