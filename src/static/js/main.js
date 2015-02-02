@@ -50,7 +50,7 @@ function calBMI(type){
     }else{
         h = parseInt($("#bmiMtrHeight").val());
         w = parseInt($("#bmiMtrWeight").val());
-        bmi = (w/(h*h));
+        bmi = (w/(h*h))*10000;
     }
     str+=(bmi+" You are ");
     if(bmi<=18.5){
