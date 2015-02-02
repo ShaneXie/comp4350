@@ -67,7 +67,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -88,8 +87,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    #windows dev
-    #"D:\Dev\GitHub\comp4350\src\static",
+
     #linux production
     "/home/4350repo/comp4350/src/static/",
 )
