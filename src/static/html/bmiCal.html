@@ -1,0 +1,47 @@
+<div id="bmiCal">
+        <h1 class="page-header">BMI Calculator</h1>
+
+    <div class="bs-example bs-example-tabs col-md-4 col-lg-4" role="tabpanel" data-example-id="togglable-tabs">
+        <div><h4><span class="label label-info" id="bmiResult"></span></h4></div>
+    <ul id="myTab" class="nav nav-tabs" role="tablist">
+      <li role="presentation" class=""><a href="#bmiStandard" id="bmiStandard-tab" role="tab" data-toggle="tab" aria-controls="bmiStandard" aria-expanded="false">Standard</a></li>
+      <li role="presentation" class="active"><a href="#bmiMetric" role="tab" id="bmiMetric-tab" data-toggle="tab" aria-controls="bmiMetric" aria-expanded="true">Metric</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div role="tabpanel" class="tab-pane fade" id="bmiStandard" aria-labelledby="bmiStandard-tab">
+          </br>
+        <div class="input-group">
+          <span class="input-group-addon">Height:</span>
+          <input id="bmiStdHeight" type="number" class="form-control" aria-label="Height in inches">
+          <span class="input-group-addon">inches</span>
+        </div>
+          </br>
+        <div class="input-group">
+          <span class="input-group-addon">Weight:</span>
+          <input id="bmiStdWeight" type="number" class="form-control" aria-label="Weight in pounds">
+          <span class="input-group-addon">pounds</span>
+        </div>
+          </br>
+          <button onclick="javascript:calBMI('std')" id="compBMIStd" type="button" class="btn btn-primary btn-lg btn-block">Compute My BMI</button>
+      </div>
+      <div role="tabpanel" class="tab-pane fade active in" id="bmiMetric" aria-labelledby="bmiMetric-tab">
+        </br>
+        <div class="input-group">
+          <span class="input-group-addon">Height:</span>
+          <input id="bmiMtrHeight" type="number" class="form-control" aria-label="Height in centimeters">
+          <span class="input-group-addon">centimeters</span>
+        </div>
+          </br>
+        <div class="input-group">
+          <span class="input-group-addon">Weight:</span>
+          <input id="bmiMtrWeight" type="number" class="form-control" aria-label="Weight in kilograms">
+          <span class="input-group-addon">kilograms</span>
+        </div>
+           </br>
+        <button onclick="javascript:calBMI('mtr')" id="compBMIMtr" type="button" class="btn btn-primary btn-lg btn-block">Compute My BMI</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
