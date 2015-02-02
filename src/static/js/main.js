@@ -22,7 +22,9 @@ $(document).ready(function() {
     $("#aboutItem").click(function(){
         $(".barItem").removeClass("active");
         $(this).addClass("active");
-        //$("#content").load("../static/html/bmiCal.html")
+        html = "<h1 class=\"page-header\">About</h1>";
+        html+="<div class=\"well well-sm\"><p>Calorie Tracking Syetem by Comp4350 Team7</p><p>Team Members: An Xie, . Nitesh, Hao Chang, Ayobami Idowu, Kenechukwu Igweagu, Billal Kohistani</br></p></div>";
+        $("#content").html(html);
     });
 
     $("#otherItem").click(function(){
