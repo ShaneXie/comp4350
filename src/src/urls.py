@@ -9,4 +9,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',ct_views.index),
+    url(r'^ajax/(\w+)/$',ct_views.loadAjaxData),
 )
