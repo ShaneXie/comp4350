@@ -1,0 +1,23 @@
+<h1 class="page-header">Food List</h1>
+
+
+{% if foodList %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Food Name</th>
+                <th>Calories</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% for f in foodList %}
+            <tr>
+                <th>{{f.fName}}</th>
+                <th>{{f.fCalorie}}</th>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endif %}
+
+
