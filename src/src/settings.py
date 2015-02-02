@@ -67,7 +67,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -89,7 +88,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     #windows dev
-    "D:\Dev\GitHub\comp4350\src\static",
+    "/Users/niteshsinghania/GitHub/comp4350/src/static",
     #linux production
     #"/home/anx/dota_only/production/static/",
 )

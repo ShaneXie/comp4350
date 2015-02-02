@@ -1,8 +1,7 @@
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext, Context, loader
 from django.views import generic
-from calTrack.calTrack_models.foods import Foods
-from django.http import HttpResponse
+from calTrack.calTrackModels.foods import Foods
 
 # Create your views here.
 
