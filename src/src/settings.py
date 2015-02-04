@@ -89,7 +89,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
 
     #linux production
-    "/home/4350repo/comp4350/src/static/",
+    "/Users/niteshsinghania/GitHub/Comp4350/src/static",
 )
 
 TEMPLATE_DIRS = (
