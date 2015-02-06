@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'calTrack',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -91,6 +92,7 @@ STATICFILES_DIRS = (
     #linux production
     "/Users/niteshsinghania/GitHub/Comp4350/src/static",
 )
+
 
 TEMPLATE_DIRS = (
 
