@@ -20,17 +20,15 @@ class Foods(models.Model):
     fType = models.CharField (choices=FOOD_TYPE_CHOICES, max_length = 1)
 
     def getFoodListByType(self, foodType):
-
-    	foodList = Foods.objects.filter(fType__exact = 'foodType')
-    	return foodList
+        foodList = Foods.objects.filter(fType__exact = 'foodType')
+        return foodList
 
     def __unicode__(self):
         return self.fName
 
     def clean(self):
-
-    	if self.fCalorie == 0:
-    		raise ValidationError({'Food Calories': 'Food calories cannot be zero or negative.'})
+        if self.fCalorie == 0:
+            raise ValidationError({'Food Calories': 'Food calories cannot be zero or negative.'})
 
         if self.fType != 'l' and self.fType != 'd' and self.fType != 'b' and self.fType != 's':
             raise ValidationError({'Food Type': 'Invalid food type'})
