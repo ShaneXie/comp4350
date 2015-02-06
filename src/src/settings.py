@@ -88,9 +88,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-
-    #linux production
+    #Shane's Dev Static folder
+    "D:/Dev/GitHub/comp4350/src/static",
+    #Nitesh Dev Static folder
     "/Users/niteshsinghania/GitHub/Comp4350/src/static",
+    #linux production
+    "/home/4350repo/comp4350/src/static/",
 )
 
 
