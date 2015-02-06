@@ -33,6 +33,24 @@ $(document).ready(function() {
         //$("#content").load("../static/html/bmiCal.html")
     });
 
+    $("#loginForm").submit(function() {
+
+        var url = "/ajax/login/";
+
+        $.ajax({
+               type: "POST",
+               url: url,
+               data: $("#loginForm").serialize(), // serializes the form's elements.
+               success: function(response)
+               {
+                   alert(response);
+                   $('#loginModal').modal('hide')
+               }
+             });
+
+        return false; // avoid to execute the actual submit of the form.
+    });
+
 
 
 });
