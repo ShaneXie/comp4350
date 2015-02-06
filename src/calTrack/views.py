@@ -16,8 +16,9 @@ def loadAjaxData(request, query):
         else:
             errMsg="Get food list Error Message"
     elif query == 'login':
+        print "login request"
         ret = dataAccess.login(request.POST)
-        return HttpResponse("Logged in for:"+ret)
+        return HttpResponse("Logged in for:"+request.POST['loginEmailName'])
     elif query == 'register':
         dataAccess.add_user(request.POST)
         return HttpResponse("Registered for:"+request.POST['regFirstName'] + " " +request.POST['regLastName'])
