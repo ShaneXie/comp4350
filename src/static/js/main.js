@@ -51,7 +51,23 @@ $(document).ready(function() {
         return false; // avoid to execute the actual submit of the form.
     });
 
+    $("#regForm").submit(function() {
 
+        var url = "/ajax/register/";
+
+        $.ajax({
+               type: "POST",
+               url: url,
+               data: $("#regForm").serialize(), // serializes the form's elements.
+               success: function(response)
+               {
+                   alert(response);
+                   $('#regModal').modal('hide')
+               }
+             });
+
+        return false; // avoid to execute the actual submit of the form.
+    });
 
 });
 

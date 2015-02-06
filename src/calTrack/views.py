@@ -7,15 +7,23 @@ import dataAccess
 # Create your views here.
 
 def loadAjaxData(request, query):
+    errMsg="Ajax Error Message"
     if query == 'getAllFood':
         foodList = dataAccess.getAllFoods()
-        return  render_to_response('foodlist.html', {'foodList':foodList}, context_instance=RequestContext(request))
+        if foodList:
+            return  render_to_response('foodlist.html', {'foodList':foodList}, context_instance=RequestContext(request))
+        else:
+            errMsg="Get food list Error Message"
     elif query == 'login':
-        return HttpResponse("Logged in for:"+request.POST['loginEmailName'] + " Pwd:" +request.POST['loginPwdName'])
+        ret = dataAccess.login(request.POST)
+        return HttpResponse("Logged in for:"+ret)
     elif query == 'register':
-        return HttpResponse("Registered for:"+request.POST['loginEmailName'] + " Pwd:" +request.POST['loginPwdName'])
+        dataAccess.add_user(request.POST)
+        return HttpResponse("Registered for:"+request.POST['regFirstName'] + " " +request.POST['regLastName'])
     else:
-        return HttpResponse("Ajax Error")
+        errMsg="Unknown Request"
+
+    return HttpResponse(errMsg)
 
 def index(request):
     return  render_to_response('index.html', context_instance=RequestContext(request))
