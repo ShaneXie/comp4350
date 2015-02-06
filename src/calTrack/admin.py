@@ -1,6 +1,5 @@
 from django.contrib import admin
-from calTrack.calTrackModels.foods import Foods
-from calTrack.calTrackModels.users import Users
+from calTrack.models import Foods, Users
 
 # Register your models here.
 
