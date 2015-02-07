@@ -21,15 +21,13 @@ def add_user(post):
     weight = post['regWgtName']
     gender = post['genName']
 
-    print "line 0"
-    user = User.objects.create_user(username, email, pwd)
-    #user = User(username=username,email=email,password=pwd,first_name=fName,last_name=lName)
-    user.first_name = fName
-    user.last_name = lName
-    user.save()
-    print "line 1"
-    profile = UserProfile(user=user,weight=weight,height=height,gender=gender)
-    profile.save()
-
-    #todo add new user
-    return True
+    if User.objects.filter(username=username).exists():
+        return "emailTaken"
+    else:
+        user = User.objects.create_user(username, email, pwd)
+        user.first_name = fName
+        user.last_name = lName
+        user.save()
+        profile = UserProfile(user=user,weight=weight,height=height,gender=gender)
+        profile.save()
+        return 'success'
