@@ -21,7 +21,8 @@ def loadAjaxData(request, query):
         return HttpResponse("Logged in for:"+request.POST['loginEmailName'])
     elif query == 'register':
         dataAccess.add_user(request.POST)
-        return HttpResponse("Registered for:"+request.POST['regFirstName'] + " " +request.POST['regLastName'])
+        #ToDo: login new user
+        return HttpResponse("success")
     else:
         errMsg="Unknown Request"
 
