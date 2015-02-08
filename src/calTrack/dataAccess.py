@@ -2,14 +2,27 @@ __author__ = 'An'
 
 from calTrack.models import Foods,UserProfile
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login as loginUser
 
 
 def getAllFoods():
     return Foods.objects.all()
-def login(post):
-    #todo login logic
-    #post['loginEmailName']
-    return True
+
+def login(req):
+    post = req.POST
+    usr = post['loginEmailName']
+    pwd = post['loginPwdName']
+    ret = ""
+    user = authenticate(username=usr, password=pwd)
+    if user is not None:
+        if user.is_active:
+            loginUser(req, user)
+            ret="success"
+        else:
+            ret="disabled"
+    else:
+        ret = "wrongPwd"
+    return ret
 
 def add_user(post):
     email = post['regEmailName']
