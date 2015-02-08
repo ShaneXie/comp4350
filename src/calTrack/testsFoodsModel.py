@@ -30,6 +30,16 @@ class FoodTestCase(unittest.TestCase):
 				negativeFoodCalories.save()
 
 		self.assertEqual(Foods.objects.filter(fName="Negative Calories").count(), 0)
+
+		nullFoodCalories = Foods(fName = "Null Calories", fCalorie = "", fType = "l" )
+
+		with self.assertRaises(ValidationError):
+			if nullFoodCalories.full_clean():
+				nullFoodCalories.save()
+
+		self.assertEqual(Foods.objects.filter(fName="Null Calories").count(), 0)
+
+
 	
 	def testValidationsvalidCalories(self):
 
