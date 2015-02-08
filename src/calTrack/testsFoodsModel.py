@@ -6,11 +6,14 @@ from django.core.exceptions import ValidationError
 
 class FoodTestCase(unittest.TestCase):
 
+	def setUp(self):
+		pass
+
 	def testFoodsCreation(self):
 
 		food = Foods(fName = "Test", fCalorie = "20", fType = "l" )
 		self.assertTrue(isinstance(food, Foods))
-		self.assertTrue(food.__unicode__(),food.fName)
+		self.assertEqual(food.__unicode__(),food.fName)
 
 	def testValidationsInvalidCalories(self):
 
@@ -30,6 +33,16 @@ class FoodTestCase(unittest.TestCase):
 				negativeFoodCalories.save()
 
 		self.assertEqual(Foods.objects.filter(fName="Negative Calories").count(), 0)
+
+		nullFoodCalories = Foods(fName = "Null Calories", fCalorie = "", fType = "l" )
+
+		with self.assertRaises(ValidationError):
+			if nullFoodCalories.full_clean():
+				nullFoodCalories.save()
+
+		self.assertEqual(Foods.objects.filter(fName="Null Calories").count(), 0)
+
+
 	
 	def testValidationsvalidCalories(self):
 
@@ -173,5 +186,8 @@ class FoodTestCase(unittest.TestCase):
 
 		self.assertNotEqual(Foods.objects.filter(fName="Original").count(), 2)
 		self.assertEqual(Foods.objects.filter(fName="Original").count(), 1)
+
+	def tearDown(self):
+		Foods.objects.all().delete()
 
 
