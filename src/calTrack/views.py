@@ -15,13 +15,16 @@ def loadAjaxData(request, query):
             return  render_to_response('foodlist.html', {'foodList':foodList}, context_instance=RequestContext(request))
         else:
             errMsg="Get food list Error Message"
+    elif query == 'getLoginItem':
+        return render_to_response('loginNavItem.html', context_instance=RequestContext(request))
     elif query == 'login':
-        print "login request"
-        ret = dataAccess.login(request.POST)
-        return HttpResponse("Logged in for:"+request.POST['loginEmailName'])
+        return HttpResponse(dataAccess.login(request))
+    elif query == 'logout':
+        return HttpResponse(dataAccess.logout(request))
     elif query == 'register':
-        dataAccess.add_user(request.POST)
-        return HttpResponse("Registered for:"+request.POST['regFirstName'] + " " +request.POST['regLastName'])
+        return HttpResponse(dataAccess.add_user(request))
+    elif query == 'addFood':
+        return HttpResponse(dataAccess.add_Food(request))
     else:
         errMsg="Unknown Request"
 
