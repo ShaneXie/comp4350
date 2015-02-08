@@ -46,6 +46,7 @@ $(document).ready(function() {
                    if(response=="success") {
                        alert("welcome back!");
                        $("#loginItem").load("/ajax/getLoginItem");
+                       $("#content").load("/ajax/getAllFood");
                        $('#loginModal').modal('hide')
                    }else{
                        alert(response);
@@ -68,6 +69,8 @@ $(document).ready(function() {
                {
                    if(response=="success") {
                        alert("Welcome to CTS!");
+                       $("#loginItem").load("/ajax/getLoginItem");
+                       $("#content").load("/ajax/getAllFood");
                        $('#regModal').modal('hide')
                    }else{
                        alert(response);
@@ -88,6 +91,7 @@ function logout(){
        {
            if(response=="success") {
                alert("Bye Bye");
+               $("#content").load("/ajax/getAllFood");
                $('#loginItem').html('<a href="#" data-toggle="modal" data-target="#loginModal">Login</a>')
            }else{
                alert("Ajax Error");
@@ -123,4 +127,25 @@ function calBMI(type){
     }
     str+=msg;
     $("#bmiResult").text(str);
-};
+}
+
+function addFood(){
+    var url = "/ajax/addFood/";
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#addFoodForm").serialize(), // serializes the form's elements.
+           success: function(response)
+           {
+               if(response=="success"){
+                   alert("New Food Added!");
+                   //$("#content").load("/ajax/getAllFood");
+                   newFood = '<tr><td>'+$('#addFoodName').val()+'</td><td>'+$('#addFoodCal').val()+'</td><td>'+$('#addFoodType option:selected').text()+'</td></tr>';
+                   $("#foodTable tr:first").after(newFood);
+                   $('#addFoodForm').trigger("reset");
+               }else{
+                   alert(response);
+               }
+           }
+    });
+}
