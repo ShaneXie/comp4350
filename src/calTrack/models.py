@@ -46,9 +46,9 @@ class UserProfile(models.Model):
     )
 
     user = models.ForeignKey(User, unique=True)
-    age = models.PositiveIntegerField(default = 1)
-    weight = models.FloatField(default=0.0)
-    height = models.FloatField(default=0.0)
+    age = models.PositiveIntegerField(default = 1, max_length = 2)
+    weight = models.FloatField(default=0.0, max_length = 3)
+    height = models.FloatField(default=0.0, max_length = 3)
     amtOfExc = models.FloatField(default=0.0, blank = True)
     gender = models.CharField(choices=GENDER_TYPE, max_length = 1)
 
@@ -60,6 +60,15 @@ class UserProfile(models.Model):
 
     def clean(self):
 
-        if self.age == 0:
+        #Limits are based on worlds height and weight records.
+        if self.age < 10 and self.age >100:
             raise ValidationError({'age': 'Invalid age.'})
+
+        if self.height < 50 and self.height > 250:
+            raise ValidationError({'height': 'Invalid height.'})
+
+        if self.weight < 10 and self.height > 700:
+            raise ValidationError({'weight': 'Invalid weight.'})
+
+
 
