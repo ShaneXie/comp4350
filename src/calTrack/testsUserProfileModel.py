@@ -65,7 +65,7 @@ class UserProfileTestCase(unittest.TestCase):
 
 	def testValidationInvalidWeight(self):
 
-		userProfileNegativeWeight = UserProfile(user = self.userTest, age = "0", weight = "-100", height = "124", gender = "m" )
+		userProfileNegativeWeight = UserProfile(user = self.userTest, age = "20", weight = "-100", height = "124", gender = "m" )
 		
 		with self.assertRaises(ValidationError):
 			if userProfileNegativeWeight.full_clean():
@@ -73,7 +73,7 @@ class UserProfileTestCase(unittest.TestCase):
 
 		self.assertEqual(UserProfile.objects.all().count(), 0)
 
-		userProfileZeroWeight = UserProfile(user = self.userTest, age = "0", weight = "0", height = "124", gender = "m" )
+		userProfileZeroWeight = UserProfile(user = self.userTest, age = "20", weight = "0", height = "124", gender = "m" )
 		
 		with self.assertRaises(ValidationError):
 			if userProfileZeroWeight.full_clean():
@@ -81,7 +81,7 @@ class UserProfileTestCase(unittest.TestCase):
 
 		self.assertEqual(UserProfile.objects.all().count(), 0)
 		
-		userProfileWeightGreaterThanLimit = UserProfile(user = self.userTest, age = "0", weight = "701", height = "124", gender = "m" )
+		userProfileWeightGreaterThanLimit = UserProfile(user = self.userTest, age = "20", weight = "701", height = "124", gender = "m" )
 		
 		with self.assertRaises(ValidationError):
 			if userProfileWeightGreaterThanLimit.full_clean():
@@ -89,7 +89,7 @@ class UserProfileTestCase(unittest.TestCase):
 
 		self.assertEqual(UserProfile.objects.all().count(), 0)
 
-		userProfileWeightLessThanLimit = UserProfile(user = self.userTest, age = "0", weight = "9", height = "124", gender = "m" )
+		userProfileWeightLessThanLimit = UserProfile(user = self.userTest, age = "20", weight = "9", height = "124", gender = "m" )
 		
 		with self.assertRaises(ValidationError):
 			if userProfileWeightLessThanLimit.full_clean():
@@ -117,13 +117,55 @@ class UserProfileTestCase(unittest.TestCase):
 
 	def testValidationInvalidHeight(self):
 		
-		userProfileHeightZero = UserProfile(user = self.userTest, age = "20", weight = "9", height = "0", gender = "m" )
+		userProfileNegativeHeight = UserProfile(user = self.userTest, age = "20", weight = "150", height = "-1", gender = "m" )
+		
+		with self.assertRaises(ValidationError):
+			if userProfileNegativeHeight.full_clean():
+				userProfileNegativeHeight.save()
+
+		self.assertEqual(UserProfile.objects.all().count(), 0)
+
+		userProfileHeightZero = UserProfile(user = self.userTest, age = "20", weight = "150", height = "0", gender = "m" )
 		
 		with self.assertRaises(ValidationError):
 			if userProfileHeightZero.full_clean():
 				userProfileHeightZero.save()
 
 		self.assertEqual(UserProfile.objects.all().count(), 0)
+
+		userProfileHeightGreaterThanLimit = UserProfile(user = self.userTest, age = "20", weight = "150", height = "251", gender = "m" )
+		
+		with self.assertRaises(ValidationError):
+			if userProfileHeightGreaterThanLimit.full_clean():
+				userProfileHeightGreaterThanLimit.save()
+
+		self.assertEqual(UserProfile.objects.all().count(), 0)
+
+		userProfileHeightLessThanLimit = UserProfile(user = self.userTest, age = "20", weight = "150", height = "49", gender = "m" )
+		
+		with self.assertRaises(ValidationError):
+			if userProfileHeightLessThanLimit.full_clean():
+				userProfileHeightLessThanLimit.save()
+
+		self.assertEqual(UserProfile.objects.all().count(), 0)
+
+	def testValidationValidHeight(self):
+
+		userProfileValidHeight = UserProfile(user = self.userTest, age = "25", weight = "200", height = "150", gender = "m" )
+		
+		self.assertRaises(ValidationError,userProfileValidHeight.full_clean())
+		userProfileValidHeight.save()
+
+		self.assertNotEqual(UserProfile.objects.all().count(), 0)
+		self.assertEqual(UserProfile.objects.all().count(), 1)
+		
+		userProfileValidWeight1 = UserProfile(user = self.userTest1, age = "25", weight = "200", height = "190.5", gender = "m" )
+		self.assertRaises(ValidationError,userProfileValidWeight1.full_clean())
+		userProfileValidWeight1.save()
+
+		self.assertNotEqual(UserProfile.objects.all().count(), 1)
+		self.assertEqual(UserProfile.objects.all().count(), 2)
+
 
 	def tearDown(self):
 		User.objects.all().delete()
