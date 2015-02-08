@@ -43,8 +43,13 @@ $(document).ready(function() {
                data: $("#loginForm").serialize(), // serializes the form's elements.
                success: function(response)
                {
-                   alert(response);
-                   $('#loginModal').modal('hide')
+                   if(response=="success") {
+                       alert("welcome back!");
+                       $("#loginItem").load("/ajax/getLoginItem");
+                       $('#loginModal').modal('hide')
+                   }else{
+                       alert(response);
+                   }
                }
              });
 
@@ -61,8 +66,12 @@ $(document).ready(function() {
                data: $("#regForm").serialize(), // serializes the form's elements.
                success: function(response)
                {
-                   alert(response);
-                   $('#regModal').modal('hide')
+                   if(response=="success") {
+                       alert("Welcome to CTS!");
+                       $('#regModal').modal('hide')
+                   }else{
+                       alert(response);
+                   }
                }
              });
 
