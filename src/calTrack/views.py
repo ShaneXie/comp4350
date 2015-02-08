@@ -16,9 +16,11 @@ def loadAjaxData(request, query):
         else:
             errMsg="Get food list Error Message"
     elif query == 'getLoginItem':
-        return render_to_response('foodlist.html', context_instance=RequestContext(request))
+        return render_to_response('loginNavItem.html', context_instance=RequestContext(request))
     elif query == 'login':
         return HttpResponse(dataAccess.login(request))
+    elif query == 'logout':
+        return HttpResponse(dataAccess.logout(request))
     elif query == 'register':
         return HttpResponse(dataAccess.add_user(request.POST))
         #ToDo: login new user

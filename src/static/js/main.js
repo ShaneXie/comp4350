@@ -80,6 +80,22 @@ $(document).ready(function() {
 
 });
 
+function logout(){
+    $.ajax({
+       type: "GET",
+       url: "/ajax/logout/",
+       success: function(response)
+       {
+           if(response=="success") {
+               alert("Bye Bye");
+               $('#loginItem').html('<a href="#" data-toggle="modal" data-target="#loginModal">Login</a>')
+           }else{
+               alert("Ajax Error");
+           }
+       }
+    });
+}
+
 function calBMI(type){
     var str = "Your BMI is: ";
     var h = 0;

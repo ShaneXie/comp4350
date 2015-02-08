@@ -2,7 +2,7 @@ __author__ = 'An'
 
 from calTrack.models import Foods,UserProfile
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login as loginUser
+from django.contrib.auth import authenticate, login as loginUser, logout as logoutUser
 
 
 def getAllFoods():
@@ -23,6 +23,10 @@ def login(req):
     else:
         ret = "wrongPwd"
     return ret
+
+def logout(req):
+    logoutUser(req)
+    return "success"
 
 def add_user(post):
     email = post['regEmailName']
