@@ -29,13 +29,13 @@ class Foods(models.Model):
 
     def clean(self):
         if self.fCalorie == 0:
-            raise ValidationError({'Food Calories': 'Food calories cannot be zero or negative.'})
+            raise ValidationError({'fCalorie': 'Food calories cannot be zero.'})
 
         if self.fType != 'l' and self.fType != 'd' and self.fType != 'b' and self.fType != 's':
-            raise ValidationError({'Food Type': 'Invalid food type'})
+            raise ValidationError({'fType': 'Invalid food type'})
 
         if Foods.objects.filter(fName=self.fName).count() > 0:
-            raise ValidationError({'Food Type': 'This food already exists'})
+            raise ValidationError({'fName': 'This food already exists'})
 
             
 class UserProfile(models.Model):
@@ -46,20 +46,34 @@ class UserProfile(models.Model):
     )
 
     user = models.ForeignKey(User, unique=True)
-    age = models.PositiveIntegerField(default = 1)
-    weight = models.FloatField(default=0.0)
-    height = models.FloatField(default=0.0)
-    amtOfExc = models.FloatField(default=0.0, blank = True)
+    age = models.PositiveIntegerField(default = 1, max_length = 2)
+    weight = models.FloatField(default=1.0, max_length = 3)
+    height = models.FloatField(default=1.0, max_length = 3)
+    amtOfExc = models.PositiveIntegerField(default=0, blank = True)
     gender = models.CharField(choices=GENDER_TYPE, max_length = 1)
 
     def __unicode__(self):
         return ' '.join([
             self.user.first_name,
-            self.user.last_name,
-        ])
+            self.user.last_name])
 
     def clean(self):
 
-        if self.age == 0:
-            raise ValidationError({'age': 'Invalid age.'})
+        #Limits are based on worlds height and weight records.
+        if self.age < 10:
+            raise ValidationError({'age': 'Are you sure about your age?'})
+        elif self.age >100:
+            raise ValidationError({'age': 'Are you sure about your age?'})
+
+        if self.height < 50:
+            raise ValidationError({'height': 'Are you sure about your height?'})
+        elif self.height > 250:
+            raise ValidationError({'height': 'Are you sure about your height?'})
+
+        if self.weight < 10:
+            raise ValidationError({'weight': 'Are you sure about your weight?'})
+        elif self.weight > 700:
+            raise ValidationError({'weight': 'Are you sure about your weight?'})
+
+
 
