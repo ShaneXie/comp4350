@@ -42,9 +42,19 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li id="loginBtn"><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
+                {% if user.is_authenticated %}
+                    <li id="loginItem" class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hi, {{ user.first_name }} <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">My Profile</a></li>
+                        <li class="divider"></li>
+                        <li id="logoutBtn" onclick="javascript:logout()"><a href="#">Logout</a></li>
+                      </ul>
+                    </li>
+                {% else %}
+                   <li id="loginItem" class="dropdown"><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
+                {% endif %}
             <li><a href="/">BMI</a></li>
-            <li><a href="/">Profile</a></li>
             <li><a href="/">About</a></li>
           </ul>
         </div>
@@ -59,7 +69,6 @@
             <li class="barItem active" id="foodlistItem" ><a href="#">Food List</a></li>
             <li class="barItem" id="bmiItem"><a href="#">BMI Calculator</a></li>
             <li class="barItem" id="aboutItem"><a href="#">About</a></li>
-            <li class="barItem" id="otherItem"><a href="#">Other</a></li>
           </ul>
                 <!--
           <ul class="nav nav-sidebar">
@@ -92,7 +101,7 @@
             <h4 class="modal-title" id="myModalLabel">Login</h4>
           </div>
           <form class="form-horizontal" id="loginForm">
-              <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"/></div>
+              {% csrf_token %}
           <div class="modal-body">
             
               <div class="form-group">
@@ -135,7 +144,7 @@
             <h4 class="modal-title" id="myModalLabel">Register</h4>
           </div>
           <form class="form-horizontal" id="regForm">
-              <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"/></div>
+              {% csrf_token %}
 
           <div class="modal-body">
             <div class="form-group">
