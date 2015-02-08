@@ -10,7 +10,7 @@ class FoodTestCase(unittest.TestCase):
 
 		food = Foods(fName = "Test", fCalorie = "20", fType = "l" )
 		self.assertTrue(isinstance(food, Foods))
-		self.assertTrue(food.__unicode__(),food.fName)
+		self.assertTrue(food.__unicode__(),"t")
 
 	def testValidationsInvalidCalories(self):
 
