@@ -1,5 +1,6 @@
 from django.db import models
-from django.core.validators import ValidationError, RegexValidator 
+from django.core.validators import ValidationError, RegexValidator
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -37,16 +38,15 @@ class Foods(models.Model):
             raise ValidationError({'Food Type': 'This food already exists'})
 
             
-class Users(models.Model):
+class UserProfile(models.Model):
 
     GENDER_TYPE = (
-    ('m','Male'),
-    ('f','Female'),
-)
+        ('m','Male'),
+        ('f','Female'),
+    )
 
-    firstName = models.CharField(max_length = 25)
-    lastName = models.CharField(max_length = 25)
-    age = models.PositiveIntegerField(default = 0)
+    user = models.ForeignKey(User, unique=True)
+    age = models.PositiveIntegerField(default = 1)
     weight = models.FloatField(default=0.0)
     height = models.FloatField(default=0.0)
     amtOfExc = models.FloatField(default=0.0, blank = True)
@@ -54,8 +54,8 @@ class Users(models.Model):
 
     def __unicode__(self):
         return ' '.join([
-            self.firstName,
-            self.lastName,
+            self.user.first_name,
+            self.user.last_name,
         ])
 
     def clean(self):
