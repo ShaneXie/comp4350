@@ -22,8 +22,9 @@ def loadAjaxData(request, query):
     elif query == 'logout':
         return HttpResponse(dataAccess.logout(request))
     elif query == 'register':
-        return HttpResponse(dataAccess.add_user(request.POST))
-        #ToDo: login new user
+        return HttpResponse(dataAccess.add_user(request))
+    elif query == 'addFood':
+        return HttpResponse(dataAccess.add_Food(request))
     else:
         errMsg="Unknown Request"
 
