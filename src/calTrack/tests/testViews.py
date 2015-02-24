@@ -43,8 +43,6 @@ class ViewTestCase(TestCase):
 		self.assertTrue('user' in response.context)
 		self.assertTrue(response.context['user'].is_anonymous())
 
-	def testAjaxLogin(self):
-
 
 
 
