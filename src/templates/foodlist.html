@@ -3,26 +3,26 @@
   {% if user.is_authenticated %}
       <div class="panel panel-default">
           <div class="panel-body">
-              <form id="addFoodForm" class="form-inline">
+              <form name="addFoodForm" id="addFoodForm" class="form-inline" ng-submit="addFoodForm.$valid && flCtl.addFood()" novalidate>
                   {% csrf_token %}
                 <div class="form-group">
                   <label for="addFoodName">Name:</label>
-                  <input type="text" class="form-control" id="addFoodName" name ="addFoodName" placeholder="Enter Food Name" required>
+                  <input ng-model="flCtl.food.foodName" type="text" class="form-control" id="addFoodName" name ="addFoodName" placeholder="Enter Food Name" required>
                 </div>
                 <div class="form-group">
                   <label for="addFoodCal">Calories:</label>
-                  <input type="number" class="form-control" id="addFoodCal" name="addFoodCal" placeholder="Enter Number of the Calories in the Food" required>
+                  <input ng-model="flCtl.food.foodCal" type="number" class="form-control" id="addFoodCal" name="addFoodCal" placeholder="Enter Number of the Calories in the Food" required>
                 </div>
                 <div class="form-group">
                   <label for="addFoodType">Food Type:</label>
-                  <select class="form-control" name="addFoodType" id="addFoodType" required>
-                    <option value="l">Lunch</option>
-                    <option value="d">Dinner</option>
-                    <option value="b">Breakfast</option>
-                    <option value="s">Snacks</option>
+                  <select ng-model="flCtl.food.foodType" class="form-control" name="addFoodType" id="addFoodType" required>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Snacks">Snacks</option>
                   </select>
                 </div>
-                <button id = "addFoodSmt" type="button" class="btn btn-default btn-sm" onclick="addFood()">
+                <button id = "addFoodSmt" type="submit" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
               </form>
