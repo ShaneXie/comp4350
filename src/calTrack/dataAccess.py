@@ -64,9 +64,9 @@ def add_user(req):
 def add_Food(req):
     if req.user.is_authenticated():
         data = req.POST
-        fName = data['addFoodName']
-        fCal = data['addFoodCal']
-        fType = data['addFoodType']
+        fName = data['foodName']
+        fCal = data['foodCal']
+        fType = data['foodType']
 
         food = Foods(fName=fName,fCalorie=fCal,fType=fType)
         food.save()
