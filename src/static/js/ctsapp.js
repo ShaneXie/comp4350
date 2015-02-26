@@ -3,12 +3,13 @@
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
   });
 
-  app.controller('foodListController', f['$http', function($http){
+  app.controller('foodListController', ['$http', function($http){
   var foodList = this;
   foodList.foods = [];
 
     $http.get('/api/getAllFood').success(function(data){
-      foodList.foods = data;
+      foodList.foods = JSON.parse(data);
+        console.log(JSON.parse(data));
     });
   }]);
 
@@ -30,8 +31,8 @@
         this.bmi = (this.stdWgt/(this.stdHgt*this.stdHgt))*703;
       } else {
         this.bmi = (this.mtrWgt/(this.mtrHgt*this.mtrHgt))*10000;
-      };
-      var msg=""
+      }
+      var msg="";
       this.result+=(this.bmi+" You are ");
       if(this.bmi<=18.5){
           msg = "Underweight ";

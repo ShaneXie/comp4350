@@ -30,7 +30,7 @@
       </div>
   {% endif %}
 
-  {% if foodList %}
+  {% if foodCount %}
       <table class="table table-striped" id="foodTable">
           <thead>
               <tr>
@@ -39,16 +39,16 @@
                   <th>Food Type</th>
               </tr>
           </thead>
-      <tbody>
-          {% for f in foodList %}
+      <tbody ng-repeat="f in flCtl.foods track by $index">
               <tr>
-                  <td>{{f.fName}}</td>
-                  <td>{{f.fCalorie}}</td>
-                  <td>{{f.get_fType_display}}</td>
+                  <td>{[{f.fields.fName}]}</td>
+                  <td>{[{f.fields.fCalorie}]}</td>
+                  <td>{[{f.fields.fType}]}</td>
               </tr>
-          {% endfor %}
       </tbody>
       </table>
+  {% else %}
+      <div class="alert alert-danger" role="alert">No Food in Database, Please login and build your own food list</div>
   {% endif %}
 </div>
 
