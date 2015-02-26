@@ -3,6 +3,15 @@
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
   });
 
+  app.controller('foodListController', f['$http', function($http){
+  var foodList = this;
+  foodList.foods = [];
+
+    $http.get('/api/getAllFood').success(function(data){
+      foodList.foods = data;
+    });
+  }]);
+
   app.controller('bmiController', function(){
     this.isStd = false;
 
