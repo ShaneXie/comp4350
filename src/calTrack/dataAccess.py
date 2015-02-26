@@ -8,6 +8,10 @@ from django.contrib.auth import authenticate, login as loginUser, logout as logo
 def getAllFoods():
     return Foods.objects.all()
 
+
+def foodCount():
+    return Foods.objects.count()
+
 def login(req):
     post = req.POST
     usr = post['loginEmailName']
