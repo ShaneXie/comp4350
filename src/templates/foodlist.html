@@ -1,3 +1,16 @@
+
+<head>
+  <style>
+    input.ng-invalid.ng-dirty {
+      border-color: red;
+    }
+
+    input.ng-valid.ng-dirty {
+      border-color: green;
+    }
+  </style>
+</head>
+
 <div id="foodListDiv" ng-controller="foodListController as flCtl">  
   <h1 class="page-header">Food List</h1>
   {% if user.is_authenticated %}
@@ -7,11 +20,11 @@
                   {% csrf_token %}
                 <div class="form-group">
                   <label for="addFoodName">Name:</label>
-                  <input ng-model="flCtl.food.foodName" type="text" class="form-control" id="addFoodName" name ="addFoodName" placeholder="Enter Food Name" required>
+                  <input ng-model="flCtl.food.foodName" type="text" class="form-control" id="addFoodName" name ="addFoodName" placeholder="Enter Food Name" ng-maxlength="25" ng-pattern= "/^[a-zA-Z ]*$/" required> 
                 </div>
                 <div class="form-group">
                   <label for="addFoodCal">Calories:</label>
-                  <input ng-model="flCtl.food.foodCal" type="number" class="form-control" id="addFoodCal" name="addFoodCal" placeholder="Enter Number of the Calories in the Food" required>
+                  <input ng-model="flCtl.food.foodCal" type="number" class="form-control" id="addFoodCal" name="addFoodCal" placeholder="Enter Number of the Calories in the Food" ng-maxlength="4" required>
                 </div>
                 <div class="form-group">
                   <label for="addFoodType">Food Type:</label>
@@ -40,7 +53,7 @@
               </tr>
           </thead>
       <tbody>
-              <tr ng-repeat="f in flCtl.foods track by $index">
+              <tr ng-repeat="f in flCtl.foods track by $index | orderBy: fname">
                   <td>{[{f.fields.fName}]}</td>
                   <td>{[{f.fields.fCalorie}]}</td>
                   <td>{[{f.fields.fType}]}</td>
