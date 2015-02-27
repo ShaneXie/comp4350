@@ -17,7 +17,7 @@ onlyAlphabet = RegexValidator(r'^[a-zA-Z ]*$', 'Only alphabets are allowed for t
 class Foods(models.Model):
 
     fName = models.CharField(max_length = 25, unique=True, validators=[onlyAlphabet])
-    fCalorie = models.PositiveIntegerField (default=1)
+    fCalorie = models.PositiveIntegerField (default=1, max_length=4)
     fType = models.CharField (choices=FOOD_TYPE_CHOICES, max_length=10)
 
     def getFoodListByType(self, foodType):
