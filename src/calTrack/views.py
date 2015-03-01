@@ -12,7 +12,7 @@ def loadAjaxData(request, query):
         foodCount = dataAccess.foodCount()
         return render_to_response('foodlist.html', {'foodCount':foodCount}, context_instance=RequestContext(request))
     elif query == 'getProfile':
-        profile = dataAccess.getUserProfile(request)
+        profile = dataAccess.checkUserProfileExists(request)
         return render_to_response('userProfile.html',{'profile':profile}, context_instance=RequestContext(request))
     elif query == 'getLoginItem':
         return render_to_response('loginNavItem.html', context_instance=RequestContext(request))
@@ -38,6 +38,12 @@ def loadJSON(request, query):
             return JsonResponse(data, safe=False)
         else:
             errMsg="Get food list Error Message,No Food in DataBase."
+    elif query == 'getProfile':
+        profileData = api.userProfile(request)
+        if profileData:
+            return JsonResponse(profileData, safe=False) 
+        else:
+            errMsg="User Profile Doesn't exists."
     else:
         errMsg="Unknown Request"
 
