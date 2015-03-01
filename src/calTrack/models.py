@@ -44,7 +44,6 @@ class UserProfile(models.Model):
         ('Male','Male'),
         ('Female','Female'),
     )
-
     user = models.ForeignKey(User, unique=True)
     age = models.PositiveIntegerField(default = 1, max_length = 2)
     weight = models.FloatField(default=1.0, max_length = 3)
