@@ -11,7 +11,9 @@ def loadAjaxData(request, query):
     if query == 'getAllFood':
         foodCount = dataAccess.foodCount()
         return render_to_response('foodlist.html', {'foodCount':foodCount}, context_instance=RequestContext(request))
-
+    elif query == 'getProfile':
+        profile = dataAccess.getUserProfile(request)
+        return render_to_response('userProfile.html',{'profile':profile}, context_instance=RequestContext(request))
     elif query == 'getLoginItem':
         return render_to_response('loginNavItem.html', context_instance=RequestContext(request))
     elif query == 'login':

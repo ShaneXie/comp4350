@@ -48,7 +48,7 @@
                     <li id="loginItem" class="dropdown" ng-class="{ active: navCtl.isSet(0) }">
                       <a ng-clink="navCtl.setItem(0)" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hi, {{ user.first_name }} <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">My Profile</a></li>
+                        <li id = "profileItem" ng-click="navCtl.showProfile()" ><a href="#">My Profile</a></li>
                         <li class="divider"></li>
                         <li id="logoutBtn" onclick="javascript:logout()"><a href="#">Logout</a></li>
                       </ul>
