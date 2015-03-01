@@ -15,7 +15,6 @@ def foodCount():
 def checkUserProfileExists(req):
     username = req.user
     profile =  UserProfile.objects.filter(user__username=username).count()
-    print profile
     return profile
 
 def getUserProfile(req):
