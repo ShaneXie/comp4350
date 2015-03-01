@@ -1,0 +1,36 @@
+
+<head>
+  <style>
+    input.ng-invalid.ng-dirty {
+      border-color: red;
+    }
+
+    input.ng-valid.ng-dirty {
+      border-color: green;
+    }
+  </style>
+</head>
+
+  {% if profile %}
+      <table class="table table-striped" id="foodTable">
+          <thead>
+              <tr>
+                  <th>Food Name</th>
+                  <th>Calories</th>
+                  <th>Food Type</th>
+              </tr>
+          </thead>
+      <tbody>
+              <tr ng-repeat="f in flCtl.foods track by $index | orderBy: fname">
+                  <td>{% profile.age %}</td>
+                  <td>{{f.fields.fCalorie}}</td>
+                  <td>{{f.fields.fType}}</td>
+              </tr>
+      </tbody>
+      </table>
+  {% else %}
+      <div class="alert alert-danger" role="alert">No Food in Database, Please login and build your own food list</div>
+  {% endif %}
+</div>
+
+

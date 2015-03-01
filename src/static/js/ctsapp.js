@@ -108,6 +108,10 @@
       this.item = 3;
       this.contentURL = "../static/html/about.html";
     };
+    this.showProfile = function(){
+      this.item = 4;
+      this.contentURL = '/ajax/getProfile';
+    };
     
   });
 

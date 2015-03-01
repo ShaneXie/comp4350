@@ -1,4 +1,4 @@
-__author__ = 'An'
+__author__ = 'An and Nitesh'
 
 from calTrack.models import Foods,UserProfile
 from django.contrib.auth.models import User
@@ -11,6 +11,13 @@ def getAllFoods():
 
 def foodCount():
     return Foods.objects.count()
+
+def getUserProfile(req):
+    username = req.user
+    profile =  UserProfile.objects.filter(user__username=username)[0]
+    print profile.age
+    return profile
+
 
 def login(req):
     post = req.POST
