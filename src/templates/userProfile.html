@@ -1,36 +1,30 @@
 
-<head>
-  <style>
-    input.ng-invalid.ng-dirty {
-      border-color: red;
-    }
+<div id="foodListDiv" ng-controller="userProfileController as usCtl"> 
+  <h1 class="page-header">User Profile</h1> 
+  {% if user.is_authenticated %}
+    {% if profile %}
+        <table class="table table-striped" id="UserProfileTable">
+            <thead>
+                <tr>
+                    <th>Age</th>
+                    <th>Weight</th>
+                    <th>Height</th>
+                    <th>Gender</th>
 
-    input.ng-valid.ng-dirty {
-      border-color: green;
-    }
-  </style>
-</head>
-
-  {% if profile %}
-      <table class="table table-striped" id="foodTable">
-          <thead>
-              <tr>
-                  <th>Food Name</th>
-                  <th>Calories</th>
-                  <th>Food Type</th>
-              </tr>
-          </thead>
-      <tbody>
-              <tr ng-repeat="f in flCtl.foods track by $index | orderBy: fname">
-                  <td>{% profile.age %}</td>
-                  <td>{{f.fields.fCalorie}}</td>
-                  <td>{{f.fields.fType}}</td>
-              </tr>
-      </tbody>
-      </table>
-  {% else %}
-      <div class="alert alert-danger" role="alert">No Food in Database, Please login and build your own food list</div>
+                </tr>
+            </thead>
+        <tbody>
+                <tr ng-repeat="p in usCtl.profileData">
+                  <td>{[{p.fields.age}]}</td>
+                  <td>{[{p.fields.weight}]}</td>
+                  <td>{[{p.fields.height}]}</td>
+                  <td>{[{p.fields.gender}]}</td>
+                </tr>
+        </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-danger" role="alert">User Profile doesn't exsists.</div>
+    {% endif %}
   {% endif %}
+
 </div>
-
-
