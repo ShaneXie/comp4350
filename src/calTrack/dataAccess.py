@@ -12,10 +12,15 @@ def getAllFoods():
 def foodCount():
     return Foods.objects.count()
 
+def checkUserProfileExists(req):
+    username = req.user
+    profile =  UserProfile.objects.filter(user__username=username).count()
+    print profile
+    return profile
+
 def getUserProfile(req):
     username = req.user
     profile =  UserProfile.objects.filter(user__username=username)[0]
-    print profile.age
     return profile
 
 

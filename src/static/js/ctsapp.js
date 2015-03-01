@@ -8,6 +8,18 @@
       $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
   }]);
 
+  app.controller('userProfileController', ['$http', function($http){
+    
+    var userProfile = this;
+    userProfile.profileData = [];
+    $http.get('/api/getProfile/').success(function(data){
+      console.log(data);
+      userProfile.profileData = JSON.parse(data);
+    });
+
+
+  }]);
+
   app.controller('foodListController', ['$http', '$cookies',function($http,$cookies){
 
     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -22,6 +34,7 @@
       foodList.foods = JSON.parse(data);
         //console.log(JSON.parse(data));
     });
+
 
     this.addFood = function (){
       
