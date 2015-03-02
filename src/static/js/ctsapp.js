@@ -13,12 +13,37 @@
     var userProfile = this;
     userProfile.profileData = [];
     $http.get('/api/getProfile/').success(function(data){
-      console.log(data);
       userProfile.profileData = JSON.parse(data);
     });
 
+  }]);
+
+  app.controller('loginController', ['$http', '$cookies',function($http,$cookies){
+
+      $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+
+      this.loginInfo={};
+      this.login = function (){
+          data=jQuery.param(this.loginInfo);
+          $http.post('/ajax/login/',data).success(function (response) {
+            if(response=="success"){
+                 alert("Welcome Back!");
+                 //some ugly jquary code, need modify after done learn controller communication
+                 $("#loginItem").load("/ajax/getLoginItem");
+                 $("#content").load("/ajax/getAllFood");
+                 $('#loginModal').modal('hide');
+                //update csrf token
+                $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+             }else{
+                 alert(response);
+             }
+
+          });
+      }
 
   }]);
+
 
   app.controller('foodListController', ['$http', '$cookies',function($http,$cookies){
 
