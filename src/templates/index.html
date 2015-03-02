@@ -55,7 +55,8 @@
                     </li>
                 {% else %}
                    <li id="loginItem" class="dropdown" ng-class="{ active: navCtl.isSet(0) }">
-                    <a ng-clink="navCtl.setItem(0)" href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
+                    <a ng-clink="navCtl.setItem(0)" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                   </li>
                 {% endif %}
             <li ng-class="{ active: navCtl.isSet(2) }">
               <a ng-click="navCtl.showBMICal()" href="/">BMI</a>
@@ -99,6 +100,7 @@
     </div>
 
     <!-- Modals -->
+    <div ng-controller="loginController as loginCtl">
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -107,20 +109,20 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Login</h4>
           </div>
-          <form class="form-horizontal" id="loginForm">
+          <form class="form-horizontal" id="loginForm" name="loginForm" ng-submit="loginForm.$valid && loginCtl.login()" novalidate>
               {% csrf_token %}
           <div class="modal-body">
             
               <div class="form-group">
                 <label for="loginEmail" class="col-sm-3 control-label">Email address</label>
                 <div class="col-sm-9">
-                  <input type="email" class="form-control" id="loginEmail" name="loginEmailName" placeholder="Enter email" required>
+                  <input ng-model="loginCtl.loginInfo.loginEmailName" type="email" class="form-control" id="loginEmail" name="loginEmailName" placeholder="Enter email" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="loginPwd" class="col-sm-3 control-label">Password</label>
                 <div class="col-sm-9">
-                  <input type="password" class="form-control" id="loginPwd" name="loginPwdName" placeholder="Password" required>
+                  <input ng-model="loginCtl.loginInfo.loginPwdName" type="password" class="form-control" id="loginPwd" name="loginPwdName" placeholder="Password" required>
                 </div>
               </div>
               <div class="form-group">
@@ -211,6 +213,7 @@
           </form>
         </div>
       </div>
+    </div>
     </div>
 
     <!-- Bootstrap core JavaScript
