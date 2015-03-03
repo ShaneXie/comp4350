@@ -27,6 +27,13 @@ $(document).ready(function() {
         $("#content").html(html);
     });
 
+    $("#profileItem").click(function(){
+        $(".barItem").removeClass("active");
+        $(this).addClass("active");
+        $("#content").load("/ajax/getProfile")
+    });
+
+
     $("#otherItem").click(function(){
         $(".barItem").removeClass("active");
         $(this).addClass("active");

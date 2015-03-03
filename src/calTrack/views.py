@@ -1,20 +1,19 @@
-from django.shortcuts import render, render_to_response
-from django.template import RequestContext, Context, loader
-from django.views import generic
-from django.http import HttpResponse
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+from django.http import HttpResponse, JsonResponse
 import dataAccess
-
+import api
 
 # Create your views here.
 
 def loadAjaxData(request, query):
     errMsg="Ajax Error Message"
     if query == 'getAllFood':
-        foodList = dataAccess.getAllFoods()
-        if foodList:
-            return  render_to_response('foodlist.html', {'foodList':foodList}, context_instance=RequestContext(request))
-        else:
-            errMsg="Get food list Error Message"
+        foodCount = dataAccess.foodCount()
+        return render_to_response('foodlist.html', {'foodCount':foodCount}, context_instance=RequestContext(request))
+    elif query == 'getProfile':
+        profile = dataAccess.checkUserProfileExists(request)
+        return render_to_response('userProfile.html',{'profile':profile}, context_instance=RequestContext(request))
     elif query == 'getLoginItem':
         return render_to_response('loginNavItem.html', context_instance=RequestContext(request))
     elif query == 'login':
@@ -30,5 +29,26 @@ def loadAjaxData(request, query):
 
     return HttpResponse(errMsg)
 
+
+def loadJSON(request, query):
+    errMsg="Ajax Error Message"
+    if query == 'getAllFood':
+        data = api.allFoodsJson()
+        if data:
+            return JsonResponse(data, safe=False)
+        else:
+            errMsg="Get food list Error Message,No Food in DataBase."
+    elif query == 'getProfile':
+        profileData = api.userProfile(request)
+        if profileData:
+            return JsonResponse(profileData, safe=False) 
+        else:
+            errMsg="User Profile Doesn't exists."
+    else:
+        errMsg="Unknown Request"
+
+    return HttpResponse(errMsg)
+
+
 def index(request):
-    return  render_to_response('index.html', context_instance=RequestContext(request))
+    return render_to_response('index.html', context_instance=RequestContext(request))
