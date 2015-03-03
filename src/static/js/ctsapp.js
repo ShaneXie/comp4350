@@ -18,31 +18,48 @@
 
   }]);
 
-  app.controller('loginController', ['$http', '$cookies',function($http,$cookies){
+    app.controller('loginController', ['$http', '$cookies',function($http,$cookies){
+        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+        $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
 
-      $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-      $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+        this.loginInfo={};
+        this.regInfo = {};
 
-      this.loginInfo={};
-      this.login = function (){
+        this.login = function (){
+          this.loginInfo.csrfmiddlewaretoken = $cookies.csrftoken;
           data=jQuery.param(this.loginInfo);
           $http.post('/ajax/login/',data).success(function (response) {
             if(response=="success"){
                  alert("Welcome Back!");
-                 //some ugly jquary code, need modify after done learn controller communication
-                 $("#loginItem").load("/ajax/getLoginItem");
-                 $("#content").load("/ajax/getAllFood");
-                 $('#loginModal').modal('hide');
                 //update csrf token
                 $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+                 location.reload();
              }else{
                  alert(response);
              }
 
           });
-      }
+      };
 
-  }]);
+      this.reg = function (){
+          this.regInfo.csrfmiddlewaretoken = $cookies.csrftoken;
+          data=jQuery.param(this.regInfo);
+          console.log(data);
+          $http.post('/ajax/register/',data).success(function (response) {
+            if(response=="success"){
+                alert("Welcome to CTS!");
+                //update csrf token
+                $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+                location.reload();
+             }else{
+                 alert(response);
+             }
+
+          });
+      };
+
+
+    }]);
 
 
   app.controller('foodListController', ['$http', '$cookies',function($http,$cookies){
@@ -116,7 +133,7 @@
 
   });
 
-  app.controller('NavController', function() {
+  app.controller('NavController', ['$http','$cookies',function($http,$cookies){
     //  0 ---- Login
     //  1 ---- Food List
     //  2 ---- BMI Calculator
@@ -150,7 +167,19 @@
       this.item = 4;
       this.contentURL = '/ajax/getProfile';
     };
+
+    this.logout =function(){
+        $http.get('/ajax/logout/').success(function (response) {
+            if(response=="success") {
+               alert("Bye Bye");
+               location.reload();
+
+           }else{
+               alert("Logout Ajax Error");
+           }
+        });
+      };
     
-  });
+  }]);
 
 })();
