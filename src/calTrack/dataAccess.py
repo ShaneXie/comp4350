@@ -44,7 +44,8 @@ def logout(req):
     return "success"
 
 def add_user(req):
-    post= req.POST
+    post = req.POST
+    print post
     email = post['regEmailName']
     username = email
     pwd = post['regPwdName']
