@@ -45,7 +45,6 @@ def logout(req):
 
 def add_user(req):
     post = req.POST
-    print post
     email = post['regEmailName']
     username = email
     pwd = post['regPwdName']
@@ -69,7 +68,7 @@ def add_user(req):
         theUser = authenticate(username=username, password=pwd)
         if theUser is not None:
             if theUser.is_active:
-                loginUser(req, user)
+                loginUser(req, theUser)
 
         return 'success'
 
