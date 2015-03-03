@@ -1,0 +1,30 @@
+
+<div id="foodListDiv" ng-controller="userProfileController as usCtl"> 
+  <h1 class="page-header">User Profile</h1> 
+  {% if user.is_authenticated %}
+    {% if profile %}
+        <table class="table table-striped" id="UserProfileTable">
+            <thead>
+                <tr>
+                    <th>Age</th>
+                    <th>Weight</th>
+                    <th>Height</th>
+                    <th>Gender</th>
+
+                </tr>
+            </thead>
+        <tbody>
+                <tr ng-repeat="p in usCtl.profileData">
+                  <td>{[{p.fields.age}]}</td>
+                  <td>{[{p.fields.weight}]}</td>
+                  <td>{[{p.fields.height}]}</td>
+                  <td>{[{p.fields.gender}]}</td>
+                </tr>
+        </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-danger" role="alert">User Profile doesn't exsists.</div>
+    {% endif %}
+  {% endif %}
+
+</div>
