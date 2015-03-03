@@ -101,7 +101,7 @@
 
     <!-- Modals -->
     <!-- Login Modal -->
-    <div ng-controller="loginController as loginCtl"
+    <div ng-controller="loginController as loginCtl">
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -197,10 +197,10 @@
                     <label for="regGenM" class="col-sm-3 control-label">Gender</label>
                     <div class="col-sm-9">
                         <label class="radio-inline">
-                          <input ng-model="loginCtl.regInfo.genName" type="radio" name="genName" id="regGenM" value="m"> Male
+                          <input ng-model="loginCtl.regInfo.genName" type="radio" name="genName" id="regGenM" value="Male"> Male
                         </label>
                         <label class="radio-inline">
-                          <input ng-model="loginCtl.regInfo.genName" type="radio" name="genName" id="regGenF" value="f"> Female
+                          <input ng-model="loginCtl.regInfo.genName" type="radio" name="genName" id="regGenF" value="Female"> Female
                         </label>
                     </div>
                   </div>
@@ -214,7 +214,7 @@
         </div>
       </div>
     </div>
-
+    </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
