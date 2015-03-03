@@ -1,4 +1,4 @@
-__author__ = 'An'
+__author__ = 'An and Nitesh'
 
 from calTrack.models import Foods,UserProfile
 from django.contrib.auth.models import User
@@ -7,6 +7,21 @@ from django.contrib.auth import authenticate, login as loginUser, logout as logo
 
 def getAllFoods():
     return Foods.objects.all()
+
+
+def foodCount():
+    return Foods.objects.count()
+
+def checkUserProfileExists(req):
+    username = req.user
+    profile =  UserProfile.objects.filter(user__username=username).count()
+    return profile
+
+def getUserProfile(req):
+    username = req.user
+    profile =  UserProfile.objects.filter(user__username=username)[0]
+    return profile
+
 
 def login(req):
     post = req.POST
@@ -29,7 +44,7 @@ def logout(req):
     return "success"
 
 def add_user(req):
-    post= req.POST
+    post = req.POST
     email = post['regEmailName']
     username = email
     pwd = post['regPwdName']
@@ -53,16 +68,16 @@ def add_user(req):
         theUser = authenticate(username=username, password=pwd)
         if theUser is not None:
             if theUser.is_active:
-                loginUser(req, user)
+                loginUser(req, theUser)
 
         return 'success'
 
 def add_Food(req):
     if req.user.is_authenticated():
         data = req.POST
-        fName = data['addFoodName']
-        fCal = data['addFoodCal']
-        fType = data['addFoodType']
+        fName = data['foodName']
+        fCal = data['foodCal']
+        fType = data['foodType']
 
         food = Foods(fName=fName,fCalorie=fCal,fType=fType)
         food.save()
