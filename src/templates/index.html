@@ -137,7 +137,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#regModal">Register</button>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid">Login</button>
           </div>
           </form>
         </div>
@@ -208,7 +208,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="regForm.$invalid">Register</button>
           </div>
           </form>
         </div>
