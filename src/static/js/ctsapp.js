@@ -13,7 +13,9 @@
     var userProfile = this;
     userProfile.profileData = [];
     $http.get('/api/getProfile/').success(function(data){
+        console.log(data);
       userProfile.profileData = JSON.parse(data);
+         console.log(userProfile.profileData[0].fields.weight);
     });
 
   }]);
