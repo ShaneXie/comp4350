@@ -1,9 +1,21 @@
+<head>
+  <style>
+    input.ng-invalid.ng-dirty {
+      border-color: red;
+    }
+
+    input.ng-valid.ng-dirty {
+      border-color: green;
+    }
+  </style>
+</head>
+
 <div id="bmiCal" ng-controller="bmiController as bmiCtl">
         <h1 class="page-header">BMI Calculator</h1>
 
     <div class="bs-example bs-example-tabs col-md-4 col-lg-4" role="tabpanel" data-example-id="togglable-tabs">
     <!-- bmi result -->
-    <div ng-show="bmiCtl.resultReady"><h4><span class="label label-info" id="bmiResult">{[{bmiCtl.result}]}</span></h4></div>
+    <div ng-show="bmiCtl.resultReady;"><h4><span class="label label-info" id="bmiResult">{[{bmiCtl.result}]}</span></h4></div>
 
     <ul id="myTab" class="nav nav-tabs" role="tablist">
       <li ng-click="bmiCtl.isStd = true;bmiCtl.resultReady=false" role="presentation" class=""><a href="#bmiStandard" id="bmiStandard-tab" role="tab" data-toggle="tab" aria-controls="bmiStandard" aria-expanded="false">Standard</a></li>
@@ -12,35 +24,50 @@
     <div id="myTabContent" class="tab-content">
       <div role="tabpanel" class="tab-pane fade" id="bmiStandard" aria-labelledby="bmiStandard-tab">
           </br>
-        <div class="input-group">
+        <div class="input-group" ng-form name="bmiStdHeightForm">
           <span class="input-group-addon">Height:</span>
-          <input ng-model="bmiCtl.stdHgt" id="bmiStdHeight" type="number" class="form-control" aria-label="Height in inches">
+          <input name="bmiStdHeight" ng-model="bmiCtl.stdHgt" id="bmiStdHeight" type="number" class="form-control" aria-label="Height in inches" ng-maxlength="3" required>
           <span class="input-group-addon">inches</span>
         </div>
           </br>
-        <div class="input-group">
+        <div class="input-group" ng-form name="bmiStdWeightForm">
           <span class="input-group-addon">Weight:</span>
-          <input ng-model="bmiCtl.stdWgt" id="bmiStdWeight" type="number" class="form-control" aria-label="Weight in pounds">
+          <input name ="bmiStdWeight"  ng-model="bmiCtl.stdWgt" id="bmiStdWeight" type="number" class="form-control" aria-label="Weight in pounds" ng-maxlength="3" required>
           <span class="input-group-addon">pounds</span>
         </div>
           </br>
-          <button ng-click="bmiCtl.resultReady=true;bmiCtl.calc()" id="compBMIStd" type="button" class="btn btn-primary btn-lg btn-block">Compute My BMI</button>
+          <button ng-click="bmiCtl.resultReady=true;bmiCtl.calc()" id="compBMIStd" type="button" class="btn btn-primary btn-lg btn-block" ng-disabled="bmiStdWeightForm.$invalid || bmiStdHeightForm.$invalid">Compute My BMI</button>
+
+        <div>
+            <br>
+            <div class="alert alert-danger" role="alert" ng-show="bmiStdWeightForm.bmiStdWeight.$error.number" >Error: Weight field should only be digits.</div>
+            <div class="alert alert-danger" role="alert" ng-show="bmiStdWeightForm.bmiStdWeight.$error.maxlength" >Error: Weight field should be 3 digits at most.</div>
+            <div class="alert alert-danger" role="alert" ng-show="bmiStdHeightForm.bmiStdHeight.$error.number" >Error: Height field should only be digits.</div>
+            <div class="alert alert-danger" role="alert" ng-show="bmiStdHeightForm.bmiStdHeight.$error.maxlength" >Error: Height field should be 3 digits at most.</div>
+        </div>
       </div>
       <div role="tabpanel" class="tab-pane fade active in" id="bmiMetric" aria-labelledby="bmiMetric-tab">
         </br>
-        <div class="input-group">
+        <div class="input-group" ng-form name="bmiMtrHeightForm">
           <span class="input-group-addon">Height:</span>
-          <input ng-model="bmiCtl.mtrHgt" id="bmiMtrHeight" type="number" class="form-control" aria-label="Height in centimeters">
+          <input name="bmiMtrHeight" ng-model="bmiCtl.mtrHgt" id="bmiMtrHeight" type="number" class="form-control" aria-label="Height in centimeters" ng-maxlength="3" required>
           <span class="input-group-addon">centimeters</span>
         </div>
           </br>
-        <div class="input-group">
+        <div class="input-group" ng-form name="bmiMtrWeightForm">
           <span class="input-group-addon">Weight:</span>
-          <input ng-model="bmiCtl.mtrWgt" id="bmiMtrWeight" type="number" class="form-control" aria-label="Weight in kilograms">
+          <input name="bmiMtrWeight" ng-model="bmiCtl.mtrWgt" id="bmiMtrWeight" type="number" class="form-control" aria-label="Weight in kilograms" ng-maxlength="3" required>
           <span class="input-group-addon">kilograms</span>
         </div>
            </br>
-        <button ng-click="bmiCtl.resultReady=true;bmiCtl.calc()" id="compBMIMtr" type="button" class="btn btn-primary btn-lg btn-block">Compute My BMI</button>
+        <button ng-click="bmiCtl.resultReady=true;bmiCtl.calc()" id="compBMIMtr" type="button" class="btn btn-primary btn-lg btn-block" ng-disabled="bmiMtrWeightForm.$invalid || bmiMtrHeightForm.$invalid">Compute My BMI</button>
+        <div>
+            <br>
+            <div class="alert alert-danger" role="alert" ng-show="bmiMtrWeightForm.bmiMtrWeight.$error.number" >Error: Weight field should only be digits.</div>
+            <div class="alert alert-danger" role="alert" ng-show="bmiMtrWeightForm.bmiMtrWeight.$error.maxlength" >Error: Weight field should be 3 digits at most.</div>
+            <div class="alert alert-danger" role="alert" ng-show="bmiMtrHeightForm.bmiMtrHeight.$error.number" >Error: Height field should only be digits.</div>
+            <div class="alert alert-danger" role="alert" ng-show="bmiMtrHeightForm.bmiMtrHeight.$error.maxlength" >Error: Height field should be 3 digits at most.</div>
+        </div>
       </div>
     </div>
   </div>
