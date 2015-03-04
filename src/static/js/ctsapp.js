@@ -156,12 +156,14 @@
 
     this.showBMICal = function(){
       this.item = 2;
-      this.contentURL = "../static/html/bmiCal.html";
+      var url = "../static/html/bmiCal.html?v="+Date.now();
+      this.contentURL = url;
     };
 
     this.showAbout = function(){
       this.item = 3;
-      this.contentURL = "../static/html/about.html";
+      var url = "../static/html/about.html?v="+Date.now();
+      this.contentURL = url;
     };
     this.showProfile = function(){
       this.item = 4;
