@@ -43,7 +43,7 @@
                     <option value="Snacks">Snacks</option>
                   </select>
                 </div>
-                <button id = "addFoodSmt" type="submit" class="btn btn-default btn-sm" ng-click="submitted=true">
+                <button id = "addFoodSmt" type="submit" class="btn btn-default btn-sm"  ng-disabled="addFoodForm.$invalid">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
                 <div>
@@ -52,10 +52,6 @@
                     <div class="alert alert-danger" role="alert" ng-show="addFoodForm.addFoodCal.$error.maxlength" >Error: Calories field should be 4 digits at most.</div>
                     <div class="alert alert-danger" role="alert" ng-show="addFoodForm.addFoodName.$error.pattern" >Error: Numbers in Name field not allowed.</div>
                     <div class="alert alert-danger" role="alert" ng-show="addFoodForm.addFoodName.$error.maxlength" >Error: Foods field should be 25 characters at most.</div>
-                    <div class="alert alert-danger" role="alert" ng-show="submitted && addFoodForm.addFoodCal.$error.required" >Error: Calories field is required.</div>
-                    <div class="alert alert-danger" role="alert" ng-show="submitted && addFoodForm.addFoodName.$error.required" >Error: Name field is required.</div>
-                    <div class="alert alert-danger" role="alert" ng-show="submitted && addFoodForm.addFoodType.$error.required" >Error: Food Type field is required.</div>
-
 
                 </div>
               </form>
