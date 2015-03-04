@@ -117,7 +117,7 @@
         this.bmi = (this.mtrWgt/(this.mtrHgt*this.mtrHgt))*10000;
       }
       var msg="";
-      this.result+=(this.bmi+" You are ");
+      this.result+=(Math.round(this.bmi * 100) / 100+" You are ");
       if(this.bmi<=18.5){
           msg = "Underweight ";
       }else if(this.bmi>18.5&&this.bmi<25){
