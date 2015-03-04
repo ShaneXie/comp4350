@@ -11,12 +11,17 @@
   app.controller('userProfileController', ['$http', function($http){
     
     var userProfile = this;
-    userProfile.profileData = [];
+    userProfile.profileData;
     $http.get('/api/getProfile/').success(function(data){
-        console.log(data);
-      userProfile.profileData = JSON.parse(data);
-         console.log(userProfile.profileData[0].fields.weight);
+
+      userProfile.profileData = JSON.parse(data)[0].fields;
+
     });
+
+      this.getBMI = function(){
+          var bmi = (userProfile.profileData.weight/(userProfile.profileData.height*userProfile.profileData.height))*10000;
+          return Math.round(bmi * 100) / 100
+      }
 
   }]);
 
@@ -119,7 +124,7 @@
         this.bmi = (this.mtrWgt/(this.mtrHgt*this.mtrHgt))*10000;
       }
       var msg="";
-      this.result+=(this.bmi+" You are ");
+      this.result+=(Math.round(this.bmi * 100) / 100+" You are ");
       if(this.bmi<=18.5){
           msg = "Underweight ";
       }else if(this.bmi>18.5&&this.bmi<25){
@@ -158,12 +163,14 @@
 
     this.showBMICal = function(){
       this.item = 2;
-      this.contentURL = "../static/html/bmiCal.html";
+      var url = "../static/html/bmiCal.html?v="+Date.now();
+      this.contentURL = url;
     };
 
     this.showAbout = function(){
       this.item = 3;
-      this.contentURL = "../static/html/about.html";
+      var url = "../static/html/about.html?v="+Date.now();
+      this.contentURL = url;
     };
     this.showProfile = function(){
       this.item = 4;
