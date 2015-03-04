@@ -8,10 +8,17 @@
     input.ng-valid.ng-dirty {
       border-color: green;
     }
+    select.ng-invalid.ng-dirty {
+      border-color: red;
+    }
+
+    select.ng-valid.ng-dirty {
+      border-color: green;
+    }
   </style>
 </head>
 
-<div id="foodListDiv" ng-controller="foodListController as flCtl">  
+<div  id="foodListDiv" ng-controller="foodListController as flCtl">
   <h1 class="page-header">Food List</h1>
   {% if user.is_authenticated %}
       <div class="panel panel-default">
@@ -25,6 +32,7 @@
                 <div class="form-group">
                   <label for="addFoodCal">Calories:</label>
                   <input ng-model="flCtl.food.foodCal" type="number" class="form-control" id="addFoodCal" name="addFoodCal" placeholder="Enter Number of the Calories in the Food" ng-maxlength="4" required>
+
                 </div>
                 <div class="form-group">
                   <label for="addFoodType">Food Type:</label>
@@ -35,9 +43,21 @@
                     <option value="Snacks">Snacks</option>
                   </select>
                 </div>
-                <button id = "addFoodSmt" type="submit" class="btn btn-default btn-sm">
+                <button id = "addFoodSmt" type="submit" class="btn btn-default btn-sm" ng-click="submitted=true">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
+                <div>
+                    <br>
+                    <div class="alert alert-danger" role="alert" ng-show="addFoodForm.addFoodCal.$error.number" >Error: Calories field should only be digits.</div>
+                    <div class="alert alert-danger" role="alert" ng-show="addFoodForm.addFoodCal.$error.maxlength" >Error: Calories field should be 4 digits at most.</div>
+                    <div class="alert alert-danger" role="alert" ng-show="addFoodForm.addFoodName.$error.pattern" >Error: Numbers in Name field not allowed.</div>
+                    <div class="alert alert-danger" role="alert" ng-show="addFoodForm.addFoodName.$error.maxlength" >Error: Foods field should be 25 characters at most.</div>
+                    <div class="alert alert-danger" role="alert" ng-show="submitted && addFoodForm.addFoodCal.$error.required" >Error: Calories field is required.</div>
+                    <div class="alert alert-danger" role="alert" ng-show="submitted && addFoodForm.addFoodName.$error.required" >Error: Name field is required.</div>
+                    <div class="alert alert-danger" role="alert" ng-show="submitted && addFoodForm.addFoodType.$error.required" >Error: Food Type field is required.</div>
+
+
+                </div>
               </form>
           </div>
       </div>
