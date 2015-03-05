@@ -79,6 +79,9 @@ def add_Food(req):
         fCal = data['foodCal']
         fType = data['foodType']
 
+        if Foods.objects.filter(fName=fName).exists():
+            return "foodExists."
+
         food = Foods(fName=fName,fCalorie=fCal,fType=fType)
         food.save()
         return 'success'
