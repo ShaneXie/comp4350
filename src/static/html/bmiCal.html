@@ -26,13 +26,13 @@
           </br>
         <div class="input-group" ng-form name="bmiStdHeightForm">
           <span class="input-group-addon">Height:</span>
-          <input min = "0" name="bmiStdHeight" ng-model="bmiCtl.stdHgt" id="bmiStdHeight" type="number" class="form-control" aria-label="Height in inches" ng-maxlength="5" required>
+          <input min = "1" name="bmiStdHeight" ng-model="bmiCtl.stdHgt" id="bmiStdHeight" type="number" class="form-control" aria-label="Height in inches" ng-maxlength="5" required>
           <span class="input-group-addon">inches</span>
         </div>
           </br>
         <div class="input-group" ng-form name="bmiStdWeightForm">
           <span class="input-group-addon">Weight:</span>
-          <input min = "0" name ="bmiStdWeight"  ng-model="bmiCtl.stdWgt" id="bmiStdWeight" type="number" class="form-control" aria-label="Weight in pounds" ng-maxlength="5" required>
+          <input min = "1" name ="bmiStdWeight"  ng-model="bmiCtl.stdWgt" id="bmiStdWeight" type="number" class="form-control" aria-label="Weight in pounds" ng-maxlength="5" required>
           <span class="input-group-addon">pounds</span>
         </div>
           </br>
@@ -42,23 +42,23 @@
             <br>
             <div class="alert alert-danger" role="alert" ng-show="bmiStdWeightForm.bmiStdWeight.$error.number" >Error: Weight field should only be digits.</div>
             <div class="alert alert-danger" role="alert" ng-show="bmiStdWeightForm.bmiStdWeight.$error.maxlength" >Error: Weight field should be 4 digits at most.</div>
-            <div class="alert alert-danger" role="alert" ng-show="bmiStdWeightForm.bmiStdWeight.$error.min" >Error: Weight field cannot be negative.</div>
+            <div class="alert alert-danger" role="alert" ng-show="bmiStdWeightForm.bmiStdWeight.$error.min" >Error: Weight field cannot be negative or zero.</div>
             <div class="alert alert-danger" role="alert" ng-show="bmiStdHeightForm.bmiStdHeight.$error.number" >Error: Height field should only be digits.</div>
             <div class="alert alert-danger" role="alert" ng-show="bmiStdHeightForm.bmiStdHeight.$error.maxlength" >Error: Height field should be 4 digits at most.</div>
-            <div class="alert alert-danger" role="alert" ng-show="bmiStdHeightForm.bmiStdHeight.$error.min" >Error: Height field cannot be negative.</div>
+            <div class="alert alert-danger" role="alert" ng-show="bmiStdHeightForm.bmiStdHeight.$error.min" >Error: Height field cannot be negative or zero.</div>
         </div>
       </div>
       <div role="tabpanel" class="tab-pane fade active in" id="bmiMetric" aria-labelledby="bmiMetric-tab">
         </br>
         <div class="input-group" ng-form name="bmiMtrHeightForm">
           <span class="input-group-addon">Height:</span>
-          <input min = "0" name="bmiMtrHeight" ng-model="bmiCtl.mtrHgt" id="bmiMtrHeight" type="number" class="form-control" aria-label="Height in centimeters" ng-maxlength="5" required>
+          <input min = "1" name="bmiMtrHeight" ng-model="bmiCtl.mtrHgt" id="bmiMtrHeight" type="number" class="form-control" aria-label="Height in centimeters" ng-maxlength="5" required>
           <span class="input-group-addon">centimeters</span>
         </div>
           </br>
         <div class="input-group" ng-form name="bmiMtrWeightForm">
           <span class="input-group-addon">Weight:</span>
-          <input min = "0" name="bmiMtrWeight" ng-model="bmiCtl.mtrWgt" id="bmiMtrWeight" type="number" class="form-control" aria-label="Weight in kilograms" ng-maxlength="5" required>
+          <input min = "1" name="bmiMtrWeight" ng-model="bmiCtl.mtrWgt" id="bmiMtrWeight" type="number" class="form-control" aria-label="Weight in kilograms" ng-maxlength="5" required>
           <span class="input-group-addon">kilograms</span>
         </div>
            </br>
@@ -67,10 +67,10 @@
             <br>
             <div class="alert alert-danger" role="alert" ng-show="bmiMtrWeightForm.bmiMtrWeight.$error.number" >Error: Weight field should only be digits.</div>
             <div class="alert alert-danger" role="alert" ng-show="bmiMtrWeightForm.bmiMtrWeight.$error.maxlength" >Error: Weight field should be 4 digits at most.</div>
-            <div class="alert alert-danger" role="alert" ng-show="bmiMtrWeightForm.bmiMtrWeight.$error.min" >Error: Weight field cannot be negative.</div>
+            <div class="alert alert-danger" role="alert" ng-show="bmiMtrWeightForm.bmiMtrWeight.$error.min" >Error: Weight field cannot be negative or zero.</div>
             <div class="alert alert-danger" role="alert" ng-show="bmiMtrHeightForm.bmiMtrHeight.$error.number" >Error: Height field should only be digits.</div>
             <div class="alert alert-danger" role="alert" ng-show="bmiMtrHeightForm.bmiMtrHeight.$error.maxlength" >Error: Height field should be 4 digits at most.</div>
-            <div class="alert alert-danger" role="alert" ng-show="bmiMtrHeightForm.bmiMtrHeight.$error.min" >Error: Height field cannot be negative..</div>
+            <div class="alert alert-danger" role="alert" ng-show="bmiMtrHeightForm.bmiMtrHeight.$error.min" >Error: Height field cannot be negative or zero.</div>
         </div>
       </div>
     </div>
