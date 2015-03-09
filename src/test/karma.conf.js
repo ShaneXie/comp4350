@@ -15,9 +15,11 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'test/jasmine/unit/*.js',
-        'static/js/angular.min.js',
-        'static/js/ctsapp.js'
+        'static/js/angular.js',
+        'static/js/angular-cookies.js',
+        'static/js/ctsapp.js',
+        'test/jasmine/lib/*.js',
+        'test/jasmine/unit/*.js'
     ],
 
 
