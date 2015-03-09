@@ -1,4 +1,4 @@
-(function() {
+
   var app = angular.module('cts', ['ngCookies']).config(function($interpolateProvider){
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
   });
@@ -69,40 +69,7 @@
     }]);
 
 
-  app.controller('foodListController', ['$http', '$cookies',function($http,$cookies){
-
-    $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-    $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
-
-    var foodList = this;
-    foodList.foods = [];
-    this.food = {};
-    this.food.csrfmiddlewaretoken = $cookies.csrftoken;
-
-    $http.get('/api/getAllFood').success(function(data){
-      foodList.foods = JSON.parse(data);
-        //console.log(JSON.parse(data));
-    });
-
-
-    this.addFood = function (){
-      
-      data=jQuery.param(this.food);
-      //console.log(data);
-      $http.post('/ajax/addFood/',data).success(function (response) {
-        if(response=="success"){
-             alert("New Food Added!");
-             //$("#content").load("/ajax/getAllFood");
-             newFood = '<tr><td>'+$('#addFoodName').val()+'</td><td>'+$('#addFoodCal').val()+'</td><td>'+$('#addFoodType option:selected').text()+'</td></tr>';
-             $("#foodTable tr:first").after(newFood);
-             $('#addFoodForm').trigger("reset");
-         }else{
-             alert(response);
-         }
-
-      });
-    }
-  }]);
+  
 
   app.controller('bmiController', function(){
     this.isStd = false;
@@ -191,4 +158,3 @@
     
   }]);
 
-})();
