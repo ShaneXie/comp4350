@@ -8,22 +8,6 @@
       $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
   }]);
 
-  app.controller('userProfileController', ['$http', function($http){
-    
-    var userProfile = this;
-    userProfile.profileData;
-    $http.get('/api/getProfile/').success(function(data){
-
-      userProfile.profileData = JSON.parse(data)[0].fields;
-
-    });
-
-      this.getBMI = function(){
-          var bmi = (userProfile.profileData.weight/(userProfile.profileData.height*userProfile.profileData.height))*10000;
-          return Math.round(bmi * 100) / 100
-      }
-
-  }]);
 
     app.controller('loginController', ['$http', '$cookies',function($http,$cookies){
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
