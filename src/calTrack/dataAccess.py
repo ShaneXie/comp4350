@@ -34,9 +34,9 @@ def login(req):
             loginUser(req, user)
             ret="success"
         else:
-            ret="disabled"
+            ret="Your account is inactive"
     else:
-        ret = "wrongPwd"
+        ret = "Wrong username or password."
     return ret
 
 def logout(req):
@@ -55,7 +55,7 @@ def add_user(req):
     gender = post['genName']
 
     if User.objects.filter(username=username).exists():
-        return "emailTaken"
+        return "This email address has been used. Please use another one."
     else:
         user = User.objects.create_user(username, email, pwd)
         user.first_name = fName
@@ -86,4 +86,4 @@ def add_Food(req):
         food.save()
         return 'success'
     else:
-        return 'noLogin'
+        return 'You need login to add new food.'
