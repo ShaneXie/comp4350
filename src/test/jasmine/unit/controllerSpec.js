@@ -5,7 +5,7 @@ describe("true",function(){
 
 });
 
-describe("NavController",function(){
+describe("foodListController",function(){
     var $rootScope,
         $scope,
         controller;
@@ -15,7 +15,7 @@ describe("NavController",function(){
         inject(function($injector) {
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
-            controller = $injector.get('$controller')("NavController",{$scope: $scope});
+            controller = $injector.get('$controller')("foodListController",{$scope: $scope});
         });
     });
 
