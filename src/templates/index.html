@@ -101,7 +101,7 @@
 
     <!-- Modals -->
     <!-- Login Modal -->
-    <div ng-controller="loginController as loginCtl">
+    <div ng-controller="loginController">
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -109,20 +109,20 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Login</h4>
           </div>
-          <form class="form-horizontal" id="loginForm" name="loginForm" ng-submit="loginForm.$valid && loginCtl.login()" novalidate>
+          <form class="form-horizontal" id="loginForm" name="loginForm" ng-submit="loginForm.$valid && login()" novalidate>
               {% csrf_token %}
           <div class="modal-body">
             
               <div class="form-group">
                 <label for="loginEmail" class="col-sm-3 control-label">Email address</label>
                 <div class="col-sm-9">
-                  <input ng-model="loginCtl.loginInfo.loginEmailName" type="email" class="form-control" id="loginEmail" name="loginEmailName" placeholder="Enter email" required>
+                  <input ng-model="loginInfo.loginEmailName" type="email" class="form-control" id="loginEmail" name="loginEmailName" placeholder="Enter email" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="loginPwd" class="col-sm-3 control-label">Password</label>
                 <div class="col-sm-9">
-                  <input ng-model="loginCtl.loginInfo.loginPwdName" type="password" class="form-control" id="loginPwd" name="loginPwdName" placeholder="Password" required>
+                  <input ng-model="loginInfo.loginPwdName" type="password" class="form-control" id="loginPwd" name="loginPwdName" placeholder="Password" required>
                 </div>
               </div>
               <div class="form-group">
@@ -152,55 +152,55 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Register</h4>
           </div>
-          <form class="form-horizontal" id="regForm" name="regForm" ng-submit="regForm.$valid && loginCtl.reg()" novalidate>
+          <form class="form-horizontal" id="regForm" name="regForm" ng-submit="regForm.$valid && reg()" novalidate>
               {% csrf_token %}
 
           <div class="modal-body">
             <div class="form-group">
                 <label for="regEmail" class="col-sm-3 control-label">Email address</label>
                 <div class="col-sm-9">
-                  <input ng-model="loginCtl.regInfo.regEmailName" type="email" class="form-control" id="regEmail" name="regEmailName" placeholder="Enter email" required>
+                  <input ng-model="regInfo.regEmailName" type="email" class="form-control" id="regEmail" name="regEmailName" placeholder="Enter email" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="regPwd" class="col-sm-3 control-label">Password</label>
                 <div class="col-sm-9">
-                  <input ng-model="loginCtl.regInfo.regPwdName" type="password" class="form-control" id="regPwd" name="regPwdName" placeholder="Enter Password" required>
+                  <input ng-model="regInfo.regPwdName" type="password" class="form-control" id="regPwd" name="regPwdName" placeholder="Enter Password" required>
                 </div>
               </div>
 
                   <div class="form-group">
                     <label for="regHgt" class="col-sm-3 control-label">First Name</label>
                     <div class="col-sm-9">
-                      <input ng-model="loginCtl.regInfo.regFirstName" type="text" class="form-control" id="regFirst" name="regFirstName" placeholder="Enter First Name" required>
+                      <input ng-model="regInfo.regFirstName" type="text" class="form-control" id="regFirst" name="regFirstName" placeholder="Enter First Name" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="regHgt" class="col-sm-3 control-label">Last Name</label>
                     <div class="col-sm-9">
-                      <input ng-model="loginCtl.regInfo.regLastName" type="text" class="form-control" id="regLast" name="regLastName" placeholder="Enter Last Name" required>
+                      <input ng-model="regInfo.regLastName" type="text" class="form-control" id="regLast" name="regLastName" placeholder="Enter Last Name" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="regHgt" class="col-sm-3 control-label">Height(cm)</label>
                     <div class="col-sm-9">
-                      <input ng-model="loginCtl.regInfo.regHgtName" type="number" class="form-control" id="regHgt" name="regHgtName" placeholder="Enter Height" required>
+                      <input ng-model="regInfo.regHgtName" type="number" class="form-control" id="regHgt" name="regHgtName" placeholder="Enter Height" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="regWgt" class="col-sm-3 control-label">Weight(kg)</label>
                     <div class="col-sm-9">
-                      <input ng-model="loginCtl.regInfo.regWgtName" type="number" class="form-control" id="regWgt" name="regWgtName" placeholder="Enter Weight" required>
+                      <input ng-model="regInfo.regWgtName" type="number" class="form-control" id="regWgt" name="regWgtName" placeholder="Enter Weight" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="regGenM" class="col-sm-3 control-label">Gender</label>
                     <div class="col-sm-9">
                         <label class="radio-inline">
-                          <input ng-model="loginCtl.regInfo.genName" type="radio" name="genName" id="regGenM" value="Male"> Male
+                          <input ng-model="regInfo.genName" type="radio" name="genName" id="regGenM" value="Male"> Male
                         </label>
                         <label class="radio-inline">
-                          <input ng-model="loginCtl.regInfo.genName" type="radio" name="genName" id="regGenF" value="Female"> Female
+                          <input ng-model="regInfo.genName" type="radio" name="genName" id="regGenF" value="Female"> Female
                         </label>
                     </div>
                   </div>
@@ -226,6 +226,8 @@
     <script src="{% static 'js/ctsapp/foodCtrl.js' %}"></script>
     <script src="{% static 'js/ctsapp/userProfileCtrl.js' %}"></script>
     <script src="{% static 'js/ctsapp/navCtrl.js' %}"></script>
+    <script src="{% static 'js/ctsapp/BMICtrl.js' %}"></script>
+
 
 
 
