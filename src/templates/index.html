@@ -101,7 +101,6 @@
 
     <!-- Modals -->
     <!-- Login Modal -->
-    <div ng-controller="loginController">
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -112,7 +111,7 @@
           <form class="form-horizontal" id="loginForm" name="loginForm" ng-submit="loginForm.$valid && login()" novalidate>
               {% csrf_token %}
           <div class="modal-body">
-            
+
               <div class="form-group">
                 <label for="loginEmail" class="col-sm-3 control-label">Email address</label>
                 <div class="col-sm-9">
@@ -142,7 +141,6 @@
           </form>
         </div>
       </div>
-    </div>
 
     <!-- Register Modal -->
     <div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -231,5 +229,5 @@
 
 
 
-    
+
 </body></html>
