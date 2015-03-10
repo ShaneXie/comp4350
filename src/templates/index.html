@@ -27,7 +27,7 @@
 
   </head>
 
-  <body ng-controller = "NavController as navCtl">
+  <body ng-controller = "NavController">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -45,24 +45,24 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
-                    <li id="loginItem" class="dropdown" ng-class="{ active: navCtl.isSet(0) }">
-                      <a ng-clink="navCtl.setItem(0)" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hi, {{ user.first_name }} <span class="caret"></span></a>
+                    <li id="loginItem" class="dropdown" ng-class="{ active: isSet(0) }">
+                      <a ng-clink="setItem(0)" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hi, {{ user.first_name }} <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
-                        <li id = "profileItem" ng-click="navCtl.showProfile()" ><a href="#">My Profile</a></li>
+                        <li id = "profileItem" ng-click="showProfile()" ><a href="#">My Profile</a></li>
                         <li class="divider"></li>
-                        <li id="logoutBtn" ng-click="navCtl.logout()"><a href="#">Logout</a></li>
+                        <li id="logoutBtn" ng-click="logout()"><a href="#">Logout</a></li>
                       </ul>
                     </li>
                 {% else %}
-                   <li id="loginItem" class="dropdown" ng-class="{ active: navCtl.isSet(0) }">
-                    <a ng-clink="navCtl.setItem(0)" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                   <li id="loginItem" class="dropdown" ng-class="{ active: isSet(0) }">
+                    <a ng-clink="setItem(0)" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
                    </li>
                 {% endif %}
-            <li ng-class="{ active: navCtl.isSet(2) }">
-              <a ng-click="navCtl.showBMICal()" href="/">BMI</a>
+            <li ng-class="{ active: isSet(2) }">
+              <a ng-click="showBMICal()" href="/">BMI</a>
             </li>
-            <li ng-class="{ active: navCtl.isSet(3) }">
-              <a ng-click="navCtl.showAbout()" href="/">About</a>
+            <li ng-class="{ active: isSet(3) }">
+              <a ng-click="showAbout()" href="/">About</a>
             </li>
           </ul>
         </div>
@@ -74,20 +74,20 @@
         <div class="col-sm-3 col-md-2 sidebar">
             {% block sideBarBlock %}
           <ul class="nav nav-sidebar">
-            <li class="barItem" ng-class="{ active: navCtl.isSet(1) }" id="foodlistItem" >
-              <a ng-click="navCtl.showFoodList()" href="#">Food List</a>
+            <li class="barItem" ng-class="{ active: isSet(1) }" id="foodlistItem" >
+              <a ng-click="showFoodList()" href="#">Food List</a>
             </li>
-            <li class="barItem" ng-class="{ active: navCtl.isSet(2) }" id="bmiItem">
-              <a ng-click="navCtl.showBMICal()" href="#">BMI Calculator</a>
+            <li class="barItem" ng-class="{ active: isSet(2) }" id="bmiItem">
+              <a ng-click="showBMICal()" href="#">BMI Calculator</a>
             </li>
-            <li class="barItem" ng-class="{ active: navCtl.isSet(3) }" id="aboutItem">
-              <a ng-click="navCtl.showAbout()" href="#">About</a>
+            <li class="barItem" ng-class="{ active: isSet(3) }" id="aboutItem">
+              <a ng-click="showAbout()" href="#">About</a>
             </li>
           </ul>
 
             {% endblock %}
         </div>
-        <div ng-include="navCtl.contentURL" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id = "content">
+        <div ng-include="contentURL" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id = "content">
 
         {% block mainBlock %}
 
@@ -225,6 +225,8 @@
     <script src="{% static 'js/ctsapp/ctsapp.js' %}"></script>
     <script src="{% static 'js/ctsapp/foodCtrl.js' %}"></script>
     <script src="{% static 'js/ctsapp/userProfileCtrl.js' %}"></script>
+    <script src="{% static 'js/ctsapp/navCtrl.js' %}"></script>
+
 
 
     
