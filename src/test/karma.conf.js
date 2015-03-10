@@ -17,7 +17,7 @@ module.exports = function(config) {
     files: [
         'static/js/angular.js',
         'static/js/angular-cookies.js',
-        'static/js/ctsapp.js',
+        'static/js/ctsapp/*.js',
         'test/jasmine/lib/*.js',
         'test/jasmine/unit/*.js'
     ],

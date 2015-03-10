@@ -3,14 +3,13 @@ app.controller('foodListController', ['$scope', '$http', '$cookies',function($sc
     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
 
-    var foodList = this;
-    foodList.foods = [];
+    $scope.foods = [];
     $scope.food = {};
     $scope.food.csrfmiddlewaretoken = $cookies.csrftoken;
 
     $http.get('/api/getAllFood').success(function(data){
-      foodList.foods = JSON.parse(data);
-        //console.log(JSON.parse(data));
+      $scope.foods = JSON.parse(data);
+        console.log($scope.foods);
     });
 
 
