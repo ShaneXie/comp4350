@@ -1,5 +1,5 @@
 
-<div id="foodListDiv" ng-controller="userProfileController as usCtl"> 
+<div id="foodListDiv" ng-controller="userProfileController">
   <h1 class="page-header"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user.first_name}}'s Profile</h1>
   {% if user.is_authenticated %}
     {% if profile %}
@@ -8,25 +8,25 @@
             <table class="table table-hover table-bordered" id="UserProfileTable">
                 <tr class="info">
                     <th class="col-md-2">Weight:</th>
-                    <td ng-model="usCtl.profileData.weight">{[{usCtl.profileData.weight}]}</td>
+                    <td ng-model="profileData.weight">{[{profileData.weight +' kg'}]}</td>
                 </tr>
                 <tr class="info">
                     <th class="col-md-2">Height:</th>
-                    <td ng-model="usCtl.profileData.height">{[{usCtl.profileData.height}]}</td>
+                    <td ng-model="profileData.height">{[{profileData.height +' cm'}]}</td>
                 </tr>
                 <tr class="info">
                     <th class="col-md-2">Gender:</th>
-                    <td ng-model="usCtl.profileData.gender">{[{usCtl.profileData.gender}]}</td>
+                    <td ng-model="profileData.gender">{[{profileData.gender}]}</td>
                 </tr>
                 <tr class="info">
                     <th class="col-md-2">BMI:</th>
-                    <td>{[{usCtl.getBMI()}]}</td>
+                    <td>{[{userBMI()}]}</td>
                 </tr>
             </table>
         </div>
         </div>
     {% else %}
-        <div class="alert alert-danger" role="alert">User Profile doesn't exsists.</div>
+        <div class="alert alert-danger" role="alert">User Profile doesn't exists.</div>
     {% endif %}
   {% endif %}
 
