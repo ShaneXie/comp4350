@@ -19,7 +19,7 @@ app.controller('foodListController', ['$scope', '$http', '$cookies',function($sc
       //console.log(data);
       $http.post('/ajax/addFood/',data).success(function (response) {
         if(response=="success"){
-             alert("New Food Added!");
+             $.scojs_message('New Food Added!', $.scojs_message.TYPE_OK);
              //$("#content").load("/ajax/getAllFood");
              newFood = '<tr><td>'+$('#addFoodName').val()+'</td><td>'+$('#addFoodCal').val()+'</td><td>'+$('#addFoodType option:selected').text()+'</td></tr>';
              $("#foodTable tr:first").after(newFood);
