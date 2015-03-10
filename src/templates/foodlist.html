@@ -18,25 +18,25 @@
   </style>
 </head>
 
-<div  id="foodListDiv" ng-controller="foodListController as flCtl">
+<div  id="foodListDiv" ng-controller="foodListController ">
   <h1 class="page-header">Food List</h1>
   {% if user.is_authenticated %}
       <div class="panel panel-default">
           <div class="panel-body">
-              <form name="addFoodForm" id="addFoodForm" class="form-inline" ng-submit="addFoodForm.$valid && flCtl.addFood()" novalidate>
+              <form name="addFoodForm" id="addFoodForm" class="form-inline" ng-submit="addFoodForm.$valid && addFood()" novalidate>
                   {% csrf_token %}
                 <div class="form-group">
                   <label for="addFoodName">Name:</label>
-                  <input ng-model="flCtl.food.foodName" type="text" class="form-control" id="addFoodName" name ="addFoodName" placeholder="Enter Food Name" ng-maxlength="25" ng-pattern= "/^[a-zA-Z ]*$/" required> 
+                  <input ng-model="food.foodName" type="text" class="form-control" id="addFoodName" name ="addFoodName" placeholder="Enter Food Name" ng-maxlength="25" ng-pattern= "/^[a-zA-Z ]*$/" required>
                 </div>
                 <div class="form-group">
                   <label for="addFoodCal">Calories:</label>
-                  <input min = "1" ng-model="flCtl.food.foodCal" type="number" class="form-control" id="addFoodCal" name="addFoodCal" placeholder="Enter Number of the Calories in the Food" ng-maxlength="4" required>
+                  <input min = "1" ng-model="food.foodCal" type="number" class="form-control" id="addFoodCal" name="addFoodCal" placeholder="Enter Number of the Calories in the Food" ng-maxlength="4" required>
 
                 </div>
                 <div class="form-group">
                   <label for="addFoodType">Food Type:</label>
-                  <select ng-model="flCtl.food.foodType" class="form-control" name="addFoodType" id="addFoodType" required>
+                  <select ng-model="food.foodType" class="form-control" name="addFoodType" id="addFoodType" required>
                     <option value="Lunch">Lunch</option>
                     <option value="Dinner">Dinner</option>
                     <option value="Breakfast">Breakfast</option>
@@ -70,7 +70,7 @@
               </tr>
           </thead>
       <tbody>
-              <tr ng-repeat="f in flCtl.foods track by $index | orderBy: fname">
+              <tr ng-repeat="f in foods track by $index | orderBy: fname">
                   <td>{[{f.fields.fName}]}</td>
                   <td>{[{f.fields.fCalorie}]}</td>
                   <td>{[{f.fields.fType}]}</td>
