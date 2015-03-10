@@ -91,54 +91,5 @@
 
   });
 
-  app.controller('NavController', ['$http','$cookies',function($http,$cookies){
-    //  0 ---- Login
-    //  1 ---- Food List
-    //  2 ---- BMI Calculator
-    //  3 ---- About
-    this.item = 1;
-    this.contentURL = '/ajax/getAllFood';
 
-    this.setItem = function(newValue){
-      this.item = newValue;
-    };
-
-    this.isSet = function(theItem){
-      return this.item === theItem;
-    };
-
-    this.showFoodList = function(){
-      this.item = 1;
-      this.contentURL = '/ajax/getAllFood';
-    };
-
-    this.showBMICal = function(){
-      this.item = 2;
-      var url = "../static/html/bmiCal.html?v="+Date.now();
-      this.contentURL = url;
-    };
-
-    this.showAbout = function(){
-      this.item = 3;
-      var url = "../static/html/about.html?v="+Date.now();
-      this.contentURL = url;
-    };
-    this.showProfile = function(){
-      this.item = 4;
-      this.contentURL = '/ajax/getProfile';
-    };
-
-    this.logout =function(){
-        $http.get('/ajax/logout/').success(function (response) {
-            if(response=="success") {
-               alert("Bye Bye");
-               location.reload();
-
-           }else{
-               alert("Logout Ajax Error");
-           }
-        });
-      };
-    
-  }]);
 
