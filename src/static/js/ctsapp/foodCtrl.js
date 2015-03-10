@@ -9,7 +9,7 @@ app.controller('foodListController', ['$scope', '$http', '$cookies',function($sc
 
     $http.get('/api/getAllFood').success(function(data){
       $scope.foods = JSON.parse(data);
-        console.log($scope.foods);
+        //console.log($scope.foods);
     });
 
 
