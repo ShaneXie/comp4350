@@ -30,4 +30,4 @@ app.controller('foodListController', ['$scope', '$http', '$cookies',function($sc
 
       });
     }
-  }]);
+}]);
