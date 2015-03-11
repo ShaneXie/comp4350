@@ -1,4 +1,4 @@
-  app.controller('userProfileController', ['$http', '$scope', function($http,$scope){
+app.controller('userProfileController', ['$http', '$scope', function($http,$scope){
 
     $scope.profileData = [] ;
 
@@ -13,4 +13,4 @@
           return Math.round(bmi * 100) / 100
       }
 
-  }]);
+}]);
