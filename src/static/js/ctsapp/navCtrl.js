@@ -1,5 +1,3 @@
-
-
 app.controller('NavController', ['$http','$scope','$cookies',function($http,$scope,$cookies){
     //  0 ---- Login
     //  1 ---- Food List
@@ -9,7 +7,6 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
 
     $scope.item = 1;
-
     $scope.loginInfo={};
     $scope.regInfo = {};
     $scope.contentURL = '/ajax/getAllFood';
@@ -29,13 +26,13 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
 
     $scope.showBMICal = function(){
         $scope.item = 2;
-        var url = "../static/html/bmiCal.html?v="+Date.now();
+        var url = "../static/html/bmiCal.html?v="+html_version;
         $scope.contentURL = url;
     };
 
     $scope.showAbout = function(){
         $scope.item = 3;
-        var url = "../static/html/about.html?v="+Date.now();
+        var url = "../static/html/about.html?v="+html_version;
         $scope.contentURL = url;
     };
     $scope.showProfile = function(){
@@ -46,7 +43,6 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
     $scope.reg = function (){
         $scope.regInfo.csrfmiddlewaretoken = $cookies.csrftoken;
         data=jQuery.param($scope.regInfo);
-        console.log(data);
         $http.post('/ajax/register/',data).success(function (response) {
             if(response=="success"){
                 //update csrf token
