@@ -36,6 +36,4 @@ describe('foodCtrlSpec', function(){
 
         });
     });
-
 });
-

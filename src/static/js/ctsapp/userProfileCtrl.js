@@ -4,7 +4,7 @@ app.controller('userProfileController', ['$http', '$scope', function($http,$scop
 
     $http.get('/api/getProfile/').success(function(data){
 
-      $scope.profileData = JSON.parse(data)[0].fields;
+      $scope.profileData = angular.fromJson(data)[0].fields;
 
     });
 
