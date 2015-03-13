@@ -8,15 +8,13 @@ app.controller('foodListController', ['$scope', '$http', '$cookies',function($sc
     $scope.food.csrfmiddlewaretoken = $cookies.csrftoken;
 
     $http.get('/api/getAllFood').success(function(data){
-      $scope.foods = JSON.parse(data);
-        //console.log($scope.foods);
+        $scope.foods = angular.fromJson(data);
     });
 
 
     $scope.addFood = function (){
       
       data=jQuery.param($scope.food);
-      //console.log(data);
       $http.post('/ajax/addFood/',data).success(function (response) {
         if(response=="success"){
              $.scojs_message('New Food Added!', $.scojs_message.TYPE_OK);
