@@ -11,8 +11,8 @@ describe('userProfileCtrlSpec', function(){
             data = getJSONFixture('userProfileTestData.json');
             controller = $injector.get('$controller')("userProfileController",{$scope: scope});
             $httpBackend.whenGET('/api/getProfile/').respond(data);
-
         });
+        spyOn(scope,'userBMI').and.callThrough();
     });
     afterEach(function() {
         $httpBackend.verifyNoOutstandingExpectation();
@@ -23,9 +23,11 @@ describe('userProfileCtrlSpec', function(){
             $httpBackend.expectGET('/api/getProfile/');
             $httpBackend.flush();
             expect(scope.profileData).toBeDefined();
+            expect(controller).toBeDefined();
 
         });
         it('should get the food list', function(){
+
             $httpBackend.expectGET('/api/getProfile/');
             $httpBackend.flush();
             expect(scope.profileData.weight).toBe(150);
@@ -39,10 +41,11 @@ describe('userProfileCtrlSpec', function(){
         it('should get user BMI', function(){
             $httpBackend.expectGET('/api/getProfile/');
             $httpBackend.flush();
-            scope.$digest();
+            expect(scope.userBMI).not.toHaveBeenCalled();
+            scope.userBMI();
             expect(scope.userBMI()).toBeDefined();
+            expect(scope.userBMI).toHaveBeenCalled();
             expect(scope.userBMI()).toBe(66.67);
         });
     });
-
 });
