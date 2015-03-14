@@ -9,9 +9,8 @@ describe('foodCtrlSpec', function(){
             $httpBackend = $injector.get('$httpBackend');
             jasmine.getJSONFixtures().fixturesPath='/Users/niteshsinghania/GitHub/Comp4350/src/test/jasmine/fixtures/'
             data = getJSONFixture('foodListTestData.json');
-            //console.log(data);
             controller = $injector.get('$controller')("foodListController",{$scope: scope});
-            $httpBackend.whenGET('/api/getAllFood').respond(data);
+            $httpBackend.whenGET('/api/getAllFood').respond(data, 200, 'success');
 
         });
     });
@@ -27,12 +26,13 @@ describe('foodCtrlSpec', function(){
 
         });
         it('should get the food list', function(){
-            $httpBackend.expectGET('/api/getAllFood');
+            $httpBackend.expectGET('/api/getAllFood').respond(data, 200, "success");
             $httpBackend.flush();
-            expect(scope.foods.length).toBe(8);
-            expect(scope.foods[0].fields.fType).toBe('d');
-            expect(scope.foods[0].fields.fName).toBe('Chicken Burger');
-            expect(scope.foods[0].fields.fCalorie).toBe(100);
+            expect(scope.foods instanceof Array).toBeTruthy();
+            expect(scope.foods.length).toBe(data.length);
+            expect(scope.foods[0].fields.fType).toBe(data[0].fields.fType);
+            expect(scope.foods[0].fields.fName).toBe(data[0].fields.fName);
+            expect(scope.foods[0].fields.fCalorie).toBe(data[0].fields.fCalorie);
 
         });
     });

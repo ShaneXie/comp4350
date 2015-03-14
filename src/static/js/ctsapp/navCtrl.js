@@ -13,7 +13,11 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
 
     $scope.reloadPage =function() {
         location.reload();
+    };
+    $scope.setCookies =function() {
+        $scope.loginInfo.csrfmiddlewaretoken = $cookies.csrftoken;
     }
+
     $scope.setItem = function(newValue){
         $scope.item = newValue;
     };
@@ -44,7 +48,7 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
     };
 
     $scope.reg = function (){
-        $scope.regInfo.csrfmiddlewaretoken = $cookies.csrftoken;
+        $scope.setCookies();
         data=jQuery.param($scope.regInfo);
         $http.post('/ajax/register/',data).success(function (response) {
             if(response=="success"){
@@ -58,7 +62,7 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
         });
     };
     $scope.login = function (){
-        $scope.loginInfo.csrfmiddlewaretoken = $cookies.csrftoken;
+        $scope.setCookies();
         data=jQuery.param($scope.loginInfo);
         $http.post('/ajax/login/',data).success(function (response) {
             if(response=="success"){

@@ -50,7 +50,7 @@ describe("NavControllerSpec",function(){
 
 
     describe("setItem to BMI Calculator", function(){
-       it("Should navigate to Food List", function(){
+       it("Should navigate to BMI calculator", function(){
             expect(scope.item).toBe(1);
             scope.setItem(2);
             expect(scope.item).toEqual(2);
