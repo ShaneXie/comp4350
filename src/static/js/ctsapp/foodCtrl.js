@@ -10,8 +10,6 @@ app.controller('foodListController', ['$scope', '$http', '$cookies',function($sc
     $http.get('/api/getAllFood').success(function(data){
         $scope.foods = angular.fromJson(data);
     });
-
-
     $scope.addFood = function (){
       
       data=jQuery.param($scope.food);
@@ -22,8 +20,10 @@ app.controller('foodListController', ['$scope', '$http', '$cookies',function($sc
              newFood = '<tr><td>'+$('#addFoodName').val()+'</td><td>'+$('#addFoodCal').val()+'</td><td>'+$('#addFoodType option:selected').text()+'</td></tr>';
              $("#foodTable tr:first").after(newFood);
              $('#addFoodForm').trigger("reset");
+             $scope.food = {};
+             $scope.addFoodForm.$setPristine();
          }else{
-             alert(response);
+             $.scojs_message(response, $.scojs_message.TYPE_ERROR);
          }
 
       });
