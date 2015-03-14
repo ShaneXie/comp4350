@@ -11,6 +11,8 @@ describe("bmiControllerSpec",function(){
             scope = rootScope.$new();
             controller = $injector.get('$controller')("bmiController",{$scope: scope});
         });
+        spyOn(scope,'calc').and.callThrough();
+
     });
 
     describe("Initialization", function(){
@@ -18,6 +20,7 @@ describe("bmiControllerSpec",function(){
            expect(scope.isStd).toEqual(false);
            expect(scope.result).toEqual("Your BMI is ");
            expect(scope.resultReady).toEqual(false);
+           expect(scope.calc).not.toHaveBeenCalled();
 
        }) ;
     });
@@ -26,8 +29,9 @@ describe("bmiControllerSpec",function(){
     describe("Generate result", function(){
        it("Should generate the result", function(){
            scope.calc();
-           scope.$digest();
+           expect(scope.calc).toHaveBeenCalled();
            expect(scope.resultReady).toEqual(true);
+           expect(scope.calc).toHaveBeenCalled();
 
        }) ;
     });
@@ -35,8 +39,9 @@ describe("bmiControllerSpec",function(){
     describe("Generate invalid BMI result", function(){
        it("Should generate invalid BMI result", function(){
            scope.calc();
-           scope.$digest();
+           expect(scope.calc).toHaveBeenCalled();
            expect(scope.resultReady).toEqual(true);
+           expect(scope.bmi).toBeNaN();
            expect(scope.result).toEqual("Your BMI is NaN You are Obese");
 
        }) ;
@@ -48,7 +53,7 @@ describe("bmiControllerSpec",function(){
            scope.stdWgt = 150;
            scope.isStd = true;
            scope.calc();
-           scope.$digest();
+           expect(scope.calc).toHaveBeenCalled();
            expect(scope.bmi).toEqual(4.69);
            expect(scope.resultReady).toEqual(true);
            expect(scope.result).toEqual("Your BMI is 4.69 You are Underweight");
@@ -63,7 +68,7 @@ describe("bmiControllerSpec",function(){
            scope.mtrWgt = 150;
            scope.isStd = false;
            scope.calc();
-           scope.$digest();
+           expect(scope.calc).toHaveBeenCalled();
            expect(scope.bmi).toEqual(66.67);
            expect(scope.resultReady).toEqual(true);
            expect(scope.result).toEqual("Your BMI is 66.67 You are Obese");

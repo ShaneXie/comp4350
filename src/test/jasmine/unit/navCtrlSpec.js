@@ -14,6 +14,13 @@ describe("NavControllerSpec",function(){
             scope = rootScope.$new();
             controller = $injector.get('$controller')("NavController",{$scope: scope});
         });
+        spyOn(scope,'setItem').and.callThrough();
+        spyOn(scope,'isSet').and.callThrough();
+        spyOn(scope,'showFoodList').and.callThrough();
+        spyOn(scope,'showBMICal').and.callThrough();
+        spyOn(scope,'showAbout').and.callThrough();
+        spyOn(scope,'showProfile').and.callThrough();
+
     });
 
     describe("Initialization", function(){
@@ -28,7 +35,6 @@ describe("NavControllerSpec",function(){
        it("Should navigate to Login", function(){
             expect(scope.item).toBe(1);
             scope.setItem(0);
-            scope.$digest();
             expect(scope.item).toEqual(0);
        }) ;
     });
@@ -38,7 +44,6 @@ describe("NavControllerSpec",function(){
        it("Should navigate to Food List", function(){
             expect(scope.item).toBe(1);
             scope.setItem(1);
-            scope.$digest();
             expect(scope.item).toEqual(1);
        }) ;
     });
@@ -48,7 +53,6 @@ describe("NavControllerSpec",function(){
        it("Should navigate to Food List", function(){
             expect(scope.item).toBe(1);
             scope.setItem(2);
-            scope.$digest();
             expect(scope.item).toEqual(2);
        }) ;
     });
@@ -57,7 +61,6 @@ describe("NavControllerSpec",function(){
        it("Should navigate to About", function(){
             expect(scope.item).toBe(1);
             scope.setItem(3);
-            scope.$digest();
             expect(scope.item).toEqual(3);
        }) ;
     });
@@ -67,10 +70,8 @@ describe("NavControllerSpec",function(){
        it("Should navigate from About to Food List", function(){
             expect(scope.item).toBe(1);
             scope.setItem(3);
-            scope.$digest();
             expect(scope.item).toEqual(3);
             scope.setItem(1);
-            scope.$digest();
             expect(scope.item).toEqual(1);
 
        }) ;
@@ -79,8 +80,9 @@ describe("NavControllerSpec",function(){
     describe("isSet to Food List", function(){
        it("Should check if current page is Food List page", function(){
             expect(scope.item).toBe(1);
+            expect(scope.isSet).not.toHaveBeenCalled();
             var itemAt = scope.isSet(1);
-            scope.$digest();
+            expect(scope.isSet).toHaveBeenCalled();
             expect(itemAt).toBe(true);
        }) ;
     });
@@ -88,17 +90,19 @@ describe("NavControllerSpec",function(){
     describe("isSet to Food List", function(){
        it("Should check if current page is BMI Calculator page", function(){
             expect(scope.item).toBe(1);
+            expect(scope.isSet).not.toHaveBeenCalled();
             scope.setItem(3);
             var itemAt = scope.isSet(3);
-            scope.$digest();
+            expect(scope.isSet).toHaveBeenCalled();
             expect(itemAt).toBe(true);
        }) ;
     });
 
     describe("showFoodList shows Food List", function(){
        it("Should check if item and contentURL are for Food List", function(){
+            expect(scope.showFoodList).not.toHaveBeenCalled();
             scope.showFoodList();
-            scope.$digest();
+            expect(scope.showFoodList).toHaveBeenCalled();
             expect(scope.item).toBe(1);
             expect(scope.contentURL).toBe('/ajax/getAllFood');
 
@@ -107,8 +111,9 @@ describe("NavControllerSpec",function(){
 
     describe("showBMICal shows BMI Calculator", function(){
        it("Should check if item and contentURL are for BMI Calculator", function(){
+            expect(scope.showBMICal).not.toHaveBeenCalled();
             scope.showBMICal();
-            scope.$digest();
+            expect(scope.showBMICal).toHaveBeenCalled();
             expect(scope.item).toBe(2);
             expect(scope.contentURL).toBe("../static/html/bmiCal.html?v="+html_version);
        }) ;
@@ -116,8 +121,9 @@ describe("NavControllerSpec",function(){
 
     describe("showAbout shows About", function(){
        it("Should check if item and contentURL are for About", function(){
+           expect(scope.showAbout).not.toHaveBeenCalled();
             scope.showAbout();
-            scope.$digest();
+            expect(scope.showAbout).toHaveBeenCalled();
             expect(scope.item).toBe(3);
             expect(scope.contentURL).toBe("../static/html/about.html?v="+html_version);
        }) ;
@@ -125,8 +131,9 @@ describe("NavControllerSpec",function(){
 
     describe("showProfile shows User Profile", function(){
        it("Should check if item and contentURL are for User Profile", function(){
+            expect(scope.showProfile).not.toHaveBeenCalled();
             scope.showProfile();
-            scope.$digest();
+            expect(scope.showProfile).toHaveBeenCalled();
             expect(scope.item).toBe(4);
             expect(scope.contentURL).toBe('/ajax/getProfile');
        }) ;

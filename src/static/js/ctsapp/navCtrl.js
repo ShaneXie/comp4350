@@ -11,6 +11,9 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
     $scope.regInfo = {};
     $scope.contentURL = '/ajax/getAllFood';
 
+    $scope.reloadPage =function() {
+        location.reload();
+    }
     $scope.setItem = function(newValue){
         $scope.item = newValue;
     };
@@ -47,7 +50,7 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
             if(response=="success"){
                 //update csrf token
                 $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
-                location.reload();
+                $scope.reloadPage();
             }else{
                 $.scojs_message(response, $.scojs_message.TYPE_ERROR);
             }
@@ -61,7 +64,7 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
             if(response=="success"){
                 //update csrf token
                 $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
-                location.reload();
+                $scope.reloadPage();
             }else{
                 $.scojs_message(response, $.scojs_message.TYPE_ERROR);
             }
@@ -71,7 +74,7 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
     $scope.logout =function(){
         $http.get('/ajax/logout/').success(function (response) {
             if(response=="success") {
-                location.reload();
+                $scope.reloadPage();
             }else{
                 $.scojs_message("Logout fail: Ajax Error", $.scojs_message.TYPE_ERROR);
             }
