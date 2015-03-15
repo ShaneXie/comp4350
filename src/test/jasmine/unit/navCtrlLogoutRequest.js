@@ -1,4 +1,4 @@
-describe('navCtrlLoginRequest', function(){
+describe('navCtrlLogoutRequest', function(){
     var $httpBackend, rootScope, controller, scope;
 
     beforeEach(function () {
