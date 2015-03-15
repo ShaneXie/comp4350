@@ -1,5 +1,5 @@
-describe('navCtrlLoginRequest', function(){
-    var $httpBackend, rootScope,data, controller, scope;
+describe('navCtrlRegisterRequest', function(){
+    var $httpBackend, rootScope,userData,userProfileData, controller, scope;
 
     beforeEach(function () {
         module('cts');
@@ -35,8 +35,8 @@ describe('navCtrlLoginRequest', function(){
         $httpBackend.verifyNoOutstandingRequest();
     });
 
-    describe("Login user", function() {
-        it('should get login success', function () {
+    describe("Register user", function() {
+        it('should Register the user', function () {
 
             scope.regInfo = {genName: "Male", regEmailName: "test@hotmail.com",regFirstName: "FnameTest",regHgtName: 150,regLastName: "LnameTest",regPwdName: "testing", regWgtName: 150,csrfmiddlewaretoken:'ABC'};
             expect(scope.setCookies).not.toHaveBeenCalled();
