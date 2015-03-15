@@ -8,6 +8,7 @@
       $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
   }]);
 
+  html_version = 1.1
 
 
   

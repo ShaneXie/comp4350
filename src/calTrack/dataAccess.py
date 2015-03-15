@@ -4,11 +4,6 @@ from calTrack.models import Foods,UserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as loginUser, logout as logoutUser
 
-
-def getAllFoods():
-    return Foods.objects.all()
-
-
 def foodCount():
     return Foods.objects.count()
 
@@ -16,12 +11,6 @@ def checkUserProfileExists(req):
     username = req.user
     profile =  UserProfile.objects.filter(user__username=username).count()
     return profile
-
-def getUserProfile(req):
-    username = req.user
-    profile =  UserProfile.objects.filter(user__username=username)[0]
-    return profile
-
 
 def login(req):
     post = req.POST
@@ -80,7 +69,7 @@ def add_Food(req):
         fType = data['foodType']
 
         if Foods.objects.filter(fName=fName).exists():
-            return "foodExists."
+            return "Food already exists."
 
         food = Foods(fName=fName,fCalorie=fCal,fType=fType)
         food.save()
