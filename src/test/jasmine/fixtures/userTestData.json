@@ -1,9 +1,9 @@
 [
 {
     "fields": {
-        "username": "niteshsinghania@hotmail.com",
-        "first_name": "nitesh",
-        "last_name": "singhania",
+        "username": "test@hotmail.com",
+        "first_name": "FnameTest",
+        "last_name": "LnameTest",
         "is_active": true,
         "is_superuser": true,
         "is_staff": true,
@@ -11,7 +11,7 @@
         "groups": [],
         "user_permissions": [],
         "password": "testing",
-        "email": "niteshsinghania@hotmail.com",
+        "email": "test@hotmail.com",
         "date_joined": "2015-02-08T04:47:45.981Z"
     },
     "model": "auth.user",
