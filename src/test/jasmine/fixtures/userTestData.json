@@ -1,0 +1,20 @@
+[
+{
+    "fields": {
+        "username": "test@hotmail.com",
+        "first_name": "FnameTest",
+        "last_name": "LnameTest",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2015-03-11T05:34:04.404Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "testing",
+        "email": "test@hotmail.com",
+        "date_joined": "2015-02-08T04:47:45.981Z"
+    },
+    "model": "auth.user",
+    "pk": 2
+}
+]

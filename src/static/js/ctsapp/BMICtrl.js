@@ -1,6 +1,5 @@
 app.controller('bmiController',['$scope' , function($scope){
     $scope.isStd = false;
-
     $scope.stdHgt;
     $scope.stdWgt;
     $scope.mtrHgt;
@@ -18,9 +17,10 @@ app.controller('bmiController',['$scope' , function($scope){
       } else {
         $scope.bmi = ($scope.mtrWgt/($scope.mtrHgt*$scope.mtrHgt))*10000;
       }
-      $scope.result+=(Math.round($scope.bmi * 100) / 100+" You are ");
+      $scope.bmi = Math.round($scope.bmi * 100) / 100
+      $scope.result+=($scope.bmi+" You are ");
       if($scope.bmi<=18.5){
-          msg = "Underweight ";
+          msg = "Underweight";
       }else if($scope.bmi>18.5&&$scope.bmi<25){
           msg = "Normal weight";
       }else if($scope.bmi>=25&&$scope.bmi<=29.9){
