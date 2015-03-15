@@ -1,4 +1,4 @@
-describe('navCtrlRequest', function(){
+describe('navCtrlLoginRequest', function(){
     var $httpBackend, rootScope,data, controller, scope;
 
     beforeEach(function () {
@@ -12,6 +12,8 @@ describe('navCtrlRequest', function(){
             controller = $injector.get('$controller')("NavController",{$scope: scope});
             $httpBackend.when('POST','/ajax/login/',
                 function(postData) {
+                    paramData=jQuery.param(scope.loginInfo);
+                    expect(paramData).toBe(postData);
                     expect(scope.loginInfo.loginEmailName).toBe(data[0].fields.username);
                     expect(scope.loginInfo.loginPwdName).toBe(data[0].fields.password);
                     expect(scope.loginInfo.csrfmiddlewaretoken).toBe('ABC');
@@ -29,7 +31,7 @@ describe('navCtrlRequest', function(){
 
     describe("Login user", function() {
         it('should get login success', function () {
-            scope.loginInfo = {loginEmailName:'niteshsinghania@hotmail.com', loginPwdName:'testing', csrfmiddlewaretoken:'ABC'};
+            scope.loginInfo = {loginEmailName:'test@hotmail.com', loginPwdName:'testing', csrfmiddlewaretoken:'ABC'};
             expect(scope.setCookies).not.toHaveBeenCalled();
             scope.login();
             expect(scope.setCookies).toHaveBeenCalled();
