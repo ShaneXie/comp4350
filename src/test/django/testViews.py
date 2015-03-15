@@ -2,7 +2,6 @@ from django.test import TestCase
 from calTrack.models import Foods, UserProfile
 
 class ViewTestCase(TestCase):
-	fixtures = ['calTrackViewsTestdata.json']
 
 	def testInvalidIndexView(self):
 		response = self.client.get('/index/')

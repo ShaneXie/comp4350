@@ -1,5 +1,3 @@
-
-
 app.controller('NavController', ['$http','$scope','$cookies',function($http,$scope,$cookies){
     //  0 ---- Login
     //  1 ---- Food List
@@ -9,10 +7,16 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
 
     $scope.item = 1;
-
     $scope.loginInfo={};
     $scope.regInfo = {};
     $scope.contentURL = '/ajax/getAllFood';
+
+    $scope.reloadPage =function() {
+        location.reload();
+    };
+    $scope.setCookies =function() {
+        $scope.loginInfo.csrfmiddlewaretoken = $cookies.csrftoken;
+    }
 
     $scope.setItem = function(newValue){
         $scope.item = newValue;
@@ -29,13 +33,13 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
 
     $scope.showBMICal = function(){
         $scope.item = 2;
-        var url = "../static/html/bmiCal.html?v="+Date.now();
+        var url = "../static/html/bmiCal.html?v="+html_version;
         $scope.contentURL = url;
     };
 
     $scope.showAbout = function(){
         $scope.item = 3;
-        var url = "../static/html/about.html?v="+Date.now();
+        var url = "../static/html/about.html?v="+html_version;
         $scope.contentURL = url;
     };
     $scope.showProfile = function(){
@@ -44,14 +48,13 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
     };
 
     $scope.reg = function (){
-        $scope.regInfo.csrfmiddlewaretoken = $cookies.csrftoken;
+        $scope.setCookies();
         data=jQuery.param($scope.regInfo);
-        console.log(data);
         $http.post('/ajax/register/',data).success(function (response) {
             if(response=="success"){
                 //update csrf token
                 $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
-                location.reload();
+                $scope.reloadPage();
             }else{
                 $.scojs_message(response, $.scojs_message.TYPE_ERROR);
             }
@@ -59,13 +62,13 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
         });
     };
     $scope.login = function (){
-        $scope.loginInfo.csrfmiddlewaretoken = $cookies.csrftoken;
+        $scope.setCookies();
         data=jQuery.param($scope.loginInfo);
         $http.post('/ajax/login/',data).success(function (response) {
             if(response=="success"){
                 //update csrf token
                 $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
-                location.reload();
+                $scope.reloadPage();
             }else{
                 $.scojs_message(response, $.scojs_message.TYPE_ERROR);
             }
@@ -75,7 +78,7 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
     $scope.logout =function(){
         $http.get('/ajax/logout/').success(function (response) {
             if(response=="success") {
-                location.reload();
+                $scope.reloadPage();
             }else{
                 $.scojs_message("Logout fail: Ajax Error", $.scojs_message.TYPE_ERROR);
             }
