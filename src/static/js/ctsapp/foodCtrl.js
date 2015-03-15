@@ -5,23 +5,35 @@ app.controller('foodListController', ['$scope', '$http', '$cookies',function($sc
 
     $scope.foods = [];
     $scope.food = {};
-    $scope.food.csrfmiddlewaretoken = $cookies.csrftoken;
 
     $http.get('/api/getAllFood').success(function(data){
         $scope.foods = angular.fromJson(data);
     });
+
+    $scope.setCookies =function() {
+        $scope.food.csrfmiddlewaretoken = $cookies.csrftoken;
+    };
+
+    $scope.succesAlertMessge = function(){
+        $.scojs_message('New Food Added!', $.scojs_message.TYPE_OK);
+    };
+
+    $scope.resetForm = function(){
+        $scope.food = {};
+        $scope.addFoodForm.$setPristine();
+    };
+
     $scope.addFood = function (){
-      
+      $scope.setCookies();
       data=jQuery.param($scope.food);
       $http.post('/ajax/addFood/',data).success(function (response) {
         if(response=="success"){
-             $.scojs_message('New Food Added!', $.scojs_message.TYPE_OK);
+             $scope.succesAlertMessge();
              //$("#content").load("/ajax/getAllFood");
              newFood = '<tr><td>'+$('#addFoodName').val()+'</td><td>'+$('#addFoodCal').val()+'</td><td>'+$('#addFoodType option:selected').text()+'</td></tr>';
              $("#foodTable tr:first").after(newFood);
              $('#addFoodForm').trigger("reset");
-             $scope.food = {};
-             $scope.addFoodForm.$setPristine();
+             $scope.resetForm();
          }else{
              $.scojs_message(response, $.scojs_message.TYPE_ERROR);
          }
