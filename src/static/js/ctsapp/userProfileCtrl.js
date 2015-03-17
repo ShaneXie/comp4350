@@ -43,7 +43,7 @@ app.controller('userProfileController', ['$http','$filter', '$scope', function($
     };
 
     $scope.succesAlertMessge = function(){
-        $.scojs_message('User profile updated', $.scojs_message.TYPE_OK);
+        $.scojs_message('User profile updated.', $.scojs_message.TYPE_OK);
     };
 
     $scope.failAlertMessge = function(response){

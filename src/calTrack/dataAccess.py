@@ -88,4 +88,4 @@ def update_profile(req):
         UserProfile.objects.filter(user_id=userId).update(weight=userWeight, height=userHeight, gender=userGender);
         return 'success'
     else:
-        return 'Error updating user profile.'
+        return 'Updating user profile failed.'
