@@ -11,24 +11,34 @@ import UIKit
 class foodListTableViewController: UITableViewController {
 
     var tableData: Array<AnyObject> = []
-    var json = JSON(["json"])
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let inset:UIEdgeInsets = UIEdgeInsetsMake(100, 0, 0, 0)
+        let inset:UIEdgeInsets = UIEdgeInsetsMake(20, 0, 0, 0)
         self.tableView.contentInset = inset
-        
-        tableData = ["food1", "food2", "food3","food4", "food2", "food3","food4", "food2", "food3","food4", "food2", "food3","food4", "food2", "food3","food4"]
-        
-        
-        
-        request(.GET, "https://api.twitch.tv/kraken/streams?game=dota%202")
+
+        request(.GET, "http://4350.intpointer.com/api/getAllFood/")
             .responseJSON {(request, response, reJson, error) in
-                //println(reJson)
-                var myjson = JSON(reJson!)
-                //println(myjson)
-                println(myjson["streams"][0])
+                var foods = JSON(reJson!)
+                var name = ""
+                var cal = ""
+                var type = ""
+                var item = ""
+                
+                println(foods["foods"].count)
+                println(foods["foods"][0]["fName"].stringValue)
+                
+                for idx in 0..<foods["foods"].count{
+                    name = foods["foods"][idx]["fName"].stringValue
+                    cal = foods["foods"][idx]["fCalorie"].stringValue
+                    type = foods["foods"][idx]["fType"].stringValue
+                    item = "\(name)\t\t\t\(cal)\t\t\(type)"
+                    println(item)
+                    self.tableData.append(item)
+                }
+
+                self.tableView.reloadData()
         }
         
         
