@@ -36,7 +36,7 @@
                                 <th class="col-md-2">Weight:</th>
                                 <td style = "width:15%" ng-model="profileData.weight">
                                     <!-- editable weight (text with validation) -->
-                                    <span editable-text="profileData.weight" e-form="tableform" onbeforesave="checkWeight($data)">
+                                    <span editable-number="profileData.weight" e-form="tableform" onbeforesave="checkWeight($data)">
                                         {[{profileData.weight +' kg'}]}
                                     </span>
                                 </td>
