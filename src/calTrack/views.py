@@ -37,7 +37,7 @@ def loadJSON(request, query):
     if query == 'getAllFood':
         data = api.allFoodsJson()
         if data:
-            return JsonResponse(data, safe=False)
+            return JsonResponse(data, safe=True)
         else:
             errMsg="Get food list Error Message,No Food in Database."
     elif query == 'getProfile':
