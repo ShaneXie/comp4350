@@ -43,7 +43,7 @@ def loadJSON(request, query):
     elif query == 'getProfile':
         profileData = api.userProfile(request)
         if profileData:
-            return JsonResponse(profileData, safe=False) 
+            return JsonResponse(profileData, safe=True) 
         else:
             errMsg="User Profile Doesn't exists."
     else:
