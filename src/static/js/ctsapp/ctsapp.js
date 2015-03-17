@@ -1,5 +1,5 @@
 
-  var app = angular.module('cts', ['ngCookies']).config(function($interpolateProvider){
+  var app = angular.module('cts', ['ngCookies', "xeditable"]).config(function($interpolateProvider){
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
   });
 
@@ -7,6 +7,7 @@
       $httpProvider.defaults.xsrfCookieName = 'csrftoken';
       $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
   }]);
+
 
   html_version = 1.1
 
