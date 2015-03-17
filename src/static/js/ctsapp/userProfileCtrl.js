@@ -7,8 +7,8 @@ app.controller('userProfileController', ['$http','$filter', '$scope', function($
     $scope.profileData = [] ;
 
     $http.get('/api/getProfile/').success(function(data){
-
-        $scope.profileData = angular.fromJson(data)[0].fields;
+        console.log(data.profile[0])
+        $scope.profileData = data.profile[0];
 
     });
     $scope.genders = [
