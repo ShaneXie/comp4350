@@ -1,6 +1,8 @@
 # comp4350
 Comp4350 Group7 Project
-Adding the foodlist view to the app
+
+Web client source code is in src folder.
+iOS client source code is in CTS folder.
 
 To view the project please visit "4350.intpointer.com"
 
