@@ -7,7 +7,7 @@ app.controller('foodListController', ['$scope', '$http', '$cookies',function($sc
     $scope.food = {};
 
     $http.get('/api/getAllFood').success(function(data){
-        $scope.foods = angular.fromJson(data);
+        $scope.foods = data.foods;
     });
 
     $scope.setCookies =function() {
