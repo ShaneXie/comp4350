@@ -24,6 +24,8 @@ def loadAjaxData(request, query):
         return HttpResponse(dataAccess.add_user(request))
     elif query == 'addFood':
         return HttpResponse(dataAccess.add_Food(request))
+    elif query == 'updateProfile':
+        return HttpResponse(dataAccess.update_profile(request))
     else:
         errMsg="Unknown Request"
 
@@ -37,7 +39,7 @@ def loadJSON(request, query):
         if data:
             return JsonResponse(data, safe=False)
         else:
-            errMsg="Get food list Error Message,No Food in DataBase."
+            errMsg="Get food list Error Message,No Food in Database."
     elif query == 'getProfile':
         profileData = api.userProfile(request)
         if profileData:
