@@ -76,3 +76,16 @@ def add_Food(req):
         return 'success'
     else:
         return 'You need login to add new food.'
+
+def update_profile(req):
+    if req.user.is_authenticated():
+        data = req.POST
+        userWeight = data['weight']
+        userHeight = data['height']
+        userGender = data['gender']
+        userId = data['user']
+
+        UserProfile.objects.filter(user_id=userId).update(weight=userWeight, height=userHeight, gender=userGender);
+        return 'success'
+    else:
+        return 'Updating user profile failed.'
