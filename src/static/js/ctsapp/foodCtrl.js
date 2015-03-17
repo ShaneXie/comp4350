@@ -18,6 +18,10 @@ app.controller('foodListController', ['$scope', '$http', '$cookies',function($sc
         $.scojs_message('New Food Added!', $.scojs_message.TYPE_OK);
     };
 
+    $scope.failAlertMessge = function(response){
+             $.scojs_message(response, $.scojs_message.TYPE_ERROR);
+    };
+
     $scope.resetForm = function(){
         $scope.food = {};
         $scope.addFoodForm.$setPristine();
@@ -35,7 +39,7 @@ app.controller('foodListController', ['$scope', '$http', '$cookies',function($sc
              $('#addFoodForm').trigger("reset");
              $scope.resetForm();
          }else{
-             $.scojs_message(response, $.scojs_message.TYPE_ERROR);
+            $scope.failAlertMessge(response);
          }
 
       });

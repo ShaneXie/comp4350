@@ -1,33 +1,85 @@
+<head>
+    <style>
+        form[name="tableform"] > div {
+            height: auto;
+            padding: 5px 0;
+        }
 
+        form[name="tableform"] .title {
+            display: inline-block;
+            font-weight: bold;
+            padding-top: 5px;
+            vertical-align: top;
+            min-width: 90px;
+        }
+
+        form[name="tableform"] .editable {
+            display: inline-block;
+            padding-top: 5px;
+            vertical-align: top;
+        }
+
+        form[name="tableform"] select {
+            width: 120px;
+        }
+    </style>
+</head>
 <div id="foodListDiv" ng-controller="userProfileController">
-  <h1 class="page-header"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user.first_name}}'s Profile</h1>
-  {% if user.is_authenticated %}
-    {% if profile %}
-        <div class="col-md-6">
-        <div class="panel panel-primary">
-            <table class="table table-hover table-bordered" id="UserProfileTable">
-                <tr class="info">
-                    <th class="col-md-2">Weight:</th>
-                    <td ng-model="profileData.weight">{[{profileData.weight +' kg'}]}</td>
-                </tr>
-                <tr class="info">
-                    <th class="col-md-2">Height:</th>
-                    <td ng-model="profileData.height">{[{profileData.height +' cm'}]}</td>
-                </tr>
-                <tr class="info">
-                    <th class="col-md-2">Gender:</th>
-                    <td ng-model="profileData.gender">{[{profileData.gender}]}</td>
-                </tr>
-                <tr class="info">
-                    <th class="col-md-2">BMI:</th>
-                    <td>{[{userBMI()}]}</td>
-                </tr>
-            </table>
-        </div>
-        </div>
-    {% else %}
-        <div class="alert alert-danger" role="alert">User Profile doesn't exists.</div>
+    <h1 class="page-header"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user.first_name}}'s Profile</h1>
+    {% if user.is_authenticated %}
+        {% if profile %}
+            <div class="col-md-6">
+                <form editable-form name="tableform" onaftersave="saveTable()" oncancel="cancel()">
+                    {% csrf_token %}
+                    <div class="panel panel-primary">
+                        <table class="table table-hover table-bordered" id="UserProfileTable">
+                            <tr class="info">
+                                <th class="col-md-2">Weight:</th>
+                                <td style = "width:15%" ng-model="profileData.weight">
+                                    <!-- editable weight (text with validation) -->
+                                    <span editable-number="profileData.weight" e-form="tableform" onbeforesave="checkWeight($data)">
+                                        {[{profileData.weight +' kg'}]}
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="info">
+                                <th class="col-md-2">Height:</th>
+                                <td style = "width:15%" ng-model="profileData.height">
+                                    <!-- editable height (text with validation) -->
+                                    <span editable-number="profileData.height" e-form="tableform" onbeforesave="checkHeight($data)">
+                                        {[{profileData.height +' cm'}]}
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="info">
+                                <th class="col-md-2">Gender:</th>
+                                <td style = "width:15%" ng-model="profileData.gender">
+                                <span editable-select="profileData.gender" e-form="tableform"  e-ng-options="g.value as g.text for g in genders">
+                                        {[{showStatus(profileData.gender)}]}
+                                </span>
+                                </td>
+                            </tr>
+                            <tr class="info">
+                                <th class="col-md-2">BMI:</th>
+                                <td style = "width:15%">{[{userBMI()}]}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- buttons -->
+                    <div class="btn-edit">
+                        <button type="button" class="btn btn-default" ng-show="!tableform.$visible" ng-click="tableform.$show()">
+                            edit
+                        </button>
+                    </div>
+                    <div class="btn-form" ng-show="tableform.$visible">
+                        <button type="submit" ng-disabled="tableform.$waiting" class="btn btn-primary">save</button>
+                        <button type="button" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn btn-default">cancel</button>
+                    </div>
+                </form>
+            </div>
+        {% else %}
+            <div class="alert alert-danger" role="alert">User Profile doesn't exists.</div>
+        {% endif %}
     {% endif %}
-  {% endif %}
 
 </div>
