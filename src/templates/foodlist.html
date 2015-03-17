@@ -70,10 +70,10 @@
               </tr>
           </thead>
       <tbody>
-              <tr ng-repeat="f in foods track by $index | orderBy: fname">
-                  <td>{[{f.fields.fName}]}</td>
-                  <td>{[{f.fields.fCalorie}]}</td>
-                  <td>{[{f.fields.fType}]}</td>
+              <tr ng-repeat="f in foods | orderBy: fname">
+                  <td>{[{f.fName}]}</td>
+                  <td>{[{f.fCalorie}]}</td>
+                  <td>{[{f.fType}]}</td>
               </tr>
       </tbody>
       </table>

@@ -17,8 +17,8 @@ def allFoodsJson():
 
 def userProfile(req):
 	username = req.user
-	profile = UserProfile.objects.filter(user__username=username).values('weight','height','gender')
+	profile = UserProfile.objects.filter(user__username=username).values('weight','height','gender','user')
 	dic = {}
-	arr = [{'weight':d['weight'],'height':d['height'],'gender':d['gender']} for d in profile]
+	arr = [{'weight':d['weight'],'height':d['height'],'gender':d['gender'],'user':d['user']} for d in profile]
 	dic["profile"]=arr
 	return dic
