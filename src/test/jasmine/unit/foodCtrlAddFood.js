@@ -15,9 +15,9 @@ describe('foodListControllerAddFood', function(){
                 function(postData) {
                     paramData=jQuery.param(scope.food);
                     expect(paramData).toBe(postData);
-                    expect(scope.food.fType).toBe(data[0].fields.fType);
-                    expect(scope.food.fCalorie).toBe(data[0].fields.fCalorie);
-                    expect(scope.food.fName).toBe(data[0].fields.fName);
+                    expect(scope.food.fType).toBe(data[0].fType);
+                    expect(scope.food.fCalorie).toBe(data[0].fCalorie);
+                    expect(scope.food.fName).toBe(data[0].fName);
                     expect(scope.food.csrfmiddlewaretoken).toBe('ABC');
                     return true;
                 }).respond(200, 'success');
@@ -35,7 +35,7 @@ describe('foodListControllerAddFood', function(){
     describe("Add food to the list", function() {
         it('should add food to the list', function () {
 
-            scope.food = {fType: "d", fCalorie: 100, fName: "Chicken Burger",csrfmiddlewaretoken:'ABC'};
+            scope.food = {fType: "Dinner", fCalorie: 100, fName: "Chicken Burger",csrfmiddlewaretoken:'ABC'};
             expect(scope.setCookies).not.toHaveBeenCalled();
             expect(scope.succesAlertMessge).not.toHaveBeenCalled();
             expect(scope.resetForm).not.toHaveBeenCalled();

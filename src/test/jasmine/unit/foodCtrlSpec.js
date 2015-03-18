@@ -8,9 +8,11 @@ describe('foodCtrlSpec', function(){
             scope = rootScope.$new();
             $httpBackend = $injector.get('$httpBackend');
             jasmine.getJSONFixtures().fixturesPath='/Users/niteshsinghania/GitHub/Comp4350/src/test/jasmine/fixtures/'
-            data = getJSONFixture('foodListTestData.json');
-            controller = $injector.get('$controller')("foodListController",{$scope: scope});
+            arr = getJSONFixture('foodListTestData.json');
+            data = {};
+	        data["foods"]=arr;
             $httpBackend.whenGET('/api/getAllFood').respond(data, 200, 'success');
+            controller = $injector.get('$controller')("foodListController",{$scope: scope});
 
         });
     });
@@ -29,10 +31,10 @@ describe('foodCtrlSpec', function(){
             $httpBackend.expectGET('/api/getAllFood').respond(data, 200, "success");
             $httpBackend.flush();
             expect(scope.foods instanceof Array).toBeTruthy();
-            expect(scope.foods.length).toBe(data.length);
-            expect(scope.foods[0].fields.fType).toBe(data[0].fields.fType);
-            expect(scope.foods[0].fields.fName).toBe(data[0].fields.fName);
-            expect(scope.foods[0].fields.fCalorie).toBe(data[0].fields.fCalorie);
+            expect(scope.foods.length).toBe(data.foods.length);
+            expect(scope.foods[0].fType).toBe(data.foods[0].fType);
+            expect(scope.foods[0].fName).toBe(data.foods[0].fName);
+            expect(scope.foods[0].fCalorie).toBe(data.foods[0].fCalorie);
 
         });
     });

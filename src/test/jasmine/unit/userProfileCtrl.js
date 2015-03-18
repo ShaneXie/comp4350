@@ -1,4 +1,4 @@
-describe('userProfileCtrlSpec', function(){
+describe('userProfileCtrl', function(){
     var $httpBackend, rootScope,data, controller, scope;
 
     beforeEach(function () {
@@ -8,7 +8,9 @@ describe('userProfileCtrlSpec', function(){
             scope = rootScope.$new();
             $httpBackend = $injector.get('$httpBackend');
             jasmine.getJSONFixtures().fixturesPath='/Users/niteshsinghania/GitHub/Comp4350/src/test/jasmine/fixtures/'
-            data = getJSONFixture('userProfileTestData.json');
+            arr = getJSONFixture('userProfileTestData.json');
+            data = {}
+            data['profile']= arr
             controller = $injector.get('$controller')("userProfileController",{$scope: scope});
             $httpBackend.whenGET('/api/getProfile/').respond(data);
         });
@@ -33,8 +35,6 @@ describe('userProfileCtrlSpec', function(){
             expect(scope.profileData.weight).toBe(150);
             expect(scope.profileData.height).toBe(150);
             expect(scope.profileData.gender).toBe('Male');
-            expect(scope.profileData.age).toBe(20);
-            expect(scope.profileData.amtOfExc).toBeNull();
         });
     });
     describe("Generate request to get user profile", function(){

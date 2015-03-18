@@ -9,19 +9,21 @@ describe('navCtrlRegisterRequest', function(){
             $httpBackend = $injector.get('$httpBackend');
             jasmine.getJSONFixtures().fixturesPath='/Users/niteshsinghania/GitHub/Comp4350/src/test/jasmine/fixtures/';
             userData = getJSONFixture('userTestData.json');
-            userProfileData = getJSONFixture('userProfileTestData.json');
+            arr= getJSONFixture('userProfileTestData.json');
+            userProfileData = {};
+            userProfileData['profile'] = arr;
             controller = $injector.get('$controller')("NavController",{$scope: scope});
             $httpBackend.when('POST','/ajax/register/',
                 function(postData) {
                     paramData=jQuery.param(scope.regInfo);
                     expect(paramData).toBe(postData);
-                    expect(scope.regInfo.genName).toBe(userProfileData[0].fields.gender);
+                    expect(scope.regInfo.genName).toBe(userProfileData.profile[0].gender);
                     expect(scope.regInfo.regEmailName).toBe(userData[0].fields.username);
                     expect(scope.regInfo.regFirstName).toBe(userData[0].fields.first_name);
-                    expect(scope.regInfo.regHgtName).toBe(userProfileData[0].fields.height);
+                    expect(scope.regInfo.regHgtName).toBe(userProfileData.profile[0].height);
                     expect(scope.regInfo.regLastName).toBe(userData[0].fields.last_name);
                     expect(scope.regInfo.regPwdName).toBe(userData[0].fields.password);
-                    expect(scope.regInfo.regWgtName).toBe(userProfileData[0].fields.weight);
+                    expect(scope.regInfo.regWgtName).toBe(userProfileData.profile[0].weight);
                     expect(scope.regInfo.csrfmiddlewaretoken).toBe('ABC');
                     return true;
                 }).respond(200, 'success');
