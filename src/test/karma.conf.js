@@ -21,6 +21,7 @@ module.exports = function(config) {
         'test/jasmine/lib/angular.js',
         'static/js/angular-cookies.js',
         'static/js/jquery-2.1.3.min.js',
+        'static/js/xeditable.js',
         'static/js/ctsapp/ctsapp.js',
         'static/js/ctsapp/*.js',
         'test/jasmine/lib/angular-mocks.js',
