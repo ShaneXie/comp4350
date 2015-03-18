@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		137F231C1AB9227B005B000F /* BMIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137F231B1AB9227B005B000F /* BMIViewController.swift */; };
 		340E61A31AB42954005A5262 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E61A21AB42954005A5262 /* AppDelegate.swift */; };
-		340E61A71AB42954005A5262 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E61A61AB42954005A5262 /* SecondViewController.swift */; };
+		340E61A71AB42954005A5262 /* BMIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E61A61AB42954005A5262 /* BMIViewController.swift */; };
 		340E61AA1AB42954005A5262 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 340E61A81AB42954005A5262 /* Main.storyboard */; };
 		340E61AC1AB42954005A5262 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 340E61AB1AB42954005A5262 /* Images.xcassets */; };
 		340E61AF1AB42954005A5262 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 340E61AD1AB42954005A5262 /* LaunchScreen.xib */; };
@@ -30,11 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		137F231B1AB9227B005B000F /* BMIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BMIViewController.swift; path = CTS/BMIViewController.swift; sourceTree = "<group>"; };
 		340E619D1AB42954005A5262 /* CTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		340E61A11AB42954005A5262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		340E61A21AB42954005A5262 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		340E61A61AB42954005A5262 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		340E61A61AB42954005A5262 /* BMIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIViewController.swift; sourceTree = "<group>"; };
 		340E61A91AB42954005A5262 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		340E61AB1AB42954005A5262 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		340E61AE1AB42954005A5262 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 		340E61941AB42954005A5262 = {
 			isa = PBXGroup;
 			children = (
-				137F231B1AB9227B005B000F /* BMIViewController.swift */,
 				340E619F1AB42954005A5262 /* CTS */,
 				340E61B71AB42954005A5262 /* CTSTests */,
 				340E619E1AB42954005A5262 /* Products */,
@@ -87,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				340E61A21AB42954005A5262 /* AppDelegate.swift */,
-				340E61A61AB42954005A5262 /* SecondViewController.swift */,
+				340E61A61AB42954005A5262 /* BMIViewController.swift */,
 				34D918F61AB77C4600E1B82F /* SwiftyJSON.swift */,
 				34D918F81AB77C7600E1B82F /* Alamofire.swift */,
 				340E61A81AB42954005A5262 /* Main.storyboard */,
@@ -225,8 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				340E61A71AB42954005A5262 /* SecondViewController.swift in Sources */,
-				137F231C1AB9227B005B000F /* BMIViewController.swift in Sources */,
+				340E61A71AB42954005A5262 /* BMIViewController.swift in Sources */,
 				34D918F91AB77C7600E1B82F /* Alamofire.swift in Sources */,
 				340E61C71AB6B9E3005A5262 /* foodListTableViewController.swift in Sources */,
 				340E61A31AB42954005A5262 /* AppDelegate.swift in Sources */,

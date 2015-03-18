@@ -8,16 +8,28 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class BMIViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBOutlet weak var weightDisplay: UILabel!
+    @IBOutlet weak var heightDisplay: UILabel!
+    @IBOutlet weak var BMIDisplay: UILabel!
+    @IBOutlet weak var weightSlider10: UISlider!
+    @IBOutlet weak var weightSlider1: UISlider!
+    @IBOutlet weak var heightSlider10: UISlider!
+    @IBOutlet weak var heightSlider1: UISlider!
+    
+    @IBAction func sliderUpdate(sender: UISlider) {
+        
+        var weight = Float(lroundf(weightSlider1.value))/2.0
+        weight = weight + Float(lroundf(weightSlider10.value)*10)
+        var height = Float(lroundf(heightSlider1.value))/2.0
+        height = height + Float(lroundf(heightSlider10.value)*10)
+        //var height = Float(lroundf(heightSlider10.value)*10+lroundf(heightSlider1.value)/2)
+        var BMI = Float(lroundf(weight/height/height*1000000))/100.0
+        
+        weightDisplay.text = "\(weight)"
+        heightDisplay.text = "\(height)"
+        BMIDisplay.text = "\(BMI)"
     }
     
 
