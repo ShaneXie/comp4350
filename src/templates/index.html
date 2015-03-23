@@ -79,7 +79,7 @@
           <ul class="nav nav-sidebar">
           {% if user.is_authenticated %}
             <li class="barItem" ng-class="{ active: isSet(5) }" id="newRecordItem" >
-              <a ng-click="showNewRecord()" href="#">New Record</a>
+              <a ng-click="showNewRecord()" href="#">Calorie Records</a>
             </li>
           {% endif %}
             <li class="barItem" ng-class="{ active: isSet(1) }" id="foodlistItem" >
@@ -236,5 +236,5 @@
     <script src="{% static 'js/ctsapp/userProfileCtrl.js' %}"></script>
     <script src="{% static 'js/ctsapp/navCtrl.js' %}"></script>
     <script src="{% static 'js/ctsapp/BMICtrl.js' %}"></script>
-
+    <script src="{% static 'js/ctsapp/recordCtrl.js' %}"></script>
 </body></html>

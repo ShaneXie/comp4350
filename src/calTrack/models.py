@@ -75,4 +75,14 @@ class UserProfile(models.Model):
             raise ValidationError({'weight': 'Are you sure about your weight?'})
 
 
+class Record(models.Model):
+    user = models.ForeignKey(User, unique=True)
+    food = models.ForeignKey(Foods, unique=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return ' '.join([
+            self.user.first_name,
+            self.user.last_name,
+            self.food.fName])
 
