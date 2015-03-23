@@ -17,9 +17,8 @@
                   </div>
                   <div class="form-group">
                       <label for="addFoodName">Name:</label>
-                      <select ng-model="record.foodName" class="form-control"
-                        ng-repeat="food in allFoods |filter:record.foodType" required>
-                          <option value="food.fName" tag="food.fType">food.fName</option>
+                      <select ng-model="record.foodName" class="form-control" required>
+                          <option ng-repeat="food in allFoods |filter:record.foodType" value="{[{food.fName}]}" tag="{[{food.fType}]}">{[{food.fName}]}</option>
                       </select>
                   </div>
 

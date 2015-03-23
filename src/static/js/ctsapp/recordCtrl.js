@@ -10,9 +10,7 @@ app.controller('recordController', ['$scope', '$http', '$cookies',function($scop
     $scope.record = {};
 
     $http.get('/api/getAllFood').success(function(data){
-        console.log(data)
         $scope.allFoods = data.foods;
-        console.log($scope.allFoods)
     });
 
     $scope.setCookies =function() {
@@ -35,7 +33,7 @@ app.controller('recordController', ['$scope', '$http', '$cookies',function($scop
     $scope.addRecord = function (){
       $scope.setCookies();
       data=jQuery.param($scope.record);
-      $http.post('/ajax/addFood/',data).success(function (response) {
+      $http.post('/ajax/addRecord/',data).success(function (response) {
         if(response=="success"){
              $scope.succesAlertMessge();
              //$("#content").load("/ajax/getAllFood");
