@@ -13,7 +13,7 @@ app.controller('NavController', ['$http','$scope','$cookies','$rootScope',functi
     $scope.item = 5;
     $scope.loginInfo={};
     $scope.regInfo = {};
-    $scope.contentURL = '/ajax/getAllFood';
+    $scope.contentURL = '/ajax/newRecord';
 
     $scope.reloadPage =function() {
         location.reload();
@@ -52,7 +52,7 @@ app.controller('NavController', ['$http','$scope','$cookies','$rootScope',functi
     };
     $scope.showNewRecord = function(){
         $scope.item = 5;
-        $scope.contentURL = '/ajax/getProfile';
+        $scope.contentURL = '/ajax/newRecord';
     };
 
     $scope.reg = function (){
