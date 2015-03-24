@@ -1,7 +1,7 @@
 __author__ = 'anx and Nitesh'
 
 
-from calTrack.models import Foods, UserProfile
+from calTrack.models import Foods, UserProfile, Record
 from django.core import serializers
 
 def foodQueryToDict(queryset):
@@ -21,4 +21,13 @@ def userProfile(req):
 	dic = {}
 	arr = [{'weight':d['weight'],'height':d['height'],'gender':d['gender'],'user':d['user']} for d in profile]
 	dic["profile"]=arr
+	return dic
+
+def recordJson(req):
+	username = req.user
+	print username
+	record = Record.objects.filter(user__username=username)
+	dic = {}
+	arr = []
+	dic["records"]=arr
 	return dic

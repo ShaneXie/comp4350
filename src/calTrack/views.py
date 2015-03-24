@@ -49,6 +49,12 @@ def loadJSON(request, query):
             return JsonResponse(profileData, safe=True) 
         else:
             errMsg="User Profile Doesn't exists."
+    elif query == 'getRecord':
+        records = api.recordJson(request)
+        if records:
+            return JsonResponse(records, safe=True) 
+        else:
+            errMsg="No record found!"
     else:
         errMsg="Unknown Request"
 
