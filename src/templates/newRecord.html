@@ -1,0 +1,64 @@
+
+<div id="recordsDiv" ng-controller="recordController">
+    <h1 class="page-header"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Calorie Records</h1>
+    {% if user.is_authenticated %}
+              <div class="panel panel-default">
+          <div class="panel-body">
+              <form name="newRecordForm" id="newRecordForm" class="form-inline" ng-submit="newRecordForm.$valid && addRecord()" novalidate>
+                  {% csrf_token %}
+                  <div class="form-group">
+                      <label for="addFoodType">Food Type:</label>
+                      <select ng-model="record.foodType" class="form-control" name="newRecordFoodType" id="newRecordFoodType" required>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Snacks">Snacks</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="addFoodName"> Food:</label>
+                      <select ng-model="record.foodName" class="form-control" required>
+                          <option ng-repeat="food in allFoods |filter:record.foodType" value="{[{food.fName}]}" tag="{[{food.fType}]}">{[{food.fName}]}</option>
+                      </select>
+                  </div>
+
+
+                <button id = "addFoodSmt" type="submit" class="btn btn-default btn-sm"  ng-disabled="addFoodForm.$invalid">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+              </form>
+          </div>
+      </div>
+
+
+          <table ng-show="records.length" class="table table-striped" id="recordTable">
+              <thead>
+                  <tr>
+                      <th>Food Name</th>
+                      <th>Calories</th>
+                      <th>Food Type</th>
+                      <th>Created Time</th>
+                  </tr>
+              </thead>
+          <tbody>
+                  <tr ng-repeat="r in records | orderBy: '-time'">
+                      <td>{[{r.fName}]}</td>
+                      <td>{[{r.fCalorie}]}</td>
+                      <td>{[{r.fType}]}</td>
+                      <td>{[{r.time | date:"MM/dd/yyyy 'at' h:mma"}]}</td>
+                  </tr>
+          </tbody>
+          </table>
+
+          <div ng-hide="records.length" class="alert alert-danger" role="alert">No Record found, Start track your calorie intake now!</div>
+
+    {% else %}
+        <div class="panel panel-danger">
+            <div class="panel-heading">Error:</div>
+            <div class="panel-body">
+                Please Login First.
+            </div>
+        </div>
+    {% endif %}
+
+</div>

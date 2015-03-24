@@ -11,6 +11,8 @@ def loadAjaxData(request, query):
     if query == 'getAllFood':
         foodCount = dataAccess.foodCount()
         return render_to_response('foodlist.html', {'foodCount':foodCount}, context_instance=RequestContext(request))
+    elif query == 'newRecord':
+        return render_to_response('newRecord.html',  context_instance=RequestContext(request))
     elif query == 'getProfile':
         profile = dataAccess.checkUserProfileExists(request)
         return render_to_response('userProfile.html',{'profile':profile}, context_instance=RequestContext(request))
@@ -24,10 +26,12 @@ def loadAjaxData(request, query):
         return HttpResponse(dataAccess.add_user(request))
     elif query == 'addFood':
         return HttpResponse(dataAccess.add_Food(request))
+    elif query == 'addRecord':
+        return HttpResponse(dataAccess.add_Record(request))
     elif query == 'updateProfile':
         return HttpResponse(dataAccess.update_profile(request))
     else:
-        errMsg="Unknown Request"
+        errMsg="Remote Server Error: Unknown Request"
 
     return HttpResponse(errMsg)
 
@@ -46,6 +50,12 @@ def loadJSON(request, query):
             return JsonResponse(profileData, safe=True) 
         else:
             errMsg="User Profile Doesn't exists."
+    elif query == 'getRecord':
+        records = api.recordJson(request)
+        if records:
+            return JsonResponse(records, safe=True) 
+        else:
+            errMsg="No record found!"
     else:
         errMsg="Unknown Request"
 

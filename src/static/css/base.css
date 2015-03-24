@@ -103,3 +103,39 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+
+/* profile css */
+
+form[name="tableform"] > div {
+    height: auto;
+    padding: 5px 0;
+}
+
+form[name="tableform"] .title {
+    display: inline-block;
+    font-weight: bold;
+    padding-top: 5px;
+    vertical-align: top;
+    min-width: 90px;
+}
+
+form[name="tableform"] .editable {
+    display: inline-block;
+    padding-top: 5px;
+    vertical-align: top;
+}
+
+form[name="tableform"] select {
+    width: 120px;
+}
+
+/* bmi css */
+
+input.ng-invalid.ng-dirty {
+  border-color: red;
+}
+
+input.ng-valid.ng-dirty {
+  border-color: green;
+}

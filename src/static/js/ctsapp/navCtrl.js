@@ -1,22 +1,32 @@
-app.controller('NavController', ['$http','$scope','$cookies',function($http,$scope,$cookies){
+app.controller('NavController', ['$http','$scope','$cookies','$rootScope',function($http,$scope,$rootScope,$cookies){
+
+    $rootScope.html_version = 1.1;
     //  0 ---- Login
     //  1 ---- Food List
     //  2 ---- BMI Calculator
     //  3 ---- About
+    //  4 ---- showProfile
+    //  5 ---- add new record
     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
 
-    $scope.item = 1;
+    if($('#isLoggedin').length) {
+        $scope.item = 5;
+        $scope.contentURL = '/ajax/newRecord';
+    }else{
+        $scope.item = 1;
+        $scope.contentURL = '/ajax/getAllFood';
+    }
     $scope.loginInfo={};
     $scope.regInfo = {};
-    $scope.contentURL = '/ajax/getAllFood';
+
 
     $scope.reloadPage =function() {
         location.reload();
     };
     $scope.setCookies =function() {
         $scope.loginInfo.csrfmiddlewaretoken = $cookies.csrftoken;
-    }
+    };
 
     $scope.setItem = function(newValue){
         $scope.item = newValue;
@@ -33,18 +43,22 @@ app.controller('NavController', ['$http','$scope','$cookies',function($http,$sco
 
     $scope.showBMICal = function(){
         $scope.item = 2;
-        var url = "../static/html/bmiCal.html?v="+html_version;
+        var url = "../static/html/bmiCal.html?v="+$rootScope.html_version;
         $scope.contentURL = url;
     };
 
     $scope.showAbout = function(){
         $scope.item = 3;
-        var url = "../static/html/about.html?v="+html_version;
+        var url = "../static/html/about.html?v="+$rootScope.html_version;
         $scope.contentURL = url;
     };
     $scope.showProfile = function(){
         $scope.item = 4;
         $scope.contentURL = '/ajax/getProfile';
+    };
+    $scope.showNewRecord = function(){
+        $scope.item = 5;
+        $scope.contentURL = '/ajax/newRecord';
     };
 
     $scope.reg = function (){

@@ -1,29 +1,4 @@
-<head>
-    <style>
-        form[name="tableform"] > div {
-            height: auto;
-            padding: 5px 0;
-        }
 
-        form[name="tableform"] .title {
-            display: inline-block;
-            font-weight: bold;
-            padding-top: 5px;
-            vertical-align: top;
-            min-width: 90px;
-        }
-
-        form[name="tableform"] .editable {
-            display: inline-block;
-            padding-top: 5px;
-            vertical-align: top;
-        }
-
-        form[name="tableform"] select {
-            width: 120px;
-        }
-    </style>
-</head>
 <div id="foodListDiv" ng-controller="userProfileController">
     <h1 class="page-header"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user.first_name}}'s Profile</h1>
     {% if user.is_authenticated %}
