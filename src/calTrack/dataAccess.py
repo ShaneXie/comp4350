@@ -1,16 +1,19 @@
 __author__ = 'An and Nitesh'
 
-from calTrack.models import Foods,UserProfile
+from calTrack.models import Foods, UserProfile, Record
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as loginUser, logout as logoutUser
 
+
 def foodCount():
     return Foods.objects.count()
+
 
 def checkUserProfileExists(req):
     username = req.user
     profile =  UserProfile.objects.filter(user__username=username).count()
     return profile
+
 
 def login(req):
     post = req.POST
@@ -61,6 +64,7 @@ def add_user(req):
 
         return 'success'
 
+
 def add_Food(req):
     if req.user.is_authenticated():
         data = req.POST
@@ -76,6 +80,31 @@ def add_Food(req):
         return 'success'
     else:
         return 'You need login to add new food.'
+
+
+def add_Record(req):
+    if req.user.is_authenticated():
+        data = req.POST
+        fName = data['foodName']
+        username = req.user
+
+        food = Foods.objects.get(fName=fName)
+        user = User.objects.get(username=username)
+
+        print food
+        print user
+
+        re = Record()
+
+        re.user = user
+        re.food = food
+
+        re.save()
+
+        return 'success'
+    else:
+        return 'You need login to add new record.'
+
 
 def update_profile(req):
     if req.user.is_authenticated():

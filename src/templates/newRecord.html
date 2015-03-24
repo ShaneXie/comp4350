@@ -16,7 +16,7 @@
                       </select>
                   </div>
                   <div class="form-group">
-                      <label for="addFoodName">Name:</label>
+                      <label for="addFoodName"> Food:</label>
                       <select ng-model="record.foodName" class="form-control" required>
                           <option ng-repeat="food in allFoods |filter:record.foodType" value="{[{food.fName}]}" tag="{[{food.fType}]}">{[{food.fName}]}</option>
                       </select>
@@ -29,6 +29,29 @@
               </form>
           </div>
       </div>
+
+
+          <table ng-show="records.length" class="table table-striped" id="recordTable">
+              <thead>
+                  <tr>
+                      <th>Food Name</th>
+                      <th>Calories</th>
+                      <th>Food Type</th>
+                      <th>Created Time</th>
+                  </tr>
+              </thead>
+          <tbody>
+                  <tr ng-repeat="r in records | orderBy: '-time'">
+                      <td>{[{r.fName}]}</td>
+                      <td>{[{r.fCalorie}]}</td>
+                      <td>{[{r.fType}]}</td>
+                      <td>{[{r.time | date:"MM/dd/yyyy 'at' h:mma"}]}</td>
+                  </tr>
+          </tbody>
+          </table>
+
+          <div ng-hide="records.length" class="alert alert-danger" role="alert">No Record found, Start track your calorie intake now!</div>
+
     {% else %}
         <div class="panel panel-danger">
             <div class="panel-heading">Error:</div>

@@ -10,10 +10,16 @@ app.controller('NavController', ['$http','$scope','$cookies','$rootScope',functi
     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
 
-    $scope.item = 5;
+    if($('#isLoggedin').length) {
+        $scope.item = 5;
+        $scope.contentURL = '/ajax/newRecord';
+    }else{
+        $scope.item = 1;
+        $scope.contentURL = '/ajax/getAllFood';
+    }
     $scope.loginInfo={};
     $scope.regInfo = {};
-    $scope.contentURL = '/ajax/newRecord';
+
 
     $scope.reloadPage =function() {
         location.reload();

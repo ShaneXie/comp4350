@@ -7,10 +7,21 @@ app.controller('recordController', ['$scope', '$http', '$cookies',function($scop
     $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
 
     $scope.allFoods = [];
+    $scope.records = [];
     $scope.record = {};
 
     $http.get('/api/getAllFood').success(function(data){
         $scope.allFoods = data.foods;
+    });
+
+    $scope.reloadRecord = function(){
+        $http.get('/api/getRecord').success(function(data){
+            $scope.records = data.records;
+        });
+    };
+
+    $http.get('/api/getRecord').success(function(data){
+        $scope.records = data.records;
     });
 
     $scope.setCookies =function() {
@@ -18,7 +29,7 @@ app.controller('recordController', ['$scope', '$http', '$cookies',function($scop
     };
 
     $scope.succesAlertMessge = function(){
-        $.scojs_message('New Food Added!', $.scojs_message.TYPE_OK);
+        $.scojs_message('New Record Added!', $.scojs_message.TYPE_OK);
     };
 
     $scope.failAlertMessge = function(response){
@@ -27,7 +38,7 @@ app.controller('recordController', ['$scope', '$http', '$cookies',function($scop
 
     $scope.resetForm = function(){
         $scope.record = {};
-        $scope.addFoodForm.$setPristine();
+        $scope.newRecordForm.$setPristine();
     };
 
     $scope.addRecord = function (){
@@ -36,15 +47,13 @@ app.controller('recordController', ['$scope', '$http', '$cookies',function($scop
       $http.post('/ajax/addRecord/',data).success(function (response) {
         if(response=="success"){
              $scope.succesAlertMessge();
-             //$("#content").load("/ajax/getAllFood");
-             newFood = '<tr><td>'+$('#addFoodName').val()+'</td><td>'+$('#addFoodCal').val()+'</td><td>'+$('#addFoodType option:selected').text()+'</td></tr>';
-             $("#foodTable tr:first").after(newFood);
-             $('#addFoodForm').trigger("reset");
+             $('#newRecordForm').trigger("reset");
              $scope.resetForm();
          }else{
             $scope.failAlertMessge(response);
          }
 
       });
+      $scope.reloadRecord();
     }
 }]);

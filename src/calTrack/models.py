@@ -76,8 +76,8 @@ class UserProfile(models.Model):
 
 
 class Record(models.Model):
-    user = models.ForeignKey(User, unique=True)
-    food = models.ForeignKey(Foods, unique=True)
+    user = models.ForeignKey(User)
+    food = models.ForeignKey(Foods)
     created = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
