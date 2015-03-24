@@ -1,6 +1,6 @@
 app.controller('NavController', ['$http','$scope','$cookies','$rootScope',function($http,$scope,$rootScope,$cookies){
 
-    $rootScope.html_version = 1.1;
+    $rootScope.html_version = 1.2; //update this when make changes to any static html file
     //  0 ---- Login
     //  1 ---- Food List
     //  2 ---- BMI Calculator
