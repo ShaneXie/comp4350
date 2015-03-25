@@ -15,14 +15,13 @@ app.controller('recordController', ['$scope', '$http', '$cookies',function($scop
     });
 
     $scope.reloadRecord = function(){
+        $scope.records = [];
         $http.get('/api/getRecord').success(function(data){
             $scope.records = data.records;
         });
     };
 
-    $http.get('/api/getRecord').success(function(data){
-        $scope.records = data.records;
-    });
+    $scope.reloadRecord();
 
     $scope.setCookies =function() {
         $scope.record.csrfmiddlewaretoken = $cookies.csrftoken;
@@ -39,7 +38,6 @@ app.controller('recordController', ['$scope', '$http', '$cookies',function($scop
     $scope.resetForm = function(){
         $scope.record = {};
         $scope.newRecordForm.$setPristine();
-        $scope.$apply();
     };
 
     $scope.addRecord = function (){
