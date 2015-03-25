@@ -7,7 +7,7 @@ describe('navCtrlRegisterRequest', function(){
             rootScope = $injector.get('$rootScope');
             scope = rootScope.$new();
             $httpBackend = $injector.get('$httpBackend');
-            jasmine.getJSONFixtures().fixturesPath='/Users/niteshsinghania/GitHub/Comp4350/src/test/jasmine/fixtures/';
+            jasmine.getJSONFixtures().fixturesPath='base/test/jasmine/fixtures/';
             userData = getJSONFixture('userTestData.json');
             arr= getJSONFixture('userProfileTestData.json');
             userProfileData = {};

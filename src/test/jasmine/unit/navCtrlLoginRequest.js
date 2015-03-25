@@ -7,7 +7,7 @@ describe('navCtrlLoginRequest', function(){
             rootScope = $injector.get('$rootScope');
             scope = rootScope.$new();
             $httpBackend = $injector.get('$httpBackend');
-            jasmine.getJSONFixtures().fixturesPath='/Users/niteshsinghania/GitHub/Comp4350/src/test/jasmine/fixtures/';
+            jasmine.getJSONFixtures().fixturesPath='base/test/jasmine/fixtures/';
             data = getJSONFixture('userTestData.json');
             controller = $injector.get('$controller')("NavController",{$scope: scope});
             $httpBackend.when('POST','/ajax/login/',
