@@ -60,7 +60,6 @@ app.controller('userProfileController', ['$http','$filter', '$scope', function($
     };
 
     $scope.saveTable = function() {
-        $scope.setCookies();
         data=jQuery.param($scope.profileData);
         $http.post('/ajax/updateProfile/',data).success(function (response) {
             if(response=="success"){
