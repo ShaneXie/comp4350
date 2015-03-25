@@ -8,7 +8,6 @@ from django.contrib.auth import authenticate, login as loginUser, logout as logo
 def foodCount():
     return Foods.objects.count()
 
-
 def checkUserProfileExists(req):
     username = req.user
     profile =  UserProfile.objects.filter(user__username=username).count()
@@ -90,9 +89,6 @@ def add_Record(req):
 
         food = Foods.objects.get(fName=fName)
         user = User.objects.get(username=username)
-
-        print food
-        print user
 
         re = Record()
 
