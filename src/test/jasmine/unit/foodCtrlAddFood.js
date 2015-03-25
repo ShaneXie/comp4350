@@ -7,7 +7,7 @@ describe('foodListControllerAddFood', function(){
             rootScope = $injector.get('$rootScope');
             scope = rootScope.$new();
             $httpBackend = $injector.get('$httpBackend');
-            jasmine.getJSONFixtures().fixturesPath='/Users/niteshsinghania/GitHub/Comp4350/src/test/jasmine/fixtures/';
+            jasmine.getJSONFixtures().fixturesPath='base/test/jasmine/fixtures/';
             data = getJSONFixture('foodListTestData.json');
             controller = $injector.get('$controller')("foodListController",{$scope: scope});
             $httpBackend.whenGET('/api/getAllFood').respond(data, 200, 'success');

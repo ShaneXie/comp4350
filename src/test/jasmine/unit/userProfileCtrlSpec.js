@@ -1,4 +1,4 @@
-describe('userProfileCtrl', function(){
+describe('userProfileCtrlSpec', function(){
     var $httpBackend, rootScope,data, controller, scope;
 
     beforeEach(function () {
@@ -7,7 +7,7 @@ describe('userProfileCtrl', function(){
             rootScope = $injector.get('$rootScope');
             scope = rootScope.$new();
             $httpBackend = $injector.get('$httpBackend');
-            jasmine.getJSONFixtures().fixturesPath='/Users/niteshsinghania/GitHub/Comp4350/src/test/jasmine/fixtures/'
+            jasmine.getJSONFixtures().fixturesPath='base/test/jasmine/fixtures/';
             arr = getJSONFixture('userProfileTestData.json');
             data = {}
             data['profile']= arr
@@ -21,14 +21,14 @@ describe('userProfileCtrl', function(){
         $httpBackend.verifyNoOutstandingRequest();
     });
     describe("Generate request to get user profile", function(){
-        it('should get valid user profile', function(){
+        it('should get user profile', function(){
             $httpBackend.expectGET('/api/getProfile/');
             $httpBackend.flush();
             expect(scope.profileData).toBeDefined();
             expect(controller).toBeDefined();
 
         });
-        it('should get the food list', function(){
+        it('should get the valid userprofile', function(){
 
             $httpBackend.expectGET('/api/getProfile/');
             $httpBackend.flush();
@@ -36,8 +36,6 @@ describe('userProfileCtrl', function(){
             expect(scope.profileData.height).toBe(150);
             expect(scope.profileData.gender).toBe('Male');
         });
-    });
-    describe("Generate request to get user profile", function(){
         it('should get user BMI', function(){
             $httpBackend.expectGET('/api/getProfile/');
             $httpBackend.flush();
@@ -46,6 +44,13 @@ describe('userProfileCtrl', function(){
             expect(scope.userBMI()).toBeDefined();
             expect(scope.userBMI).toHaveBeenCalled();
             expect(scope.userBMI()).toBe(66.67);
+        });
+        it('should get suggestion based on UserBMI', function(){
+            $httpBackend.expectGET('/api/getProfile/');
+            $httpBackend.flush();
+            expect(scope.suggestion).toBe('');
+            scope.userBMI();
+            expect(scope.suggestion).toBe('You need to see a doctor as soon as possible.');
         });
     });
 });

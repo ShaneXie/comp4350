@@ -39,6 +39,7 @@ app.controller('recordController', ['$scope', '$http', '$cookies',function($scop
     $scope.resetForm = function(){
         $scope.record = {};
         $scope.newRecordForm.$setPristine();
+        $scope.$apply();
     };
 
     $scope.addRecord = function (){
