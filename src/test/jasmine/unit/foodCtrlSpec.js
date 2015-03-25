@@ -7,7 +7,7 @@ describe('foodCtrlSpec', function(){
             rootScope = $injector.get('$rootScope');
             scope = rootScope.$new();
             $httpBackend = $injector.get('$httpBackend');
-            jasmine.getJSONFixtures().fixturesPath='/Users/niteshsinghania/GitHub/Comp4350/src/test/jasmine/fixtures/'
+            jasmine.getJSONFixtures().fixturesPath='base/test/jasmine/fixtures/';
             arr = getJSONFixture('foodListTestData.json');
             data = {};
 	        data["foods"]=arr;
