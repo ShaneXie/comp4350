@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		139F46121AC490E70007B212 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139F46111AC490E70007B212 /* LoginViewController.swift */; };
 		340E61A31AB42954005A5262 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E61A21AB42954005A5262 /* AppDelegate.swift */; };
 		340E61A71AB42954005A5262 /* BMIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E61A61AB42954005A5262 /* BMIViewController.swift */; };
 		340E61AA1AB42954005A5262 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 340E61A81AB42954005A5262 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		139F46111AC490E70007B212 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		340E619D1AB42954005A5262 /* CTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		340E61A11AB42954005A5262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		340E61A21AB42954005A5262 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				34D918F61AB77C4600E1B82F /* SwiftyJSON.swift */,
 				34D918F81AB77C7600E1B82F /* Alamofire.swift */,
 				340E61A81AB42954005A5262 /* Main.storyboard */,
+				139F46111AC490E70007B212 /* LoginViewController.swift */,
 				340E61C61AB6B9E3005A5262 /* foodListTableViewController.swift */,
 				340E61AB1AB42954005A5262 /* Images.xcassets */,
 				340E61AD1AB42954005A5262 /* LaunchScreen.xib */,
@@ -222,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				139F46121AC490E70007B212 /* LoginViewController.swift in Sources */,
 				340E61A71AB42954005A5262 /* BMIViewController.swift in Sources */,
 				34D918F91AB77C7600E1B82F /* Alamofire.swift in Sources */,
 				340E61C71AB6B9E3005A5262 /* foodListTableViewController.swift in Sources */,
