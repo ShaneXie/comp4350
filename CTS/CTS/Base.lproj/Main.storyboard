@@ -114,22 +114,10 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="3" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="byG-yE-iBR">
-                                <rect key="frame" x="174" y="319" width="421" height="31"/>
-                                <connections>
-                                    <action selector="sliderUpdate:" destination="8rJ-Kc-sve" eventType="valueChanged" id="zkY-5q-KFv"/>
-                                </connections>
-                            </slider>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="19" translatesAutoresizingMaskIntoConstraints="NO" id="0bV-g3-M1o">
                                 <rect key="frame" x="174" y="369" width="421" height="31"/>
                                 <connections>
                                     <action selector="sliderUpdate:" destination="8rJ-Kc-sve" eventType="valueChanged" id="lxx-fq-NTP"/>
-                                </connections>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="12" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="08s-lA-oLG">
-                                <rect key="frame" x="174" y="521" width="421" height="31"/>
-                                <connections>
-                                    <action selector="sliderUpdate:" destination="8rJ-Kc-sve" eventType="valueChanged" id="8PD-ES-JLS"/>
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="19" translatesAutoresizingMaskIntoConstraints="NO" id="wSR-LZ-Rm8">
@@ -191,6 +179,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="3" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="byG-yE-iBR">
+                                <rect key="frame" x="174" y="316" width="421" height="31"/>
+                                <connections>
+                                    <action selector="sliderUpdate:" destination="8rJ-Kc-sve" eventType="valueChanged" id="zkY-5q-KFv"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="12" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="08s-lA-oLG">
+                                <rect key="frame" x="174" y="521" width="421" height="31"/>
+                                <connections>
+                                    <action selector="sliderUpdate:" destination="8rJ-Kc-sve" eventType="valueChanged" id="8PD-ES-JLS"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" red="0.23921568627450981" green="0.70196078431372544" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>

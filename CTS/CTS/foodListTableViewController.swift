@@ -117,7 +117,7 @@ class foodListTableViewController: UITableViewController {
         var name = tableData[indexPath.section][indexPath.row + 1][0]
         var cal = tableData[indexPath.section][indexPath.row + 1][1]
 
-        cell.textLabel?.text = "\(name)  \(cal)"
+        cell.textLabel?.text = "\(name)  (\(cal) cal)"
         
         return cell
     }
