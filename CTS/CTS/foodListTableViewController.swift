@@ -10,7 +10,7 @@ import UIKit
 
 class foodListTableViewController: UITableViewController {
 
-    var tableData: Array<AnyObject> = []
+    var tableData = [[[String]]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,16 @@ class foodListTableViewController: UITableViewController {
                 var name = ""
                 var cal = ""
                 var type = ""
-                var item = ""
+                //var item = ""
+                
+                var snack = [[String]]()
+                snack.append(["Snack:",""])
+                var breakfast = [[String]]()
+                breakfast.append(["Breakfast:",""])
+                var lunch = [[String]]()
+                lunch.append(["Lunch:",""])
+                var dinner = [[String]]()
+                dinner.append(["Dinner:",""])
                 
                 println(foods["foods"].count)
                 println(foods["foods"][0]["fName"].stringValue)
@@ -33,10 +42,35 @@ class foodListTableViewController: UITableViewController {
                     name = foods["foods"][idx]["fName"].stringValue
                     cal = foods["foods"][idx]["fCalorie"].stringValue
                     type = foods["foods"][idx]["fType"].stringValue
-                    item = "\(name)\t\t\t\(cal)\t\t\(type)"
-                    println(item)
-                    self.tableData.append(item)
+                    //item = "\(name)\t\t\t\(cal)\t\t\(type)"
+                    //println(item)
+                    //self.tableData.append(item)
+                    var temp = [String]()
+                    temp.append(name)
+                    temp.append(cal)
+                    if type == "Snacks"{
+                        snack.append(temp)
+                    }else if type == "Breakfast"{
+                        breakfast.append(temp)
+                    }else if type == "Lunch"{
+                        lunch.append(temp)
+                    }else{
+                        dinner.append(temp)
+                    }
                 }
+                
+                //if snack.count > 0{
+                    self.tableData.append(snack)
+                //}
+                //if breakfast.count > 0{
+                    self.tableData.append(breakfast)
+                //}
+                //if lunch.count > 0{
+                    self.tableData.append(lunch)
+                //}
+                //if dinner.count > 0{
+                    self.tableData.append(dinner)
+                //}
 
                 self.tableView.reloadData()
         }
@@ -60,13 +94,13 @@ class foodListTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 1
+        return tableData.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return tableData.count
+        return tableData[section].count
     }
 
     
@@ -75,12 +109,16 @@ class foodListTableViewController: UITableViewController {
         let cellId:String = "foodcell"
         
         var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellId) as UITableViewCell
-
-
-        cell.textLabel?.text = tableData[indexPath.row] as? String
         
+        if indexPath.row == (tableData[indexPath.section].count - 1){
+            return cell
+        }
         
+        var name = tableData[indexPath.section][indexPath.row + 1][0]
+        var cal = tableData[indexPath.section][indexPath.row + 1][1]
 
+        cell.textLabel?.text = "\(name)  \(cal)"
+        
         return cell
     }
     
@@ -103,6 +141,10 @@ class foodListTableViewController: UITableViewController {
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return tableData[section][0][0]
     }
     
 
