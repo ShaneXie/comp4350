@@ -4,6 +4,9 @@ from calTrack.models import Foods, UserProfile, Record
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as loginUser, logout as logoutUser
 
+def recordCount(req):
+    username = req.user
+    return Record.objects.filter(user__username=username).count()
 
 def foodCount():
     return Foods.objects.count()
