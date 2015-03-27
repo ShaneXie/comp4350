@@ -12,7 +12,7 @@ def loadAjaxData(request, query):
         foodCount = dataAccess.foodCount()
         return render_to_response('foodlist.html', {'foodCount':foodCount}, context_instance=RequestContext(request))
     elif query == 'newRecord':
-        recordCount = dataAccess.recordCount()
+        recordCount = dataAccess.recordCount(request)
         return render_to_response('newRecord.html',{'recordCount':recordCount},  context_instance=RequestContext(request))
     elif query == 'getProfile':
         profile = dataAccess.checkUserProfileExists(request)
