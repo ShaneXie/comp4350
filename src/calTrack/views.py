@@ -12,7 +12,8 @@ def loadAjaxData(request, query):
         foodCount = dataAccess.foodCount()
         return render_to_response('foodlist.html', {'foodCount':foodCount}, context_instance=RequestContext(request))
     elif query == 'newRecord':
-        return render_to_response('newRecord.html',  context_instance=RequestContext(request))
+        recordCount = dataAccess.recordCount(request)
+        return render_to_response('newRecord.html',{'recordCount':recordCount},  context_instance=RequestContext(request))
     elif query == 'getProfile':
         profile = dataAccess.checkUserProfileExists(request)
         return render_to_response('userProfile.html',{'profile':profile}, context_instance=RequestContext(request))

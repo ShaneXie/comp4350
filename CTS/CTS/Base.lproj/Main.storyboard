@@ -72,102 +72,146 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="BMI Calculator" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="260" y="98" width="248" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1C-r3-LIu">
-                                <rect key="frame" x="152" y="279" width="103" height="41"/>
+                                <rect key="frame" x="176" y="240" width="103" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Height:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFp-Mh-Qk1">
-                                <rect key="frame" x="152" y="458" width="96" height="44"/>
+                                <rect key="frame" x="176" y="438" width="96" height="44"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BMI:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjo-IW-vZr">
-                                <rect key="frame" x="152" y="656" width="87" height="43"/>
+                                <rect key="frame" x="176" y="646" width="87" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bG1-ym-LxR">
-                                <rect key="frame" x="445" y="287" width="74" height="31"/>
+                                <rect key="frame" x="469" y="248" width="74" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="120.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0K-1s-7zy">
-                                <rect key="frame" x="445" y="467" width="74" height="32"/>
+                                <rect key="frame" x="469" y="447" width="74" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KG" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAV-aL-0EN">
-                                <rect key="frame" x="527" y="290" width="42" height="26"/>
+                                <rect key="frame" x="551" y="251" width="42" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5W-2Q-r1h">
-                                <rect key="frame" x="527" y="465" width="42" height="35"/>
+                                <rect key="frame" x="551" y="445" width="42" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="3" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="byG-yE-iBR">
-                                <rect key="frame" x="150" y="339" width="421" height="31"/>
-                                <connections>
-                                    <action selector="sliderUpdate:" destination="8rJ-Kc-sve" eventType="valueChanged" id="zkY-5q-KFv"/>
-                                </connections>
-                            </slider>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="19" translatesAutoresizingMaskIntoConstraints="NO" id="0bV-g3-M1o">
-                                <rect key="frame" x="150" y="389" width="421" height="31"/>
+                                <rect key="frame" x="174" y="369" width="421" height="31"/>
                                 <connections>
                                     <action selector="sliderUpdate:" destination="8rJ-Kc-sve" eventType="valueChanged" id="lxx-fq-NTP"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="12" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="08s-lA-oLG">
-                                <rect key="frame" x="150" y="521" width="421" height="31"/>
-                                <connections>
-                                    <action selector="sliderUpdate:" destination="8rJ-Kc-sve" eventType="valueChanged" id="8PD-ES-JLS"/>
-                                </connections>
-                            </slider>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="19" translatesAutoresizingMaskIntoConstraints="NO" id="wSR-LZ-Rm8">
-                                <rect key="frame" x="150" y="574" width="421" height="31"/>
+                                <rect key="frame" x="174" y="574" width="421" height="31"/>
                                 <connections>
                                     <action selector="sliderUpdate:" destination="8rJ-Kc-sve" eventType="valueChanged" id="VU9-6X-Jif"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20.83" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2P-SB-B40">
-                                <rect key="frame" x="434" y="667" width="85" height="32"/>
+                                <rect key="frame" x="458" y="657" width="85" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="BMI Calculator" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
+                                <rect key="frame" x="0.0" y="101" width="768" height="53"/>
+                                <color key="backgroundColor" red="0.67843137254901964" green="0.82745098039215681" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="66.1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ad9-uo-DJs">
+                                <rect key="frame" x="463" y="281" width="80" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lb" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovD-Aa-qNo">
+                                <rect key="frame" x="551" y="281" width="42" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3.93" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkT-kY-d95">
+                                <rect key="frame" x="469" y="481" width="74" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ft" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZz-Wg-ono">
+                                <rect key="frame" x="551" y="481" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4M4-LC-9Tn">
+                                <rect key="frame" x="384" y="858" width="154" height="29"/>
+                                <segments>
+                                    <segment title="Off"/>
+                                    <segment title="On"/>
+                                </segments>
+                                <connections>
+                                    <action selector="toggle:" destination="8rJ-Kc-sve" eventType="valueChanged" id="fYr-GM-7Q9"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Imperial Unit:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEn-Ei-2Wm">
+                                <rect key="frame" x="230" y="855" width="146" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="3" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="byG-yE-iBR">
+                                <rect key="frame" x="174" y="316" width="421" height="31"/>
+                                <connections>
+                                    <action selector="sliderUpdate:" destination="8rJ-Kc-sve" eventType="valueChanged" id="zkY-5q-KFv"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="12" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="08s-lA-oLG">
+                                <rect key="frame" x="174" y="521" width="421" height="31"/>
+                                <connections>
+                                    <action selector="sliderUpdate:" destination="8rJ-Kc-sve" eventType="valueChanged" id="8PD-ES-JLS"/>
+                                </connections>
+                            </slider>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.23921568627450981" green="0.70196078431372544" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="BMI Calculator" image="first" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="BMIDisplay" destination="C2P-SB-B40" id="aXe-bc-XoA"/>
                         <outlet property="heightDisplay" destination="g0K-1s-7zy" id="3vX-NM-4EJ"/>
+                        <outlet property="heightDisplay2" destination="LkT-kY-d95" id="ezi-y5-b8O"/>
+                        <outlet property="heightDisplay2unit" destination="QZz-Wg-ono" id="RF2-tK-v7x"/>
                         <outlet property="heightSlider1" destination="wSR-LZ-Rm8" id="5zD-YK-E5I"/>
                         <outlet property="heightSlider10" destination="08s-lA-oLG" id="JEI-q3-kHK"/>
                         <outlet property="weightDisplay" destination="bG1-ym-LxR" id="9K4-FT-zWH"/>
+                        <outlet property="weightDisplay2" destination="ad9-uo-DJs" id="DEG-1d-Ghu"/>
+                        <outlet property="weightDisplay2unit" destination="ovD-Aa-qNo" id="3Sx-Sh-p8g"/>
                         <outlet property="weightSlider1" destination="0bV-g3-M1o" id="Unz-pP-eMX"/>
                         <outlet property="weightSlider10" destination="byG-yE-iBR" id="jdh-3F-Rx8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="960" y="614"/>
+            <point key="canvasLocation" x="974" y="752"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
