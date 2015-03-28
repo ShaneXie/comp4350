@@ -68,35 +68,46 @@ class LoginViewController: UIViewController {
     }
     
     func inputCheck()->Bool{
+        let illegal = "; : ' \" \\ / ~ ` ! # $ % ^ & * ? |".componentsSeparatedByString(" ")
         var account = self.accountL.text
         var password = self.passwordL.text
         if(account.utf16Count==0 || password.utf16Count==0){
-            var alert = UIAlertController(title: "Alert", message: "Neither username nor password should be empty.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            showAlert("Neither username nor password should be empty.")
             return false
         }else if(account.utf16Count>30){
-            var alert = UIAlertController(title: "Alert", message: "Username should be no more than 30 chars.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            showAlert("Username should be no more than 30 chars.")
             return false
         }else if(account.utf16Count<10){
-            var alert = UIAlertController(title: "Alert", message: "Username should be no less than 10 chars.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            showAlert("Username should be no less than 10 chars.")
             return false
         }else if(password.utf16Count>15){
-            var alert = UIAlertController(title: "Alert", message: "Password should be no more than 15 chars.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            showAlert("Password should be no more than 15 chars.")
             return false
         }else if(password.utf16Count<6){
-            var alert = UIAlertController(title: "Alert", message: "Password should be no less than 6 chars.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            showAlert("Password should be no less than 6 chars.")
             return false
+        }else {
+            for c in illegal{
+                if (account.rangeOfString(c)?.startIndex == nil){
+                    showAlert("Illegal chars found in username: ; : ' \" \\ / ~ ` ! # $ % ^ & * ? |")
+                    return false
+                }
+                if (password.rangeOfString(c)?.startIndex == nil){
+                    showAlert("Illegal chars found in password: ; : ' \" \\ / ~ ` ! # $ % ^ & * ? |")
+                    return false
+                }
+
+            }
+            
         }
         return true
+    }
+    
+    
+    func showAlert(msg: String){
+        var alert = UIAlertController(title: "Alert", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     
