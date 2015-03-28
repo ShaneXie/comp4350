@@ -56,6 +56,33 @@ class LoginViewController: UIViewController {
     
     @IBAction func registerClicked(sender: UIButton) {
         hideInputPanel()
+        if (inputCheck()){
+            var alert = UIAlertController(title: "Confirm", message: "Please input you password again.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style:UIAlertActionStyle.Default) {
+                (action: UIAlertAction!) -> Void in
+                var passwordC = alert.textFields?.first as UITextField
+                var password = self.passwordL.text
+                if (passwordC.text == password){
+                    if (self.registerCheck()){
+                        var alert = UIAlertController(title: "Register Done", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    }else{
+                        self.showAlert("Register faild.")
+                    }
+                }else{
+                    self.showAlert("Password not match.")
+                }
+                
+            })
+            
+            alert.addTextFieldWithConfigurationHandler {
+                (textField: UITextField!) -> Void in
+                textField.placeholder = "confirm password"
+                textField.secureTextEntry = true
+            }
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func hideInputPanel(){
@@ -64,8 +91,15 @@ class LoginViewController: UIViewController {
     }
     
     func loginCheck()->Bool{
+        //----------------------------------------------------------------------
         return true
     }
+    
+    func registerCheck()->Bool{
+        //----------------------------------------------------------------------
+        return true
+    }
+    
     
     func inputCheck()->Bool{
         let illegal = "; : ' \" \\ / ~ ` ! # $ % ^ & * ? |".componentsSeparatedByString(" ")
@@ -88,11 +122,11 @@ class LoginViewController: UIViewController {
             return false
         }else {
             for c in illegal{
-                if (account.rangeOfString(c)?.startIndex == nil){
+                if (account.rangeOfString(c)?.startIndex != nil){
                     showAlert("Illegal chars found in username: ; : ' \" \\ / ~ ` ! # $ % ^ & * ? |")
                     return false
                 }
-                if (password.rangeOfString(c)?.startIndex == nil){
+                if (password.rangeOfString(c)?.startIndex != nil){
                     showAlert("Illegal chars found in password: ; : ' \" \\ / ~ ` ! # $ % ^ & * ? |")
                     return false
                 }
