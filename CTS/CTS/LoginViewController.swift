@@ -51,52 +51,22 @@ class LoginViewController: UIViewController {
     }
     
     
-    /*
+    
     @IBAction func registerClicked(sender: UIButton) {
         hideInputPanel()
         if (inputCheck()){
-            let alert = UIAlertView()
-            alert.title = "Confirm"
-            alert.message = "Please input you password again."
-            alert.alertViewStyle = UIAlertViewStyle.LoginAndPasswordInput
-            
-            alert.addButtonWithTitle("Ok")
-            alert.show()
-            
-            
-            
-            /*
-            var alert = UIAlertController(title: "Confirm", message: "Please input you password again.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style:UIAlertActionStyle.Default) {
-                (action: UIAlertAction!) -> Void in
-                var passwordC = alert.textFields?.first as UITextField
-                var password = self.passwordL.text
-                if (passwordC.text == password){
-                    if (self.registerCheck()){
-                        let alert = UIAlertView()
-                        alert.title = "Register done"
-                        alert.message = ""
-                        alert.addButtonWithTitle("Ok")
-                        alert.show()
-                    }else{
-                        self.showAlert("Register faild.")
-                    }
-                }else{
-                    self.showAlert("Password not match.")
-                }
-                
-            })
-            
-            alert.addTextFieldWithConfigurationHandler {
-                (textField: UITextField!) -> Void in
-                textField.placeholder = "confirm password"
-                textField.secureTextEntry = true
+            if (self.registerCheck()){
+                let alert = UIAlertView()
+                alert.title = "Register done"
+                alert.message = ""
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+            }else{
+                self.showAlert("Register faild.")
             }
-            self.presentViewController(alert, animated: true, completion: nil)
-            */
         }
     }
-    */
+    
     
    
         
@@ -106,11 +76,15 @@ class LoginViewController: UIViewController {
     }
     
     func loginCheck()->Bool{
+        var account = self.accountL.text
+        var password = self.passwordL.text
         //----------------------------------------------------------------------
         return true
     }
     
     func registerCheck()->Bool{
+        var account = self.accountL.text
+        var password = self.passwordL.text
         //----------------------------------------------------------------------
         return true
     }
