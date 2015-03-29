@@ -78,7 +78,7 @@ class LoginViewController: UIViewController {
         var ret = false
         let para = ["loginEmailName":account, "loginPwdName":password]
         //----------------------------------------------------------------------
-        request(.POST, "http://127.0.0.1:8000/ajax/login/", parameters: para)
+        request(.POST, "http://4350.intpointer.com/ajax/login/", parameters: para)
             .responseString { (_, _, string, _) in
                 if string == "success"{
                     self.performSegueWithIdentifier("login", sender: self)
