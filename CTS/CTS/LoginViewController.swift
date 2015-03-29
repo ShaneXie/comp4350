@@ -45,18 +45,27 @@ class LoginViewController: UIViewController {
             if(loginCheck()){
                 self.performSegueWithIdentifier("login", sender: self)
             }else{
-                var alert = UIAlertController(title: "Alert", message: "Login failed.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                self.showAlert("Login faild.")
             }
         }
     }
     
     
-    
+    /*
     @IBAction func registerClicked(sender: UIButton) {
         hideInputPanel()
         if (inputCheck()){
+            let alert = UIAlertView()
+            alert.title = "Confirm"
+            alert.message = "Please input you password again."
+            alert.alertViewStyle = UIAlertViewStyle.LoginAndPasswordInput
+            
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+            
+            
+            
+            /*
             var alert = UIAlertController(title: "Confirm", message: "Please input you password again.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style:UIAlertActionStyle.Default) {
                 (action: UIAlertAction!) -> Void in
@@ -64,9 +73,11 @@ class LoginViewController: UIViewController {
                 var password = self.passwordL.text
                 if (passwordC.text == password){
                     if (self.registerCheck()){
-                        var alert = UIAlertController(title: "Register Done", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
+                        let alert = UIAlertView()
+                        alert.title = "Register done"
+                        alert.message = ""
+                        alert.addButtonWithTitle("Ok")
+                        alert.show()
                     }else{
                         self.showAlert("Register faild.")
                     }
@@ -82,9 +93,13 @@ class LoginViewController: UIViewController {
                 textField.secureTextEntry = true
             }
             self.presentViewController(alert, animated: true, completion: nil)
+            */
         }
     }
+    */
     
+   
+        
     func hideInputPanel(){
         self.accountL.resignFirstResponder()
         self.passwordL.resignFirstResponder()
@@ -139,9 +154,11 @@ class LoginViewController: UIViewController {
     
     
     func showAlert(msg: String){
-        var alert = UIAlertController(title: "Alert", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertView()
+        alert.title = "Alert"
+        alert.message = msg
+        alert.addButtonWithTitle("Ok")
+        alert.show()
     }
     
     
