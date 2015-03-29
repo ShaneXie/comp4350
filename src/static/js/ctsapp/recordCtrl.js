@@ -11,11 +11,6 @@ app.controller('recordController', ['$scope', '$http', '$cookies',function($scop
     $scope.record = {};
     var recordsLength = 0;
 
-    $http.get('/api/getAllFood').success(function(data){
-        $scope.allFoods = data.foods;
-        $scope.reloadRecord();
-    });
-
     $scope.reloadRecord = function(){
         $scope.records = [];
         $http.get('/api/getRecord').success(function(data){
@@ -23,6 +18,11 @@ app.controller('recordController', ['$scope', '$http', '$cookies',function($scop
             recordsLength = $scope.records.length;
         });
     };
+
+    $http.get('/api/getAllFood').success(function(data){
+        $scope.allFoods = data.foods;
+        $scope.reloadRecord();
+    });
 
     $scope.setCookies =function() {
         $scope.record.csrfmiddlewaretoken = $cookies.csrftoken;
