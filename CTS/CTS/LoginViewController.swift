@@ -42,11 +42,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginClicked(sender: UIButton) {
         hideInputPanel()
         if (inputCheck()){
-            if(loginCheck()){
-                self.performSegueWithIdentifier("login", sender: self)
-            }else{
-                self.showAlert("Login faild.")
-            }
+            loginCheck()
         }
     }
     
@@ -75,11 +71,21 @@ class LoginViewController: UIViewController {
         self.passwordL.resignFirstResponder()
     }
     
-    func loginCheck()->Bool{
+    
+    func loginCheck(){
         var account = self.accountL.text
         var password = self.passwordL.text
+        var ret = false
+        let para = ["loginEmailName":account, "loginPwdName":password]
         //----------------------------------------------------------------------
-        return true
+        request(.POST, "http://127.0.0.1:8000/ajax/login/", parameters: para)
+            .responseString { (_, _, string, _) in
+                if string == "success"{
+                    self.performSegueWithIdentifier("login", sender: self)
+                }else{
+                    self.showAlert(string!)
+                }
+            }
     }
     
     func registerCheck()->Bool{
@@ -96,18 +102,6 @@ class LoginViewController: UIViewController {
         var password = self.passwordL.text
         if(account.utf16Count==0 || password.utf16Count==0){
             showAlert("Neither username nor password should be empty.")
-            return false
-        }else if(account.utf16Count>30){
-            showAlert("Username should be no more than 30 chars.")
-            return false
-        }else if(account.utf16Count<10){
-            showAlert("Username should be no less than 10 chars.")
-            return false
-        }else if(password.utf16Count>15){
-            showAlert("Password should be no more than 15 chars.")
-            return false
-        }else if(password.utf16Count<6){
-            showAlert("Password should be no less than 6 chars.")
             return false
         }else {
             for c in illegal{
