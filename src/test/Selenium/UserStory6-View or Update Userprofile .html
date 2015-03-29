@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://4350.intpointer.com/" />
+<title>UserStory6-View or Update Userprofile </title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">UserStory6-View or Update Userprofile </td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Calorie Tracking System</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=loginPwd</td>
+	<td>asdf</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=loginEmail</td>
+	<td>asdf@asdf.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=button.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Hi, asdf</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=My Profile</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>css=th.col-md-2</td>
+	<td>exact:Weight:</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr/td/span</td>
+	<td>122 kg</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[2]/th</td>
+	<td>exact:Height:</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[2]/td/span</td>
+	<td>125 cm</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[3]/th</td>
+	<td>exact:Gender:</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[3]/td/span</td>
+	<td>Male</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[4]/th</td>
+	<td>exact:BMI:</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>css=td.ng-binding</td>
+	<td>78.08</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[5]/th</td>
+	<td>exact:Suggestion:</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[5]/td</td>
+	<td>You need to see a doctor as soon as possible.</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='number']</td>
+	<td>50</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='number'])[2]</td>
+	<td>150</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[3]/td/span[2]/div/select</td>
+	<td>label=Female</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=page_message</td>
+	<td>User profile updated.</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>css=th.col-md-2</td>
+	<td>exact:Weight:</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr/td/span</td>
+	<td>50 kg</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[2]/th</td>
+	<td>exact:Height:</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[2]/td/span</td>
+	<td>150 cm</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[3]/th</td>
+	<td>exact:Gender:</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[3]/td/span</td>
+	<td>Female</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[4]/th</td>
+	<td>exact:BMI:</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>css=td.ng-binding</td>
+	<td>22.22</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[5]/th</td>
+	<td>exact:Suggestion:</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[5]/td</td>
+	<td>Your weight is normal, no change in diet or extra exercise is required.</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='number']</td>
+	<td>122</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='number'])[2]</td>
+	<td>125</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//table[@id='UserProfileTable']/tbody/tr[3]/td/span[2]/div/select</td>
+	<td>label=Male</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Hi, asdf</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
