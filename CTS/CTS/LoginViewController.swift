@@ -39,19 +39,33 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var registerB: UIButton!
     
     
+    
     @IBAction func loginClicked(sender: UIButton) {
         hideInputPanel()
         if (inputCheck()){
             if(loginCheck()){
-                self.performSegueWithIdentifier("login", sender: self)
+                let saveInfo  = NSUserDefaults.standardUserDefaults()
+                saveInfo.setObject(accountL.text, forKey: "userName")
+                self.performSegueWithIdentifier("login2", sender: self)
+                
+
             }else{
-                self.showAlert("Login faild.")
+                self.showAlert("Login failed.")
             }
         }
     }
-    
-    
-    
+  /*  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier  == "login2"
+        {
+            
+            var tabController : UserProfileController = segue.destinationViewController as UserProfileController
+            tabController.labelTxt = accountL.text
+            
+           
+        }
+    }
+    */
     @IBAction func registerClicked(sender: UIButton) {
         hideInputPanel()
         if (inputCheck()){
