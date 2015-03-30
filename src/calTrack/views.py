@@ -1,11 +1,12 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 import dataAccess
 import api
 
 # Create your views here.
-
+@csrf_exempt
 def loadAjaxData(request, query):
     errMsg="Ajax Error Message"
     if query == 'getAllFood':
