@@ -17,6 +17,8 @@
 		340E61C71AB6B9E3005A5262 /* foodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E61C61AB6B9E3005A5262 /* foodListTableViewController.swift */; };
 		34D918F71AB77C4600E1B82F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D918F61AB77C4600E1B82F /* SwiftyJSON.swift */; };
 		34D918F91AB77C7600E1B82F /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D918F81AB77C7600E1B82F /* Alamofire.swift */; };
+		EBBF24CE1AC7BDA10075ED22 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBF24CD1AC7BDA10075ED22 /* UserProfileController.swift */; };
+		EBBF24D01AC8E7120075ED22 /* EditUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBF24CF1AC8E7120075ED22 /* EditUserProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		340E61C61AB6B9E3005A5262 /* foodListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foodListTableViewController.swift; sourceTree = "<group>"; };
 		34D918F61AB77C4600E1B82F /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		34D918F81AB77C7600E1B82F /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
+		EBBF24CD1AC7BDA10075ED22 /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
+		EBBF24CF1AC8E7120075ED22 /* EditUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 				34D918F61AB77C4600E1B82F /* SwiftyJSON.swift */,
 				34D918F81AB77C7600E1B82F /* Alamofire.swift */,
 				340E61A81AB42954005A5262 /* Main.storyboard */,
+				EBBF24CF1AC8E7120075ED22 /* EditUserProfileViewController.swift */,
+				EBBF24CD1AC7BDA10075ED22 /* UserProfileController.swift */,
 				139F46111AC490E70007B212 /* LoginViewController.swift */,
 				340E61C61AB6B9E3005A5262 /* foodListTableViewController.swift */,
 				340E61AB1AB42954005A5262 /* Images.xcassets */,
@@ -228,7 +234,9 @@
 				139F46121AC490E70007B212 /* LoginViewController.swift in Sources */,
 				340E61A71AB42954005A5262 /* BMIViewController.swift in Sources */,
 				34D918F91AB77C7600E1B82F /* Alamofire.swift in Sources */,
+				EBBF24D01AC8E7120075ED22 /* EditUserProfileViewController.swift in Sources */,
 				340E61C71AB6B9E3005A5262 /* foodListTableViewController.swift in Sources */,
+				EBBF24CE1AC7BDA10075ED22 /* UserProfileController.swift in Sources */,
 				340E61A31AB42954005A5262 /* AppDelegate.swift in Sources */,
 				34D918F71AB77C4600E1B82F /* SwiftyJSON.swift in Sources */,
 			);
@@ -355,6 +363,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = CTS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -366,6 +375,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = CTS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
