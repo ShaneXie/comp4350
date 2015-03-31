@@ -1,4 +1,4 @@
-app.controller('bmiController',['$scope' , function($scope){
+app.controller('bmiController',['$http','$scope' , function($http,$scope){
     $scope.isStd = false;
     $scope.stdHgt;
     $scope.stdWgt;
@@ -7,6 +7,12 @@ app.controller('bmiController',['$scope' , function($scope){
     $scope.bmi;
     var msg="";
 
+    $http.get('/api/getProfile/').success(function(data){
+        if(data.profile[0]) {
+            $scope.mtrHgt = data.profile[0].height;
+            $scope.mtrWgt = data.profile[0].weight;
+        }
+    });
     $scope.result = "Your BMI is ";
     $scope.resultReady = false;
 
