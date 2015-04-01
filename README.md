@@ -6,5 +6,5 @@ iOS client source code is in CTS folder.
 
 To view the project please visit "4350.intpointer.com"
 
-Note: The branch "release_1.3" contians the final version of the project not the "master" branch.
+Note: The branch "release_1.4" contians the final version of the project not the "master" branch.
 
